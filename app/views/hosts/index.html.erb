@@ -1,0 +1,33 @@
+<h1>Listing hosts</h1>
+
+<table>
+  <tr>
+    <th>Fqdn</th>
+    <th>Dc</th>
+    <th>Serial</th>
+    <th>Make</th>
+    <th>Mac</th>
+    <th>Role</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @hosts.each do |host| %>
+  <tr>
+    <td><%= host.fqdn %></td>
+    <td><%= host.dc %></td>
+    <td><%= host.serial %></td>
+    <td><%= host.make %></td>
+    <td><%= host.mac %></td>
+    <td><%= host.role %></td>
+    <td><%= link_to 'Show', host %></td>
+    <td><%= link_to 'Edit', edit_host_path(host) %></td>
+    <td><%= link_to 'Destroy', host, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Host', new_host_path %>
