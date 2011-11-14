@@ -1,4 +1,8 @@
 Onering::Application.routes.draw do
+  ActiveAdmin.routes(self)
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+
   resources :hosts
 
   # The priority is based upon order of creation:
@@ -50,7 +54,7 @@ Onering::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  root :to => 'hosts#index'
 
   # See how all your routes lay out with "rake routes"
 
