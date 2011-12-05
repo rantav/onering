@@ -4,13 +4,28 @@
     <title>OneRing</title>
     <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css">
   </head>
-  <body style='margin: 20pt'>
+  <body>
+    <div class="topbar" data-dropdown="dropdown">
+      <div class="topbar-inner">
+        <div class="container">
+          <h3><a href="/">one ring</a></h3>
+          <ul class="nav">
+            <li class="active"><a href="/">Home</a></li>
+            <li><a href="/physicalhosts">Physical Hosts</a></li>
+            <li><a href="/virtualhosts">Virtual Hosts</a></li>
+            <li class="dropdown">
+          </ul>
+          <form class="pull-left" action="">
+            <input type="text" placeholder="Search">
+          </form>
+        </div>
+      </div>
+    </div>
       <div class="container-fluid">
         <div class="sidebar">
-          <img src='/img/ring.png' class="thumbnail"/>
+          <img src='/img/ring.png' class="thumbnail" style='margin-top: 50pt'/>
         </div>
         <div class="content" style='margin-top:10pt'>
-          <button class='btn primary'>GO</button>
         </div>
       </div>
   </body>
