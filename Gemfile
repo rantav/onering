@@ -9,7 +9,7 @@ gem 'twitter-bootstrap-rails'
 gem 'formtastic'
 gem 'formtastic-bootstrap'
 gem 'haml'
-gem 'activeadmin'
+#gem 'activeadmin'
 gem 'meta_search', '>= 1.1.0.pre'
 gem "devise_ldap_authenticatable"
 gem 'thin'

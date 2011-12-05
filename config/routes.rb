@@ -1,8 +1,4 @@
 Onering::Application.routes.draw do
-  ActiveAdmin.routes(self)
-
-  devise_for :admin_users, ActiveAdmin::Devise.config
-
   resources :hosts
 
   # The priority is based upon order of creation:
