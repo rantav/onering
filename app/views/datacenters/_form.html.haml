@@ -1,0 +1,13 @@
+= form_for @datacenter do |f|
+  -if @datacenter.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@datacenter.errors.count, "error")} prohibited this datacenter from being saved:"
+      %ul
+        - @datacenter.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .actions
+    = f.submit 'Save'

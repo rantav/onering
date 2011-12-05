@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @datacenter.name
+
+= link_to 'Edit', edit_datacenter_path(@datacenter)
+\|
+= link_to 'Back', datacenters_path
