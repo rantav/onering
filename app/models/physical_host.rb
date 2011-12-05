@@ -11,4 +11,5 @@ class PhysicalHost
   field :label, :type => String
   field :status, :type => String
   field :notes, :type => String
+  belongs_to :datacenter
 end

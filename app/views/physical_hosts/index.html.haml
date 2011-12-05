@@ -3,6 +3,7 @@
 %table
   %tr
     %th Name
+    %th Datacenter
     %th R
     %th U
     %th N
@@ -20,6 +21,7 @@
   - @physical_hosts.each do |physical_host|
     %tr
       %td= physical_host.name
+      %td= physical_host.datacenter
       %td= physical_host.r
       %td= physical_host.u
       %td= physical_host.n
