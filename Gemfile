@@ -5,7 +5,6 @@ gem 'rails', '3.1.0'
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
 gem 'twitter-bootstrap-rails'
 gem 'formtastic'
 gem 'formtastic-bootstrap'
@@ -38,4 +37,10 @@ group :test do
   # Pretty printed test output
   gem 'turn', :require => false
   gem 'rspec'
+end
+group :development, :test do
+  gem 'sqlite3'
+end
+group :production do
+  gem 'pg'
 end

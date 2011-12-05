@@ -102,6 +102,7 @@ GEM
     multi_json (1.0.3)
     net-ldap (0.2.2)
     orm_adapter (0.0.5)
+    pg (0.11.0)
     polyamorous (0.5.0)
       activerecord (~> 3.0)
     polyglot (0.3.3)
@@ -190,6 +191,7 @@ DEPENDENCIES
   haml
   jquery-rails
   meta_search (>= 1.1.0.pre)
+  pg
   rails (= 3.1.0)
   rspec
   sass-rails (~> 3.1.0)
