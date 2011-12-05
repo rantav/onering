@@ -3,7 +3,7 @@
 Devise.setup do |config|
   # ==> LDAP Configuration 
   # https://github.com/cschiewek/devise_ldap_authenticatable
-  # config.ldap_logger = true
+  config.ldap_logger = true
   config.ldap_create_user = true
   config.ldap_update_password = false
   # config.ldap_config = "#{Rails.root}/config/ldap.yml"
