@@ -1,0 +1,39 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @physical_host.name
+%p
+  %b R:
+  = @physical_host.r
+%p
+  %b U:
+  = @physical_host.u
+%p
+  %b N:
+  = @physical_host.n
+%p
+  %b Type:
+  = @physical_host.type
+%p
+  %b Serial:
+  = @physical_host.serial
+%p
+  %b Pdu1:
+  = @physical_host.pdu1
+%p
+  %b Pdu2:
+  = @physical_host.pdu2
+%p
+  %b Label:
+  = @physical_host.label
+%p
+  %b Status:
+  = @physical_host.status
+%p
+  %b Notes:
+  = @physical_host.notes
+
+= link_to 'Edit', edit_physical_host_path(@physical_host)
+\|
+= link_to 'Back', physical_hosts_path

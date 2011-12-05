@@ -1,0 +1,39 @@
+%h1 Listing physical_hosts
+
+%table
+  %tr
+    %th Name
+    %th R
+    %th U
+    %th N
+    %th Type
+    %th Serial
+    %th Pdu1
+    %th Pdu2
+    %th Label
+    %th Status
+    %th Notes
+    %th
+    %th
+    %th
+
+  - @physical_hosts.each do |physical_host|
+    %tr
+      %td= physical_host.name
+      %td= physical_host.r
+      %td= physical_host.u
+      %td= physical_host.n
+      %td= physical_host.type
+      %td= physical_host.serial
+      %td= physical_host.pdu1
+      %td= physical_host.pdu2
+      %td= physical_host.label
+      %td= physical_host.status
+      %td= physical_host.notes
+      %td= link_to 'Show', physical_host
+      %td= link_to 'Edit', edit_physical_host_path(physical_host)
+      %td= link_to 'Destroy', physical_host, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Physical host', new_physical_host_path
