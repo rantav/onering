@@ -17,10 +17,10 @@ gem 'thin'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails', "  ~> 3.1.0"
   gem 'coffee-rails', "~> 3.1.0"
   gem 'uglifier'
 end
+gem 'sass-rails', "  ~> 3.1.0" # why is this here and not in assets? see https://github.com/rails/sass-rails/issues/38
 
 gem 'jquery-rails'
 
