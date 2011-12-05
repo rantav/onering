@@ -4,7 +4,7 @@ http://devcenter.heroku.com/articles/rails3
 
 Test:
 ====
-$ bundle exec rake test
+$ bundle exec rspec spec
 
 Running the server:
 ===================
