@@ -1,6 +1,14 @@
+Setup:
+=====
+http://devcenter.heroku.com/articles/rails3
+
+Test:
+====
+$ bundle exec rake test
+
 Running the server:
 ===================
-bundle exec rails server
+$ foreman start
 
 Libraries used:
 ==============

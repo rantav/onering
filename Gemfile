@@ -13,6 +13,7 @@ gem 'haml'
 gem 'activeadmin'
 gem 'meta_search', '>= 1.1.0.pre'
 gem "devise_ldap_authenticatable"
+gem 'thin'
 
 # Gems used only for assets and not required
 # in production environments by default.
