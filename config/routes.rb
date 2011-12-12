@@ -1,5 +1,9 @@
 Onering::Application.routes.draw do
 
+  resources :us
+
+  resources :ns
+
   resources :datacenters
 
   resources :physical_hosts

@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Index:
+  = @u.index
+%p
+  %b Name:
+  = @u.name
+
+= link_to 'Edit', edit_u_path(@u)
+\|
+= link_to 'Back', us_path

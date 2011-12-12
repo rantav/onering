@@ -1,0 +1,21 @@
+%h1 Listing us
+
+%table
+  %tr
+    %th Index
+    %th Name
+    %th
+    %th
+    %th
+
+  - @us.each do |u|
+    %tr
+      %td= u.index
+      %td= u.name
+      %td= link_to 'Show', u
+      %td= link_to 'Edit', edit_u_path(u)
+      %td= link_to 'Destroy', u, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New U', new_u_path

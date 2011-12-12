@@ -1,9 +1,6 @@
 class PhysicalHost
   include Mongoid::Document
   field :name, :type => String
-  field :r, :type => Integer
-  field :u, :type => Integer
-  field :n, :type => Integer
   field :type, :type => String
   field :serial, :type => String
   field :pdu1, :type => String
@@ -11,5 +8,5 @@ class PhysicalHost
   field :label, :type => String
   field :status, :type => String
   field :notes, :type => String
-  belongs_to :datacenter
+  belongs_to :n
 end

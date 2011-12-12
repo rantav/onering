@@ -1,0 +1,19 @@
+%h1 Listing ns
+
+%table
+  %tr
+    %th Index
+    %th
+    %th
+    %th
+
+  - @ns.each do |n|
+    %tr
+      %td= n.index
+      %td= link_to 'Show', n
+      %td= link_to 'Edit', edit_n_path(n)
+      %td= link_to 'Destroy', n, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New N', new_n_path

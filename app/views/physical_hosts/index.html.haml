@@ -3,10 +3,6 @@
 %table
   %tr
     %th Name
-    %th Datacenter
-    %th R
-    %th U
-    %th N
     %th Type
     %th Serial
     %th Pdu1
@@ -21,10 +17,6 @@
   - @physical_hosts.each do |physical_host|
     %tr
       %td= physical_host.name
-      %td= physical_host.datacenter
-      %td= physical_host.r
-      %td= physical_host.u
-      %td= physical_host.n
       %td= physical_host.type
       %td= physical_host.serial
       %td= physical_host.pdu1
