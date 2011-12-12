@@ -45,6 +45,7 @@ group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails'
   gem 'watchr'
+  gem 'spork', '~> 0.9.0.rc'
 end
 gem 'haml-rails', :group => :development
 group :production do
