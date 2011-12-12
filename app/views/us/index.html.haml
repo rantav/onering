@@ -1,8 +1,9 @@
-%h1 Listing us
+%h1 Listing Us
 
 %table
   %tr
     %th Index
+    %th Rack
     %th
     %th
     %th
@@ -10,6 +11,7 @@
   - @us.each do |u|
     %tr
       %td= u.index
+      %td= link_to u.physical_rack.index, u.physical_rack unless u.physical_rack.nil?
       %td= link_to 'Show', u
       %td= link_to 'Edit', edit_u_path(u)
       %td= link_to 'Destroy', u, :confirm => 'Are you sure?', :method => :delete
