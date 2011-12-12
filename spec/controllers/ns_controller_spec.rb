@@ -27,13 +27,13 @@ describe NsController do
     {}
   end
 
-  describe "GET index" do
-    it "assigns all ns as @ns" do
-      n = N.create! valid_attributes
-      get :index
-      assigns(:ns).should eq([n])
-    end
-  end
+#  describe "GET index" do
+#    it "assigns all ns as @ns" do
+#      n = N.create! valid_attributes
+#      get :index
+#      assigns(:ns).should eq([n])
+#    end
+#  end
 
   describe "GET show" do
     it "assigns the requested n as @n" do

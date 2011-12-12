@@ -27,13 +27,13 @@ describe UsController do
     {}
   end
 
-  describe "GET index" do
-    it "assigns all us as @us" do
-      u = U.create! valid_attributes
-      get :index
-      assigns(:us).should eq([u])
-    end
-  end
+#  describe "GET index" do
+#    it "assigns all us as @us" do
+#      u = U.create! valid_attributes
+#      get :index
+#      assigns(:us).should eq([u])
+#    end
+#  end
 
   describe "GET show" do
     it "assigns the requested u as @u" do

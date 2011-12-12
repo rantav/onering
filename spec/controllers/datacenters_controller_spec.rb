@@ -27,13 +27,13 @@ describe DatacentersController do
     {}
   end
 
-  describe "GET index" do
-    it "assigns all datacenters as @datacenters" do
-      datacenter = Datacenter.create! valid_attributes
-      get :index
-      assigns(:datacenters).should eq([datacenter])
-    end
-  end
+#  describe "GET index" do
+#    it "assigns all datacenters as @datacenters" do
+#      datacenter = Datacenter.create! valid_attributes
+#      get :index
+#      assigns(:datacenters).should eq([datacenter])
+#    end
+#  end
 
   describe "GET show" do
     it "assigns the requested datacenter as @datacenter" do

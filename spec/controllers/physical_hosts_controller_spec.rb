@@ -27,13 +27,13 @@ describe PhysicalHostsController do
     {}
   end
 
-  describe "GET index" do
-    it "assigns all physical_hosts as @physical_hosts" do
-      physical_host = PhysicalHost.create! valid_attributes
-      get :index
-      assigns(:physical_hosts).should eq([physical_host])
-    end
-  end
+#  describe "GET index" do
+#    it "assigns all physical_hosts as @physical_hosts" do
+#      physical_host = PhysicalHost.create! valid_attributes
+#      get :index
+#      assigns(:physical_hosts).should eq([physical_host])
+#    end
+#  end
 
   describe "GET show" do
     it "assigns the requested physical_host as @physical_host" do

@@ -5,9 +5,6 @@ describe "physical_hosts/index.html.haml" do
     assign(:physical_hosts, [
       stub_model(PhysicalHost,
         :name => "Name",
-        :r => 1,
-        :u => 1,
-        :n => 1,
         :type => "Type",
         :serial => "Serial",
         :pdu1 => "Pdu1",
@@ -18,9 +15,6 @@ describe "physical_hosts/index.html.haml" do
       ),
       stub_model(PhysicalHost,
         :name => "Name",
-        :r => 1,
-        :u => 1,
-        :n => 1,
         :type => "Type",
         :serial => "Serial",
         :pdu1 => "Pdu1",
@@ -36,12 +30,6 @@ describe "physical_hosts/index.html.haml" do
     render
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     assert_select "tr>td", :text => "Name".to_s, :count => 2
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
-    assert_select "tr>td", :text => 1.to_s, :count => 2
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
-    assert_select "tr>td", :text => 1.to_s, :count => 2
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
-    assert_select "tr>td", :text => 1.to_s, :count => 2
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     assert_select "tr>td", :text => "Type".to_s, :count => 2
     # Run the generator again with the --webrat flag if you want to use webrat matchers
