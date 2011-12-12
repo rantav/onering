@@ -44,6 +44,7 @@ end
 group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails'
+  gem 'watchr'
 end
 gem 'haml-rails', :group => :development
 group :production do

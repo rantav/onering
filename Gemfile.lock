@@ -182,6 +182,7 @@ GEM
       multi_json (>= 1.0.2)
     warden (1.1.0)
       rack (>= 1.0)
+    watchr (0.7)
 
 PLATFORMS
   ruby
@@ -208,3 +209,4 @@ DEPENDENCIES
   turn
   twitter-bootstrap-rails
   uglifier
+  watchr
