@@ -1,0 +1,29 @@
+!!!
+%html
+  %head
+    %title OneRing
+    %link{:href => "/assets/application.css", :rel => "stylesheet"}
+  %body
+    .topbar{"data-dropdown" => "dropdown"}
+      .topbar-inner
+        .container
+          %h3
+            %a{:href => "/"} one ring
+          %ul.nav
+            %li.active
+              %a{:href => "/"} Home
+            %li
+              %a{:href => "/datacenters"} Datacenters
+            %li
+              %a{:href => "/physical_hosts"} Physical Hosts
+            %li
+              %a{:href => "javascript:void(0)"} Virtual Hosts
+            %li.dropdown
+          %form.pull-left{:action => ""}
+            %input{:placeholder => "Search", :type => "text"}
+    .container-fluid
+      .sidebar
+        .ring
+      .content{:style => "margin-top:10pt"}
+        = yield
+    %script{:src => "http://twitter.github.com/bootstrap/1.4.0/bootstrap-modal.js"}
