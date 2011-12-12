@@ -2,6 +2,7 @@
 def import(path)
   PhysicalHost.all.delete
   U.all.delete
+  PhysicalRack.all.delete
 
   results = CsvMapper.import(path) do
     start_at_row 2
