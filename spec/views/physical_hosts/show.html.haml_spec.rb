@@ -11,9 +11,6 @@ describe "physical_hosts/show.html.haml" do
       :serial => "Serial",
       :pdu1 => "Pdu1",
       :pdu2 => "Pdu2",
-      :label => "Label",
-      :status => "Status",
-      :notes => "Notes"
     ))
   end
 
@@ -35,11 +32,5 @@ describe "physical_hosts/show.html.haml" do
     rendered.should match(/Pdu1/)
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     rendered.should match(/Pdu2/)
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
-    rendered.should match(/Label/)
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
-    rendered.should match(/Status/)
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
-    rendered.should match(/Notes/)
   end
 end

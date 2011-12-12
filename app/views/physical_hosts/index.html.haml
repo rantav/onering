@@ -7,9 +7,6 @@
     %th Serial
     %th Pdu1
     %th Pdu2
-    %th Label
-    %th Status
-    %th Notes
     %th
     %th
     %th
@@ -21,9 +18,6 @@
       %td= physical_host.serial
       %td= physical_host.pdu1
       %td= physical_host.pdu2
-      %td= physical_host.label
-      %td= physical_host.status
-      %td= physical_host.notes
       %td= link_to 'Show', physical_host
       %td= link_to 'Edit', edit_physical_host_path(physical_host)
       %td= link_to 'Destroy', physical_host, :confirm => 'Are you sure?', :method => :delete

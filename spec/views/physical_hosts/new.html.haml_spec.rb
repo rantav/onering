@@ -8,9 +8,6 @@ describe "physical_hosts/new.html.haml" do
       :serial => "MyString",
       :pdu1 => "MyString",
       :pdu2 => "MyString",
-      :label => "MyString",
-      :status => "MyString",
-      :notes => "MyString"
     ).as_new_record)
   end
 
@@ -24,9 +21,6 @@ describe "physical_hosts/new.html.haml" do
       assert_select "input#physical_host_serial", :name => "physical_host[serial]"
       assert_select "input#physical_host_pdu1", :name => "physical_host[pdu1]"
       assert_select "input#physical_host_pdu2", :name => "physical_host[pdu2]"
-      assert_select "input#physical_host_label", :name => "physical_host[label]"
-      assert_select "input#physical_host_status", :name => "physical_host[status]"
-      assert_select "input#physical_host_notes", :name => "physical_host[notes]"
     end
   end
 end
