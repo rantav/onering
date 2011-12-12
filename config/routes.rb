@@ -1,5 +1,7 @@
 Onering::Application.routes.draw do
 
+  resources :physical_racks
+
   resources :us
 
   resources :ns

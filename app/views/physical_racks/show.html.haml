@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Index:
+  = @physical_rack.index
+%p
+  %b Name:
+  = @physical_rack.name
+
+= link_to 'Edit', edit_physical_rack_path(@physical_rack)
+\|
+= link_to 'Back', physical_racks_path

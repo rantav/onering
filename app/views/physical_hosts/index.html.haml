@@ -3,6 +3,9 @@
 %table
   %tr
     %th Name
+    %th Rack
+    %th N
+    %th U
     %th Type
     %th Serial
     %th Pdu1
@@ -14,6 +17,9 @@
   - @physical_hosts.each do |physical_host|
     %tr
       %td= physical_host.name
+      %td= link_to physical_host.u.physical_rack.index, physical_host.u.physical_rack if physical_host.u and physical_host.u.physical_rack
+      %td= physical_host.n
+      %td= link_to physical_host.u.index, physical_host.u if physical_host.u
       %td= physical_host.type
       %td= physical_host.serial
       %td= physical_host.pdu1
