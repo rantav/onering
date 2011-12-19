@@ -1,13 +1,7 @@
 Onering::Application.routes.draw do
 
   resources :physical_racks
-
-  resources :us
-
-  resources :ns
-
   resources :datacenters
-
   resources :physical_hosts
 
   # The priority is based upon order of creation:
