@@ -1,8 +1,11 @@
 Onering::Application.routes.draw do
 
+  match 'search' => 'physical_hosts#search'
+  
   resources :physical_racks
   resources :datacenters
   resources :physical_hosts
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

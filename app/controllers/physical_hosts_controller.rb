@@ -9,6 +9,17 @@ class PhysicalHostsController < ApplicationController
       format.json { render json: @physical_hosts }
     end
   end
+  
+  # GET /physical_hosts
+  # GET /physical_hosts.json
+  def search
+    @physical_hosts = PhysicalHost.search(params[:q])
+
+    respond_to do |format|
+      format.html { render :index}
+      format.json { render json: @physical_hosts }
+    end
+  end
 
   # GET /physical_hosts/1
   # GET /physical_hosts/1.json

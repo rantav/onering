@@ -21,8 +21,8 @@
             %li
               %a{:href => "javascript:void(0)"} Virtual Hosts
             %li.dropdown
-          %form.pull-left{:action => ""}
-            %input{:placeholder => "Search", :type => "text"}
+          %form.pull-left{:action => "/search"}
+            %input{:name => :q, :placeholder => "Search", :type => "text"}
     .container-fluid
       .sidebar
         .ring
