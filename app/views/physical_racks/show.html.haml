@@ -6,6 +6,25 @@
 %p
   %b Name:
   = @physical_rack.name
+%p
+  %b Datacenter:
+  = link_to @physical_rack.datacenter.name, @physical_rack.datacenter
+
+%p
+  %b Physical Hosts:
+  %table
+    %tr
+      %th Name
+      %th N
+      %th U
+
+    - @physical_rack.physical_hosts.each do |physical_host|
+      %tr
+        %td= link_to physical_host.name, physical_host
+        %td= physical_host.n
+        %td= physical_host.u
+
+
 
 = link_to 'Edit', edit_physical_rack_path(@physical_rack)
 \|
