@@ -9,8 +9,8 @@
     %th U
     %th Type
     %th Serial
-    %th Pdu1
-    %th Pdu2
+    %th PDU1
+    %th PDU2
     %th
     %th
     %th
@@ -18,10 +18,10 @@
   - @physical_hosts.each do |physical_host|
     %tr
       %td= physical_host.name
-      %td= link_to physical_host.u.physical_rack.datacenter.name, physical_host.u.physical_rack.datacenter if physical_host.u and physical_host.u.physical_rack and physical_host.u.physical_rack.datacenter
-      %td= link_to physical_host.u.physical_rack.index, physical_host.u.physical_rack if physical_host.u and physical_host.u.physical_rack
+      %td= link_to physical_host.physical_rack.datacenter.name, physical_host.physical_rack.datacenter if physical_host.physical_rack and physical_host.physical_rack.datacenter
+      %td= link_to physical_host.physical_rack.index, physical_host.physical_rack if physical_host.physical_rack
       %td= physical_host.n
-      %td= link_to physical_host.u.index, physical_host.u if physical_host.u
+      %td= physical_host.u
       %td= physical_host.type
       %td= physical_host.serial
       %td= physical_host.pdu1
