@@ -17,6 +17,7 @@ gem 'sass-rails', "  ~> 3.1.0" # why is this here and not in assets? see https:/
 gem 'mongoid'
 gem 'bson_ext'
 gem 'csv-mapper'
+gem 'mongoid_search'
 
 # Gems used only for assets and not required
 # in production environments by default.
