@@ -8,7 +8,7 @@
   = @physical_rack.name
 %p
   %b Datacenter:
-  = link_to @physical_rack.datacenter.name, @physical_rack.datacenter
+  = link_to @physical_rack.datacenter.name, @physical_rack.datacenter unless @physical_rack.datacenter.nil?
 
 %p
   %b Physical Hosts:

@@ -13,7 +13,7 @@
     %tr
       %td= physical_rack.index
       %td= physical_rack.name
-      %td= link_to physical_rack.datacenter.name, physical_rack.datacenter
+      %td= link_to physical_rack.datacenter.name, physical_rack.datacenter unless physical_rack.datacenter.nil?
       %td= link_to 'Show', physical_rack
       %td= link_to 'Edit', edit_physical_rack_path(physical_rack)
       %td= link_to 'Destroy', physical_rack, :confirm => 'Are you sure?', :method => :delete
