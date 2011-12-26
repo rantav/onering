@@ -43,12 +43,7 @@ group :test do
   gem 'rspec'
 end
 group :development, :test do
-  gem 'sqlite3'
-
   gem 'watchr'
   gem 'spork', '~> 0.9.0.rc'
 end
 gem 'haml-rails', :group => :development
-group :production do
-  gem 'pg'
-end
