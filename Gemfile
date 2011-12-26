@@ -52,3 +52,7 @@ gem 'haml-rails', :group => :development
 group :production do
   gem 'pg'
 end
+
+group :jruby do
+  gem 'jruby-openssl'
+end
