@@ -44,15 +44,11 @@ group :test do
 end
 group :development, :test do
   gem 'sqlite3'
-  gem 'rspec-rails'
+
   gem 'watchr'
   gem 'spork', '~> 0.9.0.rc'
 end
 gem 'haml-rails', :group => :development
 group :production do
   gem 'pg'
-end
-
-group :jruby do
-  gem 'jruby-openssl'
 end
