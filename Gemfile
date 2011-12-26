@@ -15,7 +15,7 @@ gem "devise_ldap_authenticatable"
 gem 'thin'
 gem 'sass-rails', "  ~> 3.1.0" # why is this here and not in assets? see https://github.com/rails/sass-rails/issues/38
 gem 'mongoid'
-gem 'bson_ext'
+#gem 'bson_ext'
 gem 'csv-mapper'
 gem 'mongoid_search'
 
