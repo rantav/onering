@@ -1,28 +1,4 @@
-= form_for @physical_host do |f|
-  -if @physical_host.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@physical_host.errors.count, "error")} prohibited this physical_host from being saved:"
-      %ul
-        - @physical_host.errors.full_messages.each do |msg|
-          %li= msg
-
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :n
-    = f.text_field :n
-  .field
-    = f.label :type
-    = f.text_field :type
-  .field
-    = f.label :serial
-    = f.text_field :serial
-  .field
-    = f.label :pdu1
-    = f.text_field :pdu1
-  .field
-    = f.label :pdu2
-    = f.text_field :pdu2
-  .actions
-    = f.submit 'Save'
+= semantic_form_for @physical_host do |f|
+  = f.inputs :name, :n, :type, :serial, :pdu1, :pdu2
+  = f.buttons do
+    = f.commit_button
