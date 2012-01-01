@@ -72,10 +72,10 @@ class PhysicalHostsController < ApplicationController
     respond_to do |format|
       if @physical_host.update_attributes(params[:physical_host])
         format.html { redirect_to @physical_host, notice: 'Physical host was successfully updated.' }
-        format.json { head :ok }
+        format.json { respond_with_bip(@physical_host) }
       else
         format.html { render action: "edit" }
-        format.json { render json: @physical_host.errors, status: :unprocessable_entity }
+        format.json { respond_with_bip(@physical_host) }
       end
     end
   end

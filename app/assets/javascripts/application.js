@@ -6,6 +6,14 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require_tree .
-
 //= require twitter/bootstrap
+//= require jquery.purr
+//= require best_in_place
+
+
+$(document).ready(function() {
+  /* Activating Best In Place */
+  jQuery(".best_in_place").best_in_place();
+});

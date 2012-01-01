@@ -12,5 +12,7 @@ class PhysicalHost
   has_many :child_hosts, :class_name => 'PhysicalHost', :inverse_of => :parent_host
   belongs_to :physical_rack
 
+  validates :n, :numericality => { :only_integer => true }   
+  validates :u, :numericality => { :only_integer => true }   
   search_in :name, :type, :serial, :pdu1, :pdu2, :physical_rack => :name
 end

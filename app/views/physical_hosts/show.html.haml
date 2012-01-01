@@ -2,25 +2,25 @@
 
 %p
   %b Name:
-  = @physical_host.name
+  = best_in_place @physical_host, :name
 %p
   %b N:
-  = @physical_host.n
+  = best_in_place @physical_host, :n
 %p
   %b U:
-  = @physical_host.u
+  = best_in_place @physical_host, :u
 %p
   %b Type:
-  = @physical_host.type
+  = best_in_place @physical_host, :type
 %p
   %b Serial:
-  = @physical_host.serial
+  = best_in_place @physical_host, :serial
 %p
   %b PDU1:
-  = @physical_host.pdu1
+  = best_in_place @physical_host, :pdu1
 %p
   %b PDU2:
-  = @physical_host.pdu2
+  = best_in_place @physical_host, :pdu2
 
 = link_to 'Edit', edit_physical_host_path(@physical_host)
 \|
