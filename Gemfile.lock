@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/bernat/best_in_place.git
+  revision: 282fee65efe3d924bee85e284c9f0dedbf5f1e0d
+  specs:
+    best_in_place (1.0.3)
+      jquery-rails
+      rails (~> 3.1.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -34,9 +42,6 @@ GEM
     arel (2.2.1)
     bcrypt-ruby (3.0.1)
     bcrypt-ruby (3.0.1-java)
-    best_in_place (1.0.3)
-      jquery-rails
-      rails (~> 3.1.0)
     bson (1.5.1)
     bson (1.5.1-java)
     bson_ext (1.5.1)
@@ -214,7 +219,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  best_in_place
+  best_in_place!
   bson_ext
   coffee-rails (~> 3.1.0)
   csv-mapper
