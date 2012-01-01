@@ -1,4 +1,5 @@
 source 'http://rubygems.org'
+source 'http://production.cf.rubygems.org'
 
 gem 'rails', '3.1.0'
 
