@@ -1,5 +1,5 @@
 GIT
-  remote: https://github.com/bernat/best_in_place.git
+  remote: git://github.com/bernat/best_in_place.git
   revision: 282fee65efe3d924bee85e284c9f0dedbf5f1e0d
   specs:
     best_in_place (1.0.3)
