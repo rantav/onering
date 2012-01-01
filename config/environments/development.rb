@@ -1,3 +1,5 @@
+require 'pry'
+
 Onering::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
@@ -28,4 +30,13 @@ Onering::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  silence_warnings do
+    begin
+      require 'pry'
+      IRB = Pry
+    rescue LoadError
+    end
+  end
+
 end

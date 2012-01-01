@@ -46,4 +46,7 @@ group :development, :test do
   gem 'watchr'
   gem 'spork', '~> 0.9.0.rc'
 end
-gem 'haml-rails', :group => :development
+group :development do
+  gem 'pry'
+  gem 'haml-rails'
+end
