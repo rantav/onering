@@ -192,6 +192,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bson_ext
   coffee-rails (~> 3.1.0)
   csv-mapper
   devise_ldap_authenticatable
