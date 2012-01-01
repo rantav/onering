@@ -1,4 +1,7 @@
 class PhysicalHostsController < ApplicationController
+
+  respond_to :html, :json
+
   # GET /physical_hosts
   # GET /physical_hosts.json
   def index
@@ -68,16 +71,8 @@ class PhysicalHostsController < ApplicationController
   # PUT /physical_hosts/1.json
   def update
     @physical_host = PhysicalHost.find(params[:id])
-
-    respond_to do |format|
-      if @physical_host.update_attributes(params[:physical_host])
-        format.html { redirect_to @physical_host, notice: 'Physical host was successfully updated.' }
-        format.json { respond_with_bip(@physical_host) }
-      else
-        format.html { render action: "edit" }
-        format.json { respond_with_bip(@physical_host) }
-      end
-    end
+    @physical_host.update_attributes(params[:physical_host])
+    respond_with @physical_host
   end
 
   # DELETE /physical_hosts/1
