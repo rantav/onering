@@ -19,7 +19,7 @@ gem 'mongoid'
 gem 'bson_ext'
 gem 'csv-mapper'
 gem 'mongoid_search'
-gem 'best_in_place', :git => 'git://github.com/bernat/best_in_place.git'
+gem 'best_in_place', :git => 'git://github.com/rantav/best_in_place.git'
 
 # Gems used only for assets and not required
 # in production environments by default.

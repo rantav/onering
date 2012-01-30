@@ -21,6 +21,9 @@
 %p
   %b PDU2:
   = best_in_place @physical_host, :pdu2
+%p
+  %b Rack:
+  = best_in_place @physical_host, :physical_rack, :type => :select, :collection => PhysicalRack::list_physical_rack_options, :nil => 'Select Rack', :display_as => :id
 
 = link_to 'Edit', edit_physical_host_path(@physical_host)
 \|
