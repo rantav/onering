@@ -31,6 +31,12 @@
 
 
 
-= link_to 'Racks', physical_racks_path, :class => 'btn'
-
-= link_to 'New rack', new_physical_rack_path, :class => 'btn btn-primary'
+= link_to physical_racks_path, :class => 'btn' do
+  %i.icon-th-list.icon-black
+  All Racks
+= link_to edit_physical_rack_path, :class => 'btn btn-info' do
+  %i.icon-edit.icon-white
+  Edit Rack
+= link_to new_physical_rack_path, :class => 'btn btn-primary' do
+  %i.icon-plus.icon-white
+  New Rack

@@ -29,4 +29,12 @@
                 %td= physical_host.u
 
 
-= link_to 'Datacenters', datacenters_path, :class => 'btn'
+= link_to datacenters_path, :class => 'btn' do
+  %i.icon-th-list.icon-black
+  All Datacenters
+= link_to edit_datacenter_path, :class => 'btn btn-info' do
+  %i.icon-edit.icon-white
+  Edit Datacenter
+= link_to new_datacenter_path, :class => 'btn btn-primary' do
+  %i.icon-plus.icon-white
+  New Datacenter

@@ -39,6 +39,6 @@
 
 = paginate @physical_hosts
 
-%br
-
-= link_to 'New Physical host', new_physical_host_path, :class => 'btn btn-primary'
+= link_to new_physical_host_path, :class => 'btn btn-primary' do
+  %i.icon-plus.icon-white
+  New Host

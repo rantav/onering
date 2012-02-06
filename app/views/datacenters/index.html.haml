@@ -13,7 +13,6 @@
           %i.icon-trash.icon-white
           Delete
 
-
-%br
-
-= link_to 'New Datacenter', new_datacenter_path, :class => 'btn btn-primary'
+= link_to new_datacenter_path, :class => 'btn btn-primary' do
+  %i.icon-plus.icon-white
+  New Datacenter

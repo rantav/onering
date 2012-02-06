@@ -32,5 +32,13 @@
   = best_in_place @physical_host, :physical_rack, :type => :select, :collection => PhysicalRack::list_options, :nil => 'Select Rack', :display_as => :id
   = link_to '[link]', @physical_host.physical_rack
 
-= link_to 'Hosts', physical_hosts_path, :class => 'btn'
-= link_to 'New Host', new_physical_host_path, :class => 'btn btn-primary'
+
+= link_to physical_hosts_path, :class => 'btn' do
+  %i.icon-th-list.icon-black
+  All Hosts
+= link_to edit_physical_host_path, :class => 'btn btn-info' do
+  %i.icon-edit.icon-white
+  Edit Host
+= link_to new_physical_host_path, :class => 'btn btn-primary' do
+  %i.icon-plus.icon-white
+  New Host

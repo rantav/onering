@@ -3,4 +3,4 @@
   = f.input :number_of_us, :label => 'Number of Us'
   = f.input :datacenter, :as => :select, :collection => Datacenter.all
   = f.buttons do
-    = f.commit_button :button_html => {:class => 'btn btn-primary'}
+    = f.commit_button :button_html => {:class => 'btn btn-primary'}, :label => 'Save'
