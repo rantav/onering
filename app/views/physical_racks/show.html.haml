@@ -5,14 +5,16 @@
   = @physical_rack.index
 %p
   %b Name:
-  = @physical_rack.name
+  = best_in_place @physical_rack, :name
 %p
   %b Datacenter:
-  = link_to @physical_rack.datacenter.name, @physical_rack.datacenter unless @physical_rack.datacenter.nil?
+  = best_in_place @physical_rack, :datacenter, :type => :select, :collection => Datacenter::list_options, :nil => 'Select Datacenter', :display_as => :id
+  = link_to '[link]', @physical_rack.datacenter unless @physical_rack.datacenter.nil?
+
 
 %p
   %b Physical Hosts:
-  %table
+  %table.table.table-striped.table-bordered.table-condensed
     %tr
       %th Name
       %th N
@@ -26,6 +28,7 @@
 
 
 
-= link_to 'Edit', edit_physical_rack_path(@physical_rack)
-\|
-= link_to 'Back', physical_racks_path
+
+= link_to 'Racks', physical_racks_path, :class => 'btn'
+
+= link_to 'New rack', new_physical_rack_path, :class => 'btn btn-primary'

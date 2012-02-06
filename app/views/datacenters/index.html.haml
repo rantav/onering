@@ -1,19 +1,19 @@
-%h1 Listing datacenters
+%h1 Datacenters
 
-%table
+%table.table.table-striped.table-bordered.table-condensed
   %tr
     %th Name
-    %th
-    %th
     %th
 
   - @datacenters.each do |datacenter|
     %tr
-      %td= datacenter.name
-      %td= link_to 'Show', datacenter
-      %td= link_to 'Edit', edit_datacenter_path(datacenter)
-      %td= link_to 'Destroy', datacenter, :confirm => 'Are you sure?', :method => :delete
+      %td= link_to datacenter.name, datacenter
+      %td
+        = link_to datacenter, :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-danger' do
+          %i.icon-trash.icon-white
+          Delete
+
 
 %br
 
-= link_to 'New Datacenter', new_datacenter_path
+= link_to 'New Datacenter', new_datacenter_path, :class => 'btn btn-primary'

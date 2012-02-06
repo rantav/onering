@@ -1,23 +1,22 @@
-%h1 Listing physical_racks
+%h1 Listing Racks
 
-%table
+%table.table.table-striped.table-bordered.table-condensed
   %tr
     %th Index
     %th Name
     %th Datacenter
     %th
-    %th
-    %th
 
   - @physical_racks.each do |physical_rack|
     %tr
-      %td= physical_rack.index
-      %td= physical_rack.name
+      %td= link_to physical_rack.index, physical_rack
+      %td= link_to physical_rack.name, physical_rack
       %td= link_to physical_rack.datacenter.name, physical_rack.datacenter unless physical_rack.datacenter.nil?
-      %td= link_to 'Show', physical_rack
-      %td= link_to 'Edit', edit_physical_rack_path(physical_rack)
-      %td= link_to 'Destroy', physical_rack, :confirm => 'Are you sure?', :method => :delete
+      %td
+        = link_to physical_rack, :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-danger' do
+          %i.icon-trash.icon-white
+          Delete
 
 %br
 
-= link_to 'New Physical rack', new_physical_rack_path
+= link_to 'New Physical rack', new_physical_rack_path, :class => 'btn btn-primary'

@@ -1,6 +1,6 @@
-%h1 Listing Physical Hosts
+%h1 Physical Hosts
 
-%table
+%table.table.table-striped.table-bordered.table-condensed
   %tr
     %th Name
     %th Datacenter
@@ -29,9 +29,12 @@
       %td= best_in_place physical_host, :pdu1
       %td= best_in_place physical_host, :pdu2
       %td= link_to 'Show', physical_host
-      /%td= link_to 'Edit', edit_physical_host_path(physical_host)
-      %td= link_to 'Destroy', physical_host, :confirm => 'Are you sure?', :method => :delete
+      %td
+        = link_to physical_host, :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-danger' do
+          %i.icon-trash.icon-white
+          Delete
+
 
 %br
 
-= link_to 'New Physical host', new_physical_host_path
+= link_to 'New Physical host', new_physical_host_path, :class => 'btn btn-primary'

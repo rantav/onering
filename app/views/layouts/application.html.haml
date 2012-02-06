@@ -6,11 +6,10 @@
     = javascript_include_tag "application"
     = csrf_meta_tag
   %body
-    .topbar{"data-dropdown" => "dropdown"}
-      .topbar-inner
+    .navbar.navbar-fixed-top{"data-dropdown" => "dropdown"}
+      .navbar-inner
         .container
-          %h3
-            %a{:href => "/"} one ring
+          %a.brand{:href => "/"} one ring
           %ul.nav
             %li.active
               %a{:href => "/"} Home
@@ -22,12 +21,10 @@
               %a{:href => "/physical_hosts"} Physical Hosts
             %li
               %a{:href => "javascript:void(0)"} Virtual Hosts
-            %li.dropdown
-          %form.pull-left{:action => "/search"}
-            %input{:name => :q, :placeholder => "Search", :type => "text", :value => "#{params[:q]}"}
+          %form.navbar-search.pull-left{:action => "/search"}
+            %input.search-query{:name => :q, :placeholder => "Search", :type => "text", :value => "#{params[:q]}"}
     .container-fluid
-      .sidebar
+      .span3
         .ring
-      .content{:style => "margin-top:10pt"}
+      .span9{:style => "margin-top:10pt"}
         = yield
-    %script{:src => "http://twitter.github.com/bootstrap/1.4.0/bootstrap-modal.js"}

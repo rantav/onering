@@ -2,10 +2,10 @@
 
 %p
   %b Name:
-  = @datacenter.name
+  = best_in_place @datacenter, :name
 %p 
   %b Racks:
-  %table
+  %table.table.table-striped.table-bordered.table-condensed
     %tr
       %th Index
       %th Name
@@ -16,7 +16,7 @@
         %td= link_to physical_rack.index, physical_rack
         %td= link_to physical_rack.name, physical_rack
         %td
-          %table
+          %table.table.table-striped.table-bordered.table-condensed
             %tr
               %th Name
               %th N
@@ -29,6 +29,4 @@
                 %td= physical_host.u
 
 
-= link_to 'Edit', edit_datacenter_path(@datacenter)
-\|
-= link_to 'Back', datacenters_path
+= link_to 'Datacenters', datacenters_path, :class => 'btn'
