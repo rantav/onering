@@ -2,4 +2,4 @@
   = f.inputs :name, :n, :type, :serial, :pdu1, :pdu2
   = f.input :physical_rack, :as => :select, :collection => PhysicalRack.all
   = f.buttons do
-    = f.commit_button :button_html => {:class => 'btn btn-primary'}
+    = f.commit_button :button_html => {:class => 'btn btn-primary'}, :label => 'Create'
