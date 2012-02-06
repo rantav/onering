@@ -1,3 +1,4 @@
+
 class PhysicalHostsController < ApplicationController
 
   respond_to :html, :json
@@ -5,8 +6,7 @@ class PhysicalHostsController < ApplicationController
   # GET /physical_hosts
   # GET /physical_hosts.json
   def index
-    @physical_hosts = PhysicalHost.all
-
+    @physical_hosts = PhysicalHost.page params[:page]
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @physical_hosts }

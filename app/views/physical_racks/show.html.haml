@@ -8,7 +8,7 @@
   = best_in_place @physical_rack, :name
 %p
   %b Datacenter:
-  = best_in_place @physical_rack, :datacenter, :type => :select, :collection => Datacenter::list_options, :nil => 'Select Datacenter'
+  = best_in_place @physical_rack, :datacenter, :type => :select, :collection => Datacenter::list_options, :nil => 'Select Datacenter', :display_as => :id
   = link_to '[link]', @physical_rack.datacenter unless @physical_rack.datacenter.nil?
 
 

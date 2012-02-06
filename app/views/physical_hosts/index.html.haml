@@ -14,7 +14,6 @@
     %th PDU2
     %th
     %th
-    %th
 
   - @physical_hosts.each do |physical_host|
     %tr
@@ -34,6 +33,7 @@
           %i.icon-trash.icon-white
           Delete
 
+= paginate @physical_hosts
 
 %br
 
