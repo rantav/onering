@@ -8,6 +8,9 @@ class PhysicalHost
   field :serial, :type => String
   field :pdu1, :type => String
   field :pdu2, :type => String
+  field :notes, :type => String
+  field :mac, :type => String
+
   has_one :parent_host, :class_name => 'PhysicalHost', :inverse_of => :child_hosts
   has_many :child_hosts, :class_name => 'PhysicalHost', :inverse_of => :parent_host
   belongs_to :physical_rack
@@ -15,5 +18,5 @@ class PhysicalHost
   validates_presence_of :name
   validates :n, :numericality => { :only_integer => true }   
   validates :u, :numericality => { :only_integer => true }   
-  search_in :name, :type, :serial, :pdu1, :pdu2, :physical_rack => :name
+  search_in :name, :type, :serial, :pdu1, :pdu2, :notes, :mac, :physical_rack => :name
 end
