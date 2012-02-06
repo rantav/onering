@@ -16,7 +16,7 @@ class PhysicalHostsController < ApplicationController
   # GET /physical_hosts
   # GET /physical_hosts.json
   def search
-    @physical_hosts = PhysicalHost.search(params[:q])
+    @physical_hosts = PhysicalHost.search(params[:q]).page params[:page]
 
     respond_to do |format|
       format.html { render :index}
