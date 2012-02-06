@@ -2,10 +2,13 @@ class PhysicalRack
   include Mongoid::Document
   field :index, :type => Integer
   field :name, :type => String
+  field :number_of_us, :type => Integer
+
   has_many :physical_hosts
   belongs_to :datacenter
 
-  validates :index, :numericality => { :only_integer => true }   
+  validates_numericality_of :number_of_us, :only_integer => true
+  validates_numericality_of :index, :only_integer => true
   validates_presence_of :name
   validates_associated :datacenter
   

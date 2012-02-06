@@ -4,6 +4,7 @@
   %tr
     %th Index
     %th Name
+    %th Number of Us
     %th Datacenter
     %th
 
@@ -11,6 +12,7 @@
     %tr
       %td= link_to physical_rack.index, physical_rack
       %td= link_to physical_rack.name, physical_rack
+      %td= best_in_place physical_rack, :number_of_us
       %td= link_to physical_rack.datacenter.name, physical_rack.datacenter unless physical_rack.datacenter.nil?
       %td
         = link_to physical_rack, :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-danger' do
