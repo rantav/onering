@@ -1,4 +1,5 @@
-= semantic_form_for @physical_host do |f|
+= semantic_form_for @physical_host, :html => {:class => 'well'} do |f|
   = f.inputs :name, :n, :type, :serial, :pdu1, :pdu2
+  = f.input :physical_rack, :as => :select, :collection => PhysicalRack.all
   = f.buttons do
-    = f.commit_button
+    = f.commit_button :button_html => {:class => 'btn btn-primary'}
