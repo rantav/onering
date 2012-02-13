@@ -1,0 +1,14 @@
+= semantic_form_for PhysicalHost.new(:physical_rack => @physical_rack), 
+    :html => {:class => 'well form-search jquery-form'}, 
+    :url => "#{physical_hosts_path}.json" do |f|
+  %tr
+    %td
+      = f.input :name
+      .hidden
+        = f.input :physical_rack, :collection => PhysicalRack.all
+    %td
+      = f.input :n
+    %td
+      = f.input :u
+      = f.buttons do
+        = f.commit_button :button_html => {:class => 'btn btn-primary'}, :label => 'Add Host to Rack'
