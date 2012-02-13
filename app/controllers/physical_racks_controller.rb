@@ -14,7 +14,7 @@ class PhysicalRacksController < ApplicationController
   # GET /physical_racks/1.json
   def show
     @physical_rack = PhysicalRack.find(params[:id])
-
+    @new_physical_host = PhysicalHost.new(:physical_rack => @physical_rack)
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @physical_rack }

@@ -7,13 +7,23 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
+//= require jquery.form
 //= require_tree .
 //= require bootstrap
 //= require jquery.purr
 //= require best_in_place
 
-
 $(document).ready(function() {
   /* Activating Best In Place */
   jQuery(".best_in_place").best_in_place();
+
+  jQuery(".jquery-form").ajaxForm({
+    success: function(obj) {
+      location.reload(true);
+    },
+    error: function(err) {
+      var container = $("<span class='flash-error'></span>").html("oops, error...");
+      container.purr();
+    }}
+  ); 
 });
