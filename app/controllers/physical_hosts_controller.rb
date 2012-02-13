@@ -3,6 +3,12 @@ class PhysicalHostsController < ApplicationController
 
   respond_to :html, :json
 
+  helper_method :add_pdu_path
+
+  def add_pdu_path
+    "#{request.url}?add_pdu=1"
+  end
+
   # GET /physical_hosts
   # GET /physical_hosts.json
   def index
@@ -49,6 +55,9 @@ class PhysicalHostsController < ApplicationController
   # GET /physical_hosts/1/edit
   def edit
     @physical_host = PhysicalHost.find(params[:id])
+    if params[:add_pdu]
+      @physical_host.pdus.build
+    end
   end
 
   # POST /physical_hosts

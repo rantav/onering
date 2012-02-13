@@ -16,12 +16,6 @@
   %b Serial:
   = best_in_place @physical_host, :serial
 %p
-  %b PDU1:
-  = best_in_place @physical_host, :pdu1
-%p
-  %b PDU2:
-  = best_in_place @physical_host, :pdu2
-%p
   %b MAC:
   = best_in_place @physical_host, :mac
 %p
@@ -35,7 +29,18 @@
   = best_in_place @physical_host, :physical_rack, :type => :select, :collection => PhysicalRack::list_options, :nil => 'Select Rack', :display_as => :id
   = link_to '[link]', @physical_host.physical_rack
 
-
+- @physical_host.pdus.each do |pdu|
+  .pdu
+    %p 
+      %b PDU Name:
+      = pdu.name
+    %p 
+      %b PDU Voltage:
+      = pdu.voltage
+    %p 
+      %b PDU Amps:
+      = pdu.amps
+.clear
 = link_to physical_hosts_path, :class => 'btn' do
   %i.icon-th-list.icon-black
   All Hosts

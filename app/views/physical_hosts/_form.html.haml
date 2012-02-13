@@ -1,6 +1,16 @@
 = semantic_form_for @physical_host, :html => {:class => 'well'} do |f|
-  = f.inputs :name, :u, :n, :type, :serial, :pdu1, :pdu2, :mac, :power_consumption
-  = f.input :notes, :as => :text, :input_html => { :rows => 3, :cols => 20}
+  = f.inputs :name, :u, :n, :type, :serial, :mac, :power_consumption
   = f.input :physical_rack, :as => :select, :collection => PhysicalRack.all, :label => 'Rack'
+  - unless @physical_host.new?
+    %hr
+    %b PDUs
+    = f.semantic_fields_for :pdus do |pdu_form|
+      = pdu_form.inputs :name, :voltage, :amps
+    %a.btn{:href => add_pdu_path} Add PDU
+    %hr
+  = f.input :notes, :as => :text, :input_html => { :rows => 3, :cols => 20}
   = f.buttons do
-    = f.commit_button :button_html => {:class => 'btn btn-primary'}, :label => 'Create'
+    = f.commit_button :button_html => {:class => 'btn btn-primary'}, :label => 'Save'
+
+
+
