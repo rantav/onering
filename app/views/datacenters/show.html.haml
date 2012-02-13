@@ -2,31 +2,49 @@
 
 %p
   %b Datacenter Name:
-  %em= best_in_place @datacenter, :name
-%p 
-  %b Racks:
-  %table.table.table-striped.table-bordered.table-condensed
+  = best_in_place @datacenter, :name
+%p
+  %b Provider Name:
+  = best_in_place @datacenter, :provider_name
+%p
+  %b Location:
+  = best_in_place @datacenter, :location
+%p
+  %b Contact Info:
+  = best_in_place @datacenter, :contact_info
+%p
+  %b Support Link:
+  = best_in_place @datacenter, :support_link
+%p
+  %b Support Email:
+  = best_in_place @datacenter, :support_email
+%p
+  %b Support Phone:
+  = best_in_place @datacenter, :support_phone
+
+%h2 Racks in #{@datacenter.name}:
+%table.table.table-striped.table-bordered.table-condensed
+  %tr
+    %th Index
+    %th Name
+    %th Hosts
+
+  - @datacenter.physical_racks.each do |physical_rack|
     %tr
-      %th Index
-      %th Name
-      %th Hosts
+      %td= link_to physical_rack.index, physical_rack
+      %td= link_to physical_rack.name, physical_rack
+      %td
+        %table.table.table-striped.table-bordered.table-condensed
+          %tr
+            %th Name
+            %th N
+            %th U
 
-    - @datacenter.physical_racks.each do |physical_rack|
-      %tr
-        %td= link_to physical_rack.index, physical_rack
-        %td= link_to physical_rack.name, physical_rack
-        %td
-          %table.table.table-striped.table-bordered.table-condensed
+          - physical_rack.physical_hosts.each do |physical_host|
             %tr
-              %th Name
-              %th N
-              %th U
-
-            - physical_rack.physical_hosts.each do |physical_host|
-              %tr
-                %td= link_to physical_host.name, physical_host
-                %td= physical_host.n
-                %td= physical_host.u
+              %td= link_to physical_host.name, physical_host
+              %td= physical_host.n
+              %td= physical_host.u
 
 
 = link_to datacenters_path, :class => 'btn' do

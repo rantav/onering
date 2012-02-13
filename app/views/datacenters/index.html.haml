@@ -3,11 +3,22 @@
 %table.table.table-striped.table-bordered.table-condensed
   %tr
     %th Name
-    %th
+    %th Provider Name
+    %th Location
+    %th Contact Info
+    %th Support Link
+    %th Support Email
+    %th Support Phone
 
   - @datacenters.each do |datacenter|
     %tr
       %td= link_to datacenter.name, datacenter
+      %td= best_in_place datacenter, :provider_name
+      %td= best_in_place datacenter, :location
+      %td= best_in_place datacenter, :contact_info
+      %td= link_to datacenter.support_link, datacenter.support_link unless datacenter.support_link.nil?
+      %td= best_in_place datacenter, :support_email
+      %td= best_in_place datacenter, :support_phone
       %td
         = link_to datacenter, :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-danger' do
           %i.icon-trash.icon-white
