@@ -25,8 +25,11 @@
   %b MAC:
   = best_in_place @physical_host, :mac
 %p
-  %b notes:
+  %b Notes:
   = best_in_place @physical_host, :notes
+%p
+  %b Power Consumption
+  = best_in_place @physical_host, :power_consumption
 %p
   %b Rack:
   = best_in_place @physical_host, :physical_rack, :type => :select, :collection => PhysicalRack::list_options, :nil => 'Select Rack', :display_as => :id

@@ -1,5 +1,5 @@
 = semantic_form_for @physical_host, :html => {:class => 'well'} do |f|
-  = f.inputs :name, :u, :n, :type, :serial, :pdu1, :pdu2, :mac
+  = f.inputs :name, :u, :n, :type, :serial, :pdu1, :pdu2, :mac, :power_consumption
   = f.input :notes, :as => :text, :input_html => { :rows => 3, :cols => 20}
   = f.input :physical_rack, :as => :select, :collection => PhysicalRack.all, :label => 'Rack'
   = f.buttons do
