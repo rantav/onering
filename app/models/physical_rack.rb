@@ -7,7 +7,7 @@ class PhysicalRack
   has_many :physical_hosts
   belongs_to :datacenter
 
-  validates_numericality_of :number_of_us, :only_integer => true
+  validates_numericality_of :number_of_us, :only_integer => true, :allow_blank => true
   validates_numericality_of :index, :only_integer => true
   validates_presence_of :name
   validates_associated :datacenter
