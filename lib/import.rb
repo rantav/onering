@@ -8,7 +8,7 @@ def import(path, dc_name)
 
   results = CsvMapper.import(path) do
     start_at_row 1
-    [r, u, n, name, type, serial, pdu1, pdu2, obname]
+    [r, u, n, ob_name, name, make, model, serial, pdu1, pdu2, status, notes]
   end
   
   datacenter = Datacenter.find_or_create_by(:name => dc_name)
@@ -43,11 +43,15 @@ def import(path, dc_name)
           u = parent_host.u
           n = line.n
         end
-        host = PhysicalHost.create(:name => line.name, 
-                                   :type => line.type, 
+        host = PhysicalHost.create(:name => line.name,
+                                   :ob_name => line.ob_name,
+                                   :make => line.make,
+                                   :model => line.model,
                                    :serial => serial, 
-                                   :pdu1 => pdu1, 
-                                   :pdu2 => pdu2,
+                                   #:pdu1 => pdu1, 
+                                   #:pdu2 => pdu2,
+                                   :status => line.status,
+                                   :notes => line.notes,
                                    :physical_rack => physical_rack,
                                    :n => n,
                                    :u => u,
