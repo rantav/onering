@@ -8,6 +8,6 @@ class Pdu
   embedded_in :physical_host
 
   validates_presence_of :name
-  validates_numericality_of :voltage
-  validates_numericality_of :amps
+  validates_numericality_of :voltage, :allow_blank => true
+  validates_numericality_of :amps, :allow_blank => true
 end
