@@ -26,5 +26,5 @@ class PhysicalHost
   validates_numericality_of :u, :only_integer => true
   validates_numericality_of :power_consumption, :greater_than_or_equal_to => 0, :allow_blank => true
 
-  search_in :name, :make, :serial, :pdu1, :pdu2, :notes, :mac, :status, :ob_name, :model, :physical_rack => :name
+  search_in :name, :make, :serial, :pdu1, :pdu2, :notes, :mac, :status, :ob_name, :model, :physical_rack => :name, :pdus => :name
 end
