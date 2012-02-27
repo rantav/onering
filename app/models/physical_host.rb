@@ -7,6 +7,7 @@ class PhysicalHost
   field :n, :type => Integer
   field :u, :type => Integer
   field :model, :type => String
+  field :make, :type => String
   field :serial, :type => String
   field :notes, :type => String
   field :mac, :type => String
