@@ -12,52 +12,67 @@ def import(path, dc_name)
   end
   
   datacenter = Datacenter.find_or_create_by(:name => dc_name)
+  physical_rack = nil
   last_chassis_candidate = nil
+  line_number = 1
   results.each do |line|
-    if not (line.name.nil? or line.r.nil?)
-      physical_rack = PhysicalRack.find_or_create_by(:index => line.r, :dc_name => datacenter.name)
-      if not datacenter.physical_racks.include?(physical_rack)
-        datacenter.physical_racks << physical_rack
-        datacenter.save
+    line_number += 1
+    if line.name.nil?
+      puts "XXXXX  #{line_number}  Not importing line b/c name is empty #{line}"
+    else
+      unless line.r.nil?
+        physical_rack = PhysicalRack.find_or_create_by(:index => line.r, :dc_name => datacenter.name)
+        if not datacenter.physical_racks.include?(physical_rack)
+          datacenter.physical_racks << physical_rack
+          datacenter.save
+        end
       end
       if physical_rack.name.nil?
         # This is the first line of a rack, so the name refers to a rack name
         physical_rack.name = line.name
-        physical_rack.save
+        physical_rack.save!
+        puts "XXXXXX #{line_number} Not importing line b/c I think this is a rack #{line}"
       else
         if line.n.nil?
           # This is a 'standard' host. 
           parent_host = nil
           serial = line.serial
-          pdu1 = line.pdu1
-          pdu2 = line.pdu2
+          #pdu1 = line.pdu1
+          #pdu2 = line.pdu2
           u = line.u
           n = 1
         else
           # this is a host with a parent.
           parent_host = last_chassis_candidate
           serial = parent_host.serial
-          pdu1 = parent_host.pdu1
-          pdu2 = parent_host.pdu2
+          #pdu1 = parent_host.pdu1
+          #pdu2 = parent_host.pdu2
           physical_rack = parent_host.physical_rack
           u = parent_host.u
           n = line.n
         end
-        host = PhysicalHost.create(:name => line.name,
-                                   :ob_name => line.ob_name,
-                                   :make => line.make,
-                                   :model => line.model,
-                                   :serial => serial, 
-                                   #:pdu1 => pdu1, 
-                                   #:pdu2 => pdu2,
-                                   :status => line.status,
-                                   :notes => line.notes,
-                                   :physical_rack => physical_rack,
-                                   :n => n,
-                                   :u => u,
-                                   :parent_host => nil) # TODO: why this no works? Should be parent_host
-
+        begin
+          host = PhysicalHost.create!(:name => line.name,
+                                      :ob_name => line.ob_name,
+                                      :make => line.make,
+                                      :model => line.model,
+                                      :serial => serial, 
+                                      #:pdu1 => pdu1, 
+                                      #:pdu2 => pdu2,
+                                      :status => line.status,
+                                      :notes => line.notes,
+                                      :physical_rack => physical_rack,
+                                      :n => n,
+                                      :u => u,
+                                      :parent_host => nil) # TODO: why this no works? Should be parent_host
+        rescue => e
+          puts e
+          puts "Failed to import line #{line_number} #{line}"
+          raise e
+        end
         last_chassis_candidate = host if line.n.nil?
+
+        #puts "VVVVV  #{line_number} line imported #{line}"
       end
     end
   end
