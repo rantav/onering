@@ -1,5 +1,5 @@
 = semantic_form_for @physical_host, :html => {:class => 'well'} do |f|
-  = f.inputs :name, :u, :n, :type, :serial, :mac, :power_consumption
+  = f.inputs :name, :u, :n, :model, :serial, :mac, :power_consumption
   = f.input :physical_rack, :as => :select, :collection => PhysicalRack.all, :label => 'Rack'
   - unless @physical_host.new?
     %hr

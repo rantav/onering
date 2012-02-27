@@ -3,9 +3,10 @@ class PhysicalHost
   include Mongoid::Search
 
   field :name, :type => String
+  field :ob_name, :type => String
   field :n, :type => Integer
   field :u, :type => Integer
-  field :type, :type => String
+  field :model, :type => String
   field :serial, :type => String
   field :notes, :type => String
   field :mac, :type => String
