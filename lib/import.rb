@@ -33,20 +33,22 @@ def import(path, dc_name)
         physical_rack.save!
         puts "XXXXXX #{line_number} Not importing line b/c I think this is a rack #{line}"
       else
+        pdus = []
         if line.n.nil?
           # This is a 'standard' host. 
           parent_host = nil
           serial = line.serial
-          #pdu1 = line.pdu1
-          #pdu2 = line.pdu2
+          [line.pdu1, line.pdu2].each do |line_pdu|
+            unless line_pdu.nil?
+              pdus << Pdu.new(:name => line_pdu)
+            end
+          end
           u = line.u
           n = 1
         else
           # this is a host with a parent.
           parent_host = last_chassis_candidate
           serial = parent_host.serial
-          #pdu1 = parent_host.pdu1
-          #pdu2 = parent_host.pdu2
           physical_rack = parent_host.physical_rack
           u = parent_host.u
           n = line.n
@@ -56,9 +58,8 @@ def import(path, dc_name)
                                       :ob_name => line.ob_name,
                                       :make => line.make,
                                       :model => line.model,
-                                      :serial => serial, 
-                                      #:pdu1 => pdu1, 
-                                      #:pdu2 => pdu2,
+                                      :serial => serial,
+                                      :pdus => pdus,
                                       :status => line.status,
                                       :notes => line.notes,
                                       :physical_rack => physical_rack,
