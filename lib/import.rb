@@ -64,7 +64,7 @@ def import(path, dc_name)
                                       :physical_rack => physical_rack,
                                       :n => n,
                                       :u => u,
-                                      :parent_host => nil) # TODO: why this no works? Should be parent_host
+                                      :parent_host => parent_host) # TODO: why this no works? Should be parent_host
         rescue => e
           puts e
           puts "Failed to import line #{line_number} #{line}"
