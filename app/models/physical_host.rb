@@ -12,6 +12,7 @@ class PhysicalHost
   field :notes, :type => String
   field :mac, :type => String
   field :power_consumption, :type => Float
+  field :status, :type => String
 
   has_one :parent_host, :class_name => 'PhysicalHost', :inverse_of => :child_hosts
   has_many :child_hosts, :class_name => 'PhysicalHost', :inverse_of => :parent_host
@@ -25,5 +26,5 @@ class PhysicalHost
   validates_numericality_of :u, :only_integer => true
   validates_numericality_of :power_consumption, :greater_than_or_equal_to => 0, :allow_blank => true
 
-  search_in :name, :type, :serial, :pdu1, :pdu2, :notes, :mac, :physical_rack => :name
+  search_in :name, :make, :serial, :pdu1, :pdu2, :notes, :mac, :status, :ob_name, :model, :physical_rack => :name
 end
