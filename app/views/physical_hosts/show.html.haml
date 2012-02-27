@@ -4,6 +4,13 @@
   %b Name:
   = best_in_place @physical_host, :name
 %p
+  %b Parent Host:
+  = link_to @physical_host.parent_host.name, @physical_host.parent_host unless @physical_host.parent_host.nil?
+%p
+  %b Child Hosts:
+  - @physical_host.child_hosts.each do |child|
+    = link_to child.name, child
+%p
   %b Outbrain Name:
   = best_in_place @physical_host, :ob_name
 %p

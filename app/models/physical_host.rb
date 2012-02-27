@@ -14,7 +14,7 @@ class PhysicalHost
   field :power_consumption, :type => Float
   field :status, :type => String
 
-  has_one :parent_host, :class_name => 'PhysicalHost', :inverse_of => :child_hosts
+  belongs_to :parent_host, :class_name => 'PhysicalHost', :inverse_of => :child_hosts
   has_many :child_hosts, :class_name => 'PhysicalHost', :inverse_of => :parent_host
   belongs_to :physical_rack
   embeds_many :pdus
