@@ -17,7 +17,22 @@
 $(document).ready(function() {
   /* Activating Best In Place */
   jQuery(".best_in_place").best_in_place();
-
+  
+  $('#physical_host_parent_host_name').typeahead({
+    source: function (typeahead, query) {
+      $.ajax({
+        url: "/physical_hosts/autocomplete_physical_host_name?term=" + query,
+        success: function (data) {
+          typeahead.process(data)
+        }
+      })
+    },
+    property: "value",
+    onselect: function(obj) {
+      $('#physical_host_parent_host_id').val(obj.id)
+    }
+  });
+  
   jQuery(".jquery-form").ajaxForm({
     success: function(obj) {
       location.reload(true);
