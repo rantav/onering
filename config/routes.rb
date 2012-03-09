@@ -4,7 +4,9 @@ Onering::Application.routes.draw do
   
   resources :physical_racks
   resources :datacenters
-  resources :physical_hosts
+  resources :physical_hosts do
+    get :autocomplete_physical_host_name, :on => :collection
+  end
 
 
   # The priority is based upon order of creation:

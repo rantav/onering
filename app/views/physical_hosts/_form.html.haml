@@ -1,4 +1,9 @@
 = semantic_form_for @physical_host, :html => {:class => 'well'} do |f|
+  .string.clearfix.stringish#physical_host_parent_host_input
+    %label{:for => "physical_host_name"} Parent Host
+    .input
+      = autocomplete_field_tag :parent_host, (@physical_host.parent_host.name unless @physical_host.parent_host.nil?), autocomplete_physical_host_name_physical_hosts_path, :id_element => '#physical_host_parent_host_id'
+      = f.input :parent_host, :as => :hidden
   = f.inputs :name, :ob_name, :u, :n, :model, :serial, :mac, :power_consumption, :make, :status
   = f.input :physical_rack, :as => :select, :collection => PhysicalRack.all, :label => 'Rack'
   - unless @physical_host.new?

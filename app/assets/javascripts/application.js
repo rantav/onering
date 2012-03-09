@@ -12,6 +12,7 @@
 //= require bootstrap
 //= require jquery.purr
 //= require best_in_place
+//= require autocomplete-rails
 
 $(document).ready(function() {
   /* Activating Best In Place */

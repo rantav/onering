@@ -9,6 +9,8 @@ class PhysicalHostsController < ApplicationController
     "#{request.url}?add_pdu=1"
   end
 
+  autocomplete :physical_host, :name
+  
   # GET /physical_hosts
   # GET /physical_hosts.json
   def index
