@@ -31,6 +31,11 @@ $(document).ready(function() {
     onselect: function(obj) {
       $('#physical_host_parent_host_id').val(obj.id)
     }
+  }).change(function (e) {
+    var value = $(e.target).val();
+    if (value == "") {
+      $('#physical_host_parent_host_id').val("");
+    };
   });
   
   jQuery(".jquery-form").ajaxForm({
