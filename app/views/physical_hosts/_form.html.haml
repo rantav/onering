@@ -1,12 +1,10 @@
 = semantic_form_for @physical_host, :html => {:class => 'well'} do |f|
+  /Child Hosts:
+  /= f.semantic_fields_for :child_hosts do |child_hosts|
+  /  = child_hosts.inputs :id
+  /%input#physical_host_child_hosts_ids{:name => "physical_host[child_hosts_ids]"}
   = f.inputs :name, :ob_name, :u, :n, :model, :serial, :mac, :power_consumption, :make, :status
-
-  .string.clearfix.stringish#physical_host_parent_host_input
-    %label{:for => "physical_host_name"} Parent Host
-    .input
-      %input.typeahead#physical_host_parent_host_name{ :type => "text",  "data-provide" => "typeahead", :value => (@physical_host.parent_host.name unless @physical_host.parent_host.nil?), :autocomplete => 'off'} 
-      %input#physical_host_parent_host_id{:type => :hidden, :value =>  (@physical_host.parent_host.id unless @physical_host.parent_host.nil?), :name => 'physical_host[parent_host_id]'}
-  
+  = bootstrap_autocomplete_field @physical_host, :parent_host, :name, :id, 'Parent Host', autocomplete_physical_host_name_physical_hosts_path
   = f.input :physical_rack, :as => :select, :collection => PhysicalRack.all, :label => 'Rack'
   - unless @physical_host.new?
     %hr
