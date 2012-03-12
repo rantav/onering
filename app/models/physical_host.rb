@@ -19,9 +19,9 @@ class PhysicalHost
   belongs_to :physical_rack
   embeds_many :pdus
 
-  accepts_nested_attributes_for :pdus
+  accepts_nested_attributes_for :pdus, :allow_destroy => true
   accepts_nested_attributes_for :child_hosts
-  
+
   validates_presence_of :name, :n, :u
   validates_numericality_of :n, :only_integer => true
   validates_numericality_of :u, :only_integer => true

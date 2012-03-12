@@ -13,6 +13,7 @@
 //= require jquery.purr
 //= require best_in_place
 //= require autocomplete-rails
+//= require jquery_nested_form
 
 $(document).ready(function() {
   /* Activating Best In Place */
@@ -27,4 +28,12 @@ $(document).ready(function() {
       container.purr();
     }}
   ); 
+
+  var insertFields = window.nestedFormEvents.insertFields;
+  window.nestedFormEvents.insertFields = function(content, assoc, link) {
+    insertFields(content, assoc, link);
+    $('.remove_nested_fields').addClass('btn btn-danger')
+  }
 });
+
+

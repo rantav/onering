@@ -6,6 +6,12 @@ GIT
       jquery-rails
       rails (~> 3.1)
 
+GIT
+  remote: git://github.com/ryanb/nested_form.git
+  revision: 486e0f0e93f3ca455d5d0fc7869053257b6afce2
+  specs:
+    nested_form (0.2.0)
+
 GEM
   remote: http://rubygems.org/
   remote: http://production.cf.rubygems.org/
@@ -238,6 +244,7 @@ DEPENDENCIES
   meta_search (>= 1.1.0.pre)
   mongoid
   mongoid_search
+  nested_form!
   pry
   rails (= 3.1.0)
   rails3-jquery-autocomplete

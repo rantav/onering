@@ -1,4 +1,4 @@
-= semantic_form_for @physical_host, :html => {:class => 'well'} do |f|
+= semantic_nested_form_for @physical_host, :html => {:class => 'well'} do |f|
   /Child Hosts:
   /= f.semantic_fields_for :child_hosts do |child_hosts|
   /  = child_hosts.inputs :id
@@ -6,13 +6,13 @@
   = f.inputs :name, :ob_name, :u, :n, :model, :serial, :mac, :power_consumption, :make, :status
   = bootstrap_autocomplete_field @physical_host, :parent_host, :name, :id, 'Parent Host', autocomplete_physical_host_name_physical_hosts_path
   = f.input :physical_rack, :as => :select, :collection => PhysicalRack.all, :label => 'Rack'
-  - unless @physical_host.new?
-    %hr
-    %b PDUs
-    = f.semantic_fields_for :pdus do |pdu_form|
-      = pdu_form.inputs :name, :voltage, :amps
-    %a.btn{:href => add_pdu_path} Add Another PDU
-    %hr
+  %hr
+  %b PDUs
+  = f.semantic_fields_for :pdus do |pdu_form| 
+    = pdu_form.inputs :name, :voltage, :amps
+    = pdu_form.link_to_remove "Remove this PDU", :class => 'btn btn-danger'
+  = f.link_to_add "Add a PDU", :pdus, :class => 'btn'
+  %hr
   = f.input :notes, :as => :text, :input_html => { :rows => 3, :cols => 20}
   = f.buttons do
     = f.commit_button :button_html => {:class => 'btn btn-primary'}, :label => 'Save'

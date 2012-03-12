@@ -34,3 +34,23 @@
 .clear {
   clear: both;
 }
+
+form.formtastic {
+  ol {
+    margin-left: 0px;
+  }
+  li {
+    list-style: none;
+    label.label {
+      background-color: white;
+      text-transform: none;
+      color: black;
+      font-weight: normal;
+      font-size: small;
+    }
+  }
+}
+
+.remove_nested_fields {
+  float: right;
+}
