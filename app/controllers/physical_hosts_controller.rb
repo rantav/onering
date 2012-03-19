@@ -3,12 +3,6 @@ class PhysicalHostsController < ApplicationController
 
   respond_to :html, :json
 
-  helper_method :add_pdu_path
-
-  def add_pdu_path
-    "#{request.url}?add_pdu=1"
-  end
-
   autocomplete :physical_host, :name
   
   # GET /physical_hosts
