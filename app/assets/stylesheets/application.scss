@@ -35,6 +35,7 @@
   clear: both;
 }
 
+// This shit is meant to fix the styling issues caused by using ol and li inside forms by semantic_nested_form_for
 form.formtastic {
   ol {
     margin-left: 0px;
@@ -42,7 +43,7 @@ form.formtastic {
   li {
     list-style: none;
     label.label {
-      background-color: white;
+      background-color: whiteSmoke;
       text-transform: none;
       color: black;
       font-weight: normal;
