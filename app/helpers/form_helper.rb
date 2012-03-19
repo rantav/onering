@@ -1,11 +1,15 @@
 module FormHelper
-  def bootstrap_autocomplete_field(model, association, visible_attribute, hidden_attribute, label, autocomplete_path)
+  def bootstrap_autocomplete_field(model, association, visible_attribute, hidden_attribute, label, autocomplete_path, association_index = -1)
     singularized = model.class.name.tableize.singularize
-    visible_input_id = "#{singularized}_#{association}_#{visible_attribute}"
+    visible_input_id = association_index < 0 ? "#{singularized}_#{association}_#{visible_attribute}" : 
+        "#{singularized}_#{association}_attributes_#{association_index}_#{visible_attribute}"
     association_instance = eval "model.#{association}"
+    association_instance = association_instance[association_index] unless association_index < 0
     visible_value = association_instance[visible_attribute] unless association_instance.nil?
-    hidden_input_id = "#{singularized}_#{association}_#{hidden_attribute}"
-    hidden_input_name = "#{singularized}[#{association}_#{hidden_attribute}]"
+    hidden_input_id = association_index < 0 ? "#{singularized}_#{association}_#{hidden_attribute}" :
+        "#{singularized}_#{association}_attributes_#{association_index}_#{hidden_attribute}"
+    hidden_input_name = association_index < 0 ? "#{singularized}[#{association}_#{hidden_attribute}]" :
+        "#{singularized}[#{association}_attributes][#{association_index}][#{hidden_attribute}]"
     "<div class='string clearfix stringish'>
       <label for='#{visible_input_id}'>#{label}</label>
        <div class='input'>
