@@ -3,7 +3,7 @@ class PhysicalHostsController < ApplicationController
 
   respond_to :html, :json
 
-  autocomplete :physical_host, :name
+  autocomplete :physical_host, :name, :display_value => :fqdn
   
   # GET /physical_hosts
   # GET /physical_hosts.json
