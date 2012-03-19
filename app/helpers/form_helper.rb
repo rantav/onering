@@ -21,6 +21,7 @@ module FormHelper
     <script>
     $(document).ready(function() {
       $('##{visible_input_id}').typeahead({
+        items: 100, 
         source: function (typeahead, query) {
           $.ajax({
            url: '#{autocomplete_path}?term=' + query,
