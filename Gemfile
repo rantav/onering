@@ -23,6 +23,7 @@ gem 'best_in_place', :git => 'git://github.com/rantav/best_in_place.git'
 gem 'kaminari'
 gem 'rails3-jquery-autocomplete'
 gem "nested_form", :git => "git://github.com/ryanb/nested_form.git"
+gem "high_voltage"
 
 # Gems used only for assets and not required
 # in production environments by default.

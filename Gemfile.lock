@@ -90,6 +90,7 @@ GEM
       activesupport (~> 3.0)
       haml (~> 3.0)
       railties (~> 3.0)
+    high_voltage (1.0.1)
     hike (1.2.1)
     i18n (0.6.0)
     jquery-rails (1.0.19)
@@ -239,6 +240,7 @@ DEPENDENCIES
   formtastic-bootstrap
   haml
   haml-rails
+  high_voltage
   jquery-rails
   kaminari
   meta_search (>= 1.1.0.pre)
