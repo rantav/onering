@@ -1,5 +1,4 @@
-require 'yaml'
-include ActionView::Helpers::UrlHelper
+#include ActionView::Helpers::UrlHelper
 
 module GluPlugin
 
@@ -10,7 +9,7 @@ module GluPlugin
   @config = load_config
 
   def self.link_to_module(module_name)
-    link_to module_name, "#{@config['console_uri']}system/filter?systemFilter=metadata.product%3D%27#{module_name}%27&title=product+%5B#{module_name}%5D&groupBy=metadata.product"
+    "<a href='#{@config['console_uri']}system/filter?systemFilter=metadata.product%3D%27#{module_name}%27&title=product+%5B#{module_name}%5D&groupBy=metadata.product'>#{module_name}</a>".html_safe
   end
 
   class Reader
