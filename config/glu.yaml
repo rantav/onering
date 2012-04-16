@@ -1,0 +1,2 @@
+rest_uri: http://<%=ENV['GLU_USER']%>:<%=ENV['GLU_PASS']%>@<%=ENV['GLU_HOST_PORT']%>/console/rest/v1/
+fabric: <%= ENV['GLU_FABRIC'] %>

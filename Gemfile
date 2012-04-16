@@ -24,6 +24,8 @@ gem 'kaminari'
 gem 'rails3-jquery-autocomplete'
 gem "nested_form", :git => "git://github.com/ryanb/nested_form.git"
 gem "high_voltage"
+gem "rest-client", "~> 1.6.7"
+gem "glu_client", :git => "git://github.com/rantav/glu_client.git"
 
 # Gems used only for assets and not required
 # in production environments by default.
