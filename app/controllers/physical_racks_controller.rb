@@ -1,4 +1,7 @@
 class PhysicalRacksController < ApplicationController
+
+  layout "wide"
+
   # GET /physical_racks
   # GET /physical_racks.json
   def index

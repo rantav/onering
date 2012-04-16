@@ -1,4 +1,7 @@
 class DatacentersController < ApplicationController
+
+  layout "wide"
+  
   # GET /datacenters
   # GET /datacenters.json
   def index

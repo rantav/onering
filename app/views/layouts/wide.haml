@@ -1,0 +1,26 @@
+!!!
+%html
+  %head
+    %title OneRing
+    = stylesheet_link_tag "application"
+    = javascript_include_tag "application"
+    = csrf_meta_tag
+  %body
+    .navbar.navbar-fixed-top{"data-dropdown" => "dropdown"}
+      .navbar-inner
+        .container
+          %a.brand{:href => "/"} one ring
+          %ul.nav
+            %li.active
+              %a{:href => "/"} Home
+            %li
+              %a{:href => "/datacenters"} Datacenters
+            %li
+              %a{:href => "/physical_racks"} Racks
+            %li
+              %a{:href => "/physical_hosts"} Physical Hosts
+          %form.navbar-search.pull-left{:action => "/search"}
+            %input.search-query{:name => :q, :placeholder => "Search", :type => "text", :value => "#{params[:q]}"}
+    .container-fluid
+      .span12{:style => "margin-top:10pt"}
+        = yield
