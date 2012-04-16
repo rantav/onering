@@ -2,13 +2,20 @@ require 'yaml'
 include ActionView::Helpers::UrlHelper
 
 module GluPlugin
-  @config = YAML::load(ERB.new(IO.read(File.join(Rails.root, 'config', 'glu.yaml'))).result)
+
+  def self.load_config
+    YAML::load(ERB.new(IO.read(File.join(Rails.root, 'config', 'glu.yaml'))).result)
+  end
+
+  @config = load_config
+
   def self.link_to_module(module_name)
     link_to module_name, "#{@config['console_uri']}system/filter?systemFilter=metadata.product%3D%27#{module_name}%27&title=product+%5B#{module_name}%5D&groupBy=metadata.product"
   end
 
   class Reader
     def initialize
+      @config = GluPlugin::load_config
       @glu_api = GluClient::Api.new :rest_uri => @config['rest_uri'], :fabric => @config['fabric']
     end
 
