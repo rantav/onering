@@ -19,11 +19,21 @@ module GluPlugin
 
     def update_entry(entry)
       agent = entry['agent']
-      
+      service = entry['metadata']['product']
+      physical_host = PhysicalHost.find_by_name(agent)
+      if (physical_host and service)
+        puts "Updating #{physical_host.name}. Adding #{service}"
+        physical_host.glu_modules << GluModule.new(:name => service) 
+        physical_host.save!
+      end
     end
 
     def clear_all_glu_metadata
-      puts "TODO..."
+      puts "Cleaning up all modules information..."
+      PhysicalHost.all.each do |h| 
+        h.glu_modules = [] 
+        h.save
+      end
     end
   end
 

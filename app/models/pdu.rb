@@ -1,6 +1,7 @@
 class Pdu
   include Mongoid::Document
-
+  include Mongoid::Timestamps
+  
   field :name, :type => String
   field :voltage, :type => Integer
   field :amps, :type => Float

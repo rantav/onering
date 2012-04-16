@@ -1,5 +1,7 @@
 class PhysicalRack
   include Mongoid::Document
+  include Mongoid::Timestamps
+  
   field :index, :type => Integer
   field :name, :type => String
   field :number_of_us, :type => Integer
