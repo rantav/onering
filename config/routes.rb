@@ -1,5 +1,7 @@
 Onering::Application.routes.draw do
 
+  root :to => 'high_voltage/pages#show', :id => 'home'
+
   match 'search' => 'physical_hosts#search'
   
   resources :physical_racks
@@ -8,6 +10,5 @@ Onering::Application.routes.draw do
     get :autocomplete_physical_host_name, :on => :collection
   end
 
-  root :to => 'high_voltage/pages#show', :id => 'home'
 
 end
