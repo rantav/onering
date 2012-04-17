@@ -16,8 +16,8 @@ class DatacentersController < ApplicationController
   # GET /datacenters/1
   # GET /datacenters/1.json
   def show
-    @datacenter = Datacenter.find(params[:id])
-
+    id = params[:id]
+    @datacenter = Datacenter.any_of({_id: id}, {name: id}).first
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @datacenter }
