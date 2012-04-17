@@ -16,7 +16,8 @@ class PhysicalRacksController < ApplicationController
   # GET /physical_racks/1
   # GET /physical_racks/1.json
   def show
-    @physical_rack = PhysicalRack.find(params[:id])
+    id = params[:id]
+    @physical_rack = PhysicalRack.any_of({_id: id}, {name: id.gsub('-', '.')}).first
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @physical_rack }

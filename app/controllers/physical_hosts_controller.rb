@@ -31,8 +31,8 @@ class PhysicalHostsController < ApplicationController
   # GET /physical_hosts/1
   # GET /physical_hosts/1.json
   def show
-    @physical_host = PhysicalHost.find(params[:id])
-
+    id = params[:id]
+    @physical_host = PhysicalHost.any_of({_id: id}, {name: id.gsub('-', '.')}).first
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @physical_host }

@@ -17,7 +17,7 @@ class DatacentersController < ApplicationController
   # GET /datacenters/1.json
   def show
     id = params[:id]
-    @datacenter = Datacenter.any_of({_id: id}, {name: id}).first
+    @datacenter = Datacenter.any_of({_id: id}, {name: id.gsub('-', '.')}).first
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @datacenter }
