@@ -21,6 +21,9 @@ class PhysicalHost
   embeds_many :pdus
   embeds_many :glu_modules
 
+  index :name # TODO:, unique: true
+  index :ob_name, unique: true
+
   accepts_nested_attributes_for :pdus, :allow_destroy => true
   accepts_nested_attributes_for :child_hosts
 

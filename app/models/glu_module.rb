@@ -1,6 +1,6 @@
 class GluModule
   include Mongoid::Document
-  include Mongoid::Timestamps
+  include Mongoid::Timestamps::Created
 
   field :name, :type => String
   

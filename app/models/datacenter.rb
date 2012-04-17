@@ -11,6 +11,8 @@ class Datacenter
   field :support_phone, :type => String
   
 
+  index :name, unique: true
+
   has_many :physical_racks
 
   validates_presence_of :name
