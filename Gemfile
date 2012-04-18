@@ -1,5 +1,5 @@
 source 'http://rubygems.org'
-source 'http://production.cf.rubygems.org'
+#source 'http://production.cf.rubygems.org'
 
 gem 'rails', '3.1.0'
 
@@ -26,6 +26,7 @@ gem "nested_form", :git => "git://github.com/ryanb/nested_form.git"
 gem "high_voltage"
 gem "rest-client", "~> 1.6.7"
 gem "glu_client", :git => "git://github.com/rantav/glu_client.git"
+gem 'whenever', :require => false
 
 # Gems used only for assets and not required
 # in production environments by default.
