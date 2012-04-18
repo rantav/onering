@@ -27,6 +27,7 @@ gem "high_voltage"
 gem "rest-client", "~> 1.6.7"
 gem "glu_client", :git => "git://github.com/rantav/glu_client.git"
 gem 'whenever', :require => false
+gem 'rufus-scheduler'
 
 # Gems used only for assets and not required
 # in production environments by default.
