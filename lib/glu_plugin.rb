@@ -30,10 +30,16 @@ module GluPlugin
     def update_entry(entry)
       agent = entry['agent']
       service = entry['metadata']['product']
+      entry_state = entry['entryState']
+      context_base_url = entry['initParameters']['contextBaseUrl'] if entry['initParameters']
+      version = entry['metadata']['version']
       physical_host = PhysicalHost.find_by_name(agent)
       if (physical_host and service)
         puts "Updating #{physical_host.name}. Adding #{service}"
-        physical_host.glu_modules << GluModule.new(:name => service) 
+        physical_host.glu_modules << GluModule.new(:name => service,
+                                                   :state => entry_state,
+                                                   :context_base_url => context_base_url,
+                                                   :version => version) 
         physical_host.save!
       end
     end
