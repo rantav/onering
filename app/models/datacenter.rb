@@ -21,4 +21,7 @@ class Datacenter
     Datacenter.all.map {|r| [r.id, r.name]}
   end
 
+  def to_param
+    name.gsub('.', '-') || id.to_s
+  end
 end
