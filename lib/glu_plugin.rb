@@ -8,8 +8,8 @@ module GluPlugin
 
   @config = load_config
 
-  def self.link_to_module(module_name)
-    "<a href='#{@config['console_uri']}system/filter?systemFilter=metadata.product%3D%27#{module_name}%27&title=product+%5B#{module_name}%5D&groupBy=metadata.product'>#{module_name}</a>".html_safe
+  def self.url_for_module(m)
+    "#{@config['console_uri']}system/filter?systemFilter=metadata.product%3D%27#{m.name}%27&title=product+%5B#{m.name}%5D&groupBy=metadata.product"
   end
 
   class Reader

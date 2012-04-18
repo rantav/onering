@@ -47,7 +47,7 @@
 %p
   %b Glu Modules:
   - @physical_host.glu_modules.each do |glu_module|
-    = GluPlugin::link_to_module glu_module.name
+    = link_to glu_module.name, GluPlugin::url_for_module(glu_module)
 
 - @physical_host.pdus.each do |pdu|
   .pdu
