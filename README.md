@@ -20,6 +20,8 @@ Configure:
 Run the server:
 ===================
 $ foreman start
+Production:
+$ RAILS_ENV=production foreman start
 
 Libraries used:
 ==============
