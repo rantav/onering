@@ -24,7 +24,9 @@ describe DatacentersController do
   # Datacenter. As you add validations to Datacenter, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {}
+    {
+      name: "dc name"
+    }
   end
 
 #  describe "GET index" do
