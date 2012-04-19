@@ -42,8 +42,9 @@
   = best_in_place @physical_host, :status
 %p
   %b Rack:
-  = best_in_place @physical_host, :physical_rack, :type => :select, :collection => PhysicalRack::list_options, :nil => 'Select Rack', :display_as => :id
-  = link_to '[link]', @physical_host.physical_rack
+  - unless @physical_host.physical_rack.nil?
+    = best_in_place @physical_host, :physical_rack, :type => :select, :collection => PhysicalRack::list_options, :nil => 'Select Rack', :display_as => :id
+    = link_to '[link]', @physical_host.physical_rack
 %p
   %b Glu Modules:
   - @physical_host.glu_modules.each do |glu_module|
@@ -64,7 +65,7 @@
 = link_to physical_hosts_path, :class => 'btn' do
   %i.icon-th-list.icon-black
   All Hosts
-= link_to edit_physical_host_path, :class => 'btn btn-info' do
+= link_to edit_physical_host_path(@physical_host), :class => 'btn btn-info' do
   %i.icon-edit.icon-white
   Edit Host
 = link_to new_physical_host_path, :class => 'btn btn-primary' do
