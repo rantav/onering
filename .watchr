@@ -16,3 +16,7 @@ end
 watch("app/(.*/.*).rb") do |match|
   run_spec %{spec/#{match[1]}_spec.rb}
 end
+
+watch("app/(.*/.*).haml") do |match|
+  run_spec %{spec/#{match[1]}.haml_spec.rb}
+end
