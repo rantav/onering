@@ -36,11 +36,22 @@ class PhysicalHost
     "#{self.name}.#{self.physical_rack.datacenter.name}"
   end
 
+  # Takes the first letter of the host name and the number at the end of it.
+  # for example, short name for CHASSIS15 is C15
+  def short_name
+    name[0] + name.match(/(\d+$)/)[0]
+  end
+
   # The 'geometry' of the host within the datacenter. It's a short string describing the physical location of the 
   # host in the DC, for example: 
   # LGA4.R5.U34:OB1234
   # Or for a chassis part: LGA4.R5.U23.C13.N4:OB1234
   def geometry
+    if parent_host
+      return "#{parent_host.physical_rack.name}.#{parent_host.short_name}.N#{n}:#{ob_name}"
+    else
+      return "#{physical_rack.name}:#{ob_name}"
+    end
   end
 
   def self.find_by_name(name)
