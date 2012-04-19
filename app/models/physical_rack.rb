@@ -21,7 +21,7 @@ class PhysicalRack
   end
 
   def to_param
-    name.gsub('.', '-') || id.to_s
+    (name.gsub('.', '-') if name) || id.to_s
   end
 
 end
