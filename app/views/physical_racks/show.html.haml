@@ -11,7 +11,7 @@
   = best_in_place @physical_rack, :number_of_us
 %p
   %b Datacenter:
-  = best_in_place @physical_rack, :datacenter, :type => :select, :collection => Datacenter::list_options, :nil => 'Select Datacenter', :display_as => :id
+  = best_in_place @physical_rack, :datacenter, :type => :select, :collection => Datacenter::list_options, :nil => 'Select Datacenter', :display_as => :id unless @physical_rack.datacenter.nil?
   = link_to '[link]', @physical_rack.datacenter unless @physical_rack.datacenter.nil?
 
 
@@ -34,7 +34,7 @@
 = link_to physical_racks_path, :class => 'btn' do
   %i.icon-th-list.icon-black
   All Racks
-= link_to edit_physical_rack_path, :class => 'btn btn-info' do
+= link_to edit_physical_rack_path(@physical_rack), :class => 'btn btn-info' do
   %i.icon-edit.icon-white
   Edit Rack
 = link_to new_physical_rack_path, :class => 'btn btn-primary' do
