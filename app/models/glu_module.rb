@@ -10,7 +10,7 @@ class GluModule
   embedded_in :physical_host
 
   def details_str
-    "#{name}: #{state}, v#{version}"
+    "#{name}: #{state}, v#{version}, Last update: #{created_at.to_formatted_s(:short)}"
   end
 
   def state_label_color
