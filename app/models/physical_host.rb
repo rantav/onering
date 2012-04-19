@@ -36,6 +36,13 @@ class PhysicalHost
     "#{self.name}.#{self.physical_rack.datacenter.name}"
   end
 
+  # The 'geometry' of the host within the datacenter. It's a short string describing the physical location of the 
+  # host in the DC, for example: 
+  # LGA4.R5.U34:OB1234
+  # Or for a chassis part: LGA4.R5.U23.C13.N4:OB1234
+  def geometry
+  end
+
   def self.find_by_name(name)
     splits = name.split('.')
     i = splits.length - 1
