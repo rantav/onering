@@ -28,7 +28,6 @@ class PhysicalRacksController < ApplicationController
   # GET /physical_racks/new.json
   def new
     @physical_rack = PhysicalRack.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @physical_rack }
@@ -37,7 +36,8 @@ class PhysicalRacksController < ApplicationController
 
   # GET /physical_racks/1/edit
   def edit
-    @physical_rack = PhysicalRack.find(params[:id])
+    id = params[:id]
+    @physical_rack = PhysicalRack.any_of({_id: id}, {name: id.gsub('-', '.')}).first
   end
 
   # POST /physical_racks
@@ -59,8 +59,8 @@ class PhysicalRacksController < ApplicationController
   # PUT /physical_racks/1
   # PUT /physical_racks/1.json
   def update
-    @physical_rack = PhysicalRack.find(params[:id])
-
+    id = params[:id]
+    @physical_rack = PhysicalRack.any_of({_id: id}, {name: id.gsub('-', '.')}).first
     respond_to do |format|
       if @physical_rack.update_attributes(params[:physical_rack])
         format.html { redirect_to @physical_rack, notice: 'Physical rack was successfully updated.' }
@@ -75,7 +75,8 @@ class PhysicalRacksController < ApplicationController
   # DELETE /physical_racks/1
   # DELETE /physical_racks/1.json
   def destroy
-    @physical_rack = PhysicalRack.find(params[:id])
+    id = params[:id]
+    @physical_rack = PhysicalRack.any_of({_id: id}, {name: id.gsub('-', '.')}).first
     @physical_rack.destroy
 
     respond_to do |format|

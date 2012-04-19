@@ -28,7 +28,6 @@ class DatacentersController < ApplicationController
   # GET /datacenters/new.json
   def new
     @datacenter = Datacenter.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @datacenter }
@@ -37,7 +36,8 @@ class DatacentersController < ApplicationController
 
   # GET /datacenters/1/edit
   def edit
-    @datacenter = Datacenter.find(params[:id])
+    id = params[:id]
+    @datacenter = Datacenter.any_of({_id: id}, {name: id.gsub('-', '.')}).first
   end
 
   # POST /datacenters
@@ -59,7 +59,8 @@ class DatacentersController < ApplicationController
   # PUT /datacenters/1
   # PUT /datacenters/1.json
   def update
-    @datacenter = Datacenter.find(params[:id])
+    id = params[:id]
+    @datacenter = Datacenter.any_of({_id: id}, {name: id.gsub('-', '.')}).first
 
     respond_to do |format|
       if @datacenter.update_attributes(params[:datacenter])
@@ -75,7 +76,8 @@ class DatacentersController < ApplicationController
   # DELETE /datacenters/1
   # DELETE /datacenters/1.json
   def destroy
-    @datacenter = Datacenter.find(params[:id])
+    id = params[:id]
+    @datacenter = Datacenter.any_of({_id: id}, {name: id.gsub('-', '.')}).first
     @datacenter.destroy
 
     respond_to do |format|

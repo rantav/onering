@@ -21,7 +21,6 @@ class PhysicalHostsController < ApplicationController
   # GET /physical_hosts.json
   def search
     @physical_hosts = PhysicalHost.search(params[:q]).page params[:page]
-
     respond_to do |format|
       format.html { render :index}
       format.json { render json: @physical_hosts }
@@ -52,7 +51,8 @@ class PhysicalHostsController < ApplicationController
 
   # GET /physical_hosts/1/edit
   def edit
-    @physical_host = PhysicalHost.find(params[:id])
+    id = params[:id]
+    @physical_host = PhysicalHost.any_of({_id: id}, {name: id.gsub('-', '.')}).first
     if params[:add_pdu]
       @physical_host.pdus.build
     end
@@ -62,7 +62,6 @@ class PhysicalHostsController < ApplicationController
   # POST /physical_hosts.json
   def create
     @physical_host = PhysicalHost.new(params[:physical_host])
-
     respond_to do |format|
       if @physical_host.save
         format.html { redirect_to @physical_host, notice: 'Physical host was successfully created.' }
@@ -77,7 +76,8 @@ class PhysicalHostsController < ApplicationController
   # PUT /physical_hosts/1
   # PUT /physical_hosts/1.json
   def update
-    @physical_host = PhysicalHost.find(params[:id])
+    id = params[:id]
+    @physical_host = PhysicalHost.any_of({_id: id}, {name: id.gsub('-', '.')}).first
     @physical_host.update_attributes(params[:physical_host])
     respond_with @physical_host
   end
@@ -85,7 +85,8 @@ class PhysicalHostsController < ApplicationController
   # DELETE /physical_hosts/1
   # DELETE /physical_hosts/1.json
   def destroy
-    @physical_host = PhysicalHost.find(params[:id])
+    id = params[:id]
+    @physical_host = PhysicalHost.any_of({_id: id}, {name: id.gsub('-', '.')}).first
     @physical_host.destroy
 
     respond_to do |format|
