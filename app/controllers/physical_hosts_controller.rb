@@ -78,8 +78,19 @@ class PhysicalHostsController < ApplicationController
   def update
     id = params[:id]
     @physical_host = PhysicalHost.any_of({_id: id}, {name: id.gsub('-', '.')}).first
-    @physical_host.update_attributes(params[:physical_host])
-    respond_with @physical_host
+#    @physical_host.update_attributes(params[:physical_host])
+ #   respond_with @physical_host
+
+
+    respond_to do |format|
+      if @physical_host.update_attributes(params[:physical_host])
+        format.html { redirect_to @physical_host, notice: 'Physical host was successfully updated.' }
+        format.json { respond_with_bip(@physical_host) }
+      else
+        format.html { render action: "edit" }
+        format.json { respond_with_bip(@physical_host) }
+      end
+    end
   end
 
   # DELETE /physical_hosts/1

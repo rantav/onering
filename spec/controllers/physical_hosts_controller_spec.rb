@@ -24,7 +24,11 @@ describe PhysicalHostsController do
   # PhysicalHost. As you add validations to PhysicalHost, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {}
+    {
+      n: 5,
+      u: 6,
+      name: 'host_name'
+    }
   end
 
 #  describe "GET index" do
