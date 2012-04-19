@@ -24,7 +24,10 @@ describe PhysicalRacksController do
   # PhysicalRack. As you add validations to PhysicalRack, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {}
+    {
+      index: 1,
+      name: 'rackucious'
+    }
   end
 
 #  describe "GET index" do
