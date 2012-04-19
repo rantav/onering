@@ -48,9 +48,9 @@ class PhysicalHost
   # Or for a chassis part: LGA4.R5.U23.C13.N4:OB1234
   def geometry
     if parent_host
-      return "#{parent_host.physical_rack.name}.#{parent_host.short_name}.N#{n}:#{ob_name}"
-    else
-      return "#{physical_rack.name}:#{ob_name}"
+      return "#{parent_host.physical_rack.name}.#{parent_host.short_name}.N#{n}:#{ob_name || name}"
+    elsif physical_rack
+      return "#{physical_rack.name}:#{ob_name || name}"
     end
   end
 

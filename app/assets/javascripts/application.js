@@ -14,6 +14,7 @@
 //= require best_in_place
 //= require autocomplete-rails
 //= require jquery_nested_form
+//= require jquery.zclip
 
 $(document).ready(function() {
   /* Activating Best In Place */
@@ -34,6 +35,13 @@ $(document).ready(function() {
     insertFields(content, assoc, link);
     $('.remove_nested_fields').addClass('btn btn-danger')
   }
+
+  $('.copyable').zclip({
+    path:'/ZeroClipboard.swf',
+    copy:function(){return $(this).text();}
+  }).tooltip({
+    title: 'Click to copy'
+  });
 });
 
 

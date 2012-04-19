@@ -32,6 +32,9 @@
   %b MAC:
   = best_in_place @physical_host, :mac
 %p
+  %b Geomerty:
+  %span.copyable= @physical_host.geometry
+%p
   %b Notes:
   = best_in_place @physical_host, :notes, :type => :textarea
 %p

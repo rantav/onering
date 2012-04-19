@@ -63,3 +63,9 @@ form.formtastic {
 a.label:hover {
   color: white;
 }
+
+.copyable {
+  background: image-url('icon_copy.gif') no-repeat;
+  padding-right: 20px;
+  background-position-x: right;
+}
