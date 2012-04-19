@@ -36,6 +36,8 @@ $(document).ready(function() {
     $('.remove_nested_fields').addClass('btn btn-danger')
   }
 
+  $('.popoverable').popover();
+
   $('.copyable').zclip({
     path:'/ZeroClipboard.swf',
     copy:function(){return $(this).text();}
