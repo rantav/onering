@@ -3,6 +3,8 @@
     :url => "#{physical_hosts_path}.json" do |f|
   %tr
     %td
+      = f.input :ob_name
+    %td
       = f.input :name
       .hidden
         = f.input :physical_rack, :collection => PhysicalRack.all
