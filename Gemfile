@@ -53,7 +53,8 @@ group :test do
 end
 group :development, :test do
   gem 'watchr'
-  gem 'spork', '~> 0.9.0.rc'
+   gem "rspec-rails", "~> 2.6"
+  gem 'spork-rails'
 end
 group :development do
   gem 'pry'

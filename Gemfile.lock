@@ -204,6 +204,11 @@ GEM
     rspec-expectations (2.6.0)
       diff-lcs (~> 1.1.2)
     rspec-mocks (2.6.0)
+    rspec-rails (2.6.1)
+      actionpack (~> 3.0)
+      activesupport (~> 3.0)
+      railties (~> 3.0)
+      rspec (~> 2.6.0)
     ruby_parser (2.3.1)
       sexp_processor (~> 3.0)
     rufus-scheduler (2.0.16)
@@ -218,7 +223,10 @@ GEM
     sexp_processor (3.0.9)
     slop (2.1.0)
     spoon (0.0.1)
-    spork (0.9.0.rc9)
+    spork (1.0.0rc2)
+    spork-rails (3.2.0)
+      rails (>= 3.0.0, < 3.3.0)
+      spork (>= 1.0rc0)
     sprockets (2.0.3)
       hike (~> 1.2)
       rack (~> 1.0)
@@ -277,9 +285,10 @@ DEPENDENCIES
   rails3-jquery-autocomplete
   rest-client (~> 1.6.7)
   rspec
+  rspec-rails (~> 2.6)
   rufus-scheduler
   sass-rails (~> 3.1.0)
-  spork (~> 0.9.0.rc)
+  spork-rails
   thin
   turn
   twitter-bootstrap-rails
