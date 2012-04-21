@@ -1,3 +1,4 @@
+[![Build Status](https://secure.travis-ci.org/rantav/onering.png?branch=master)](http://travis-ci.org/rantav/onering)
 Setup:
 =====
 - git: http://git-scm.com/download
