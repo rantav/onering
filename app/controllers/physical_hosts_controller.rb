@@ -7,14 +7,6 @@ class PhysicalHostsController < ApplicationController
 
   autocomplete :physical_host, :name, :display_value => :fqdn, :limit => 100
 
-  # def get_schema
-  #   @model_schema = ModelSchema.find_or_create_by(:model_name => 'physical_host')
-  #   respond_to do |format|
-  #     format.html {render 'schema/edit' }
-  #     format.json { render json: @schema }
-  #   end
-  # end
-
   # GET /physical_hosts
   # GET /physical_hosts.json
   def index
@@ -40,6 +32,7 @@ class PhysicalHostsController < ApplicationController
   def show
     id = params[:id]
     @physical_host = PhysicalHost.any_of({_id: id}, {name: id.gsub('-', '.')}).first
+    @schema = self.schema
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @physical_host }
@@ -61,6 +54,7 @@ class PhysicalHostsController < ApplicationController
   def edit
     id = params[:id]
     @physical_host = PhysicalHost.any_of({_id: id}, {name: id.gsub('-', '.')}).first
+    @schema = self.schema
     if params[:add_pdu]
       @physical_host.pdus.build
     end
@@ -108,5 +102,9 @@ class PhysicalHostsController < ApplicationController
       format.html { redirect_to physical_hosts_url }
       format.json { head :ok }
     end
+  end
+
+  def schema
+    EntitySchema.first(conditions: {name: 'physical_host'})
   end
 end
