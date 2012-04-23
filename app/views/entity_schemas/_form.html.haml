@@ -1,0 +1,8 @@
+= semantic_nested_form_for @entity_schema, :html => {:class => 'well'} do |f|
+  = f.inputs :name
+  = f.semantic_fields_for :entity_attributes do |attributes_form| 
+    = attributes_form.inputs :name, :type
+    = attributes_form.link_to_remove "Remove this attributes", :class => 'btn btn-danger'
+  = f.link_to_add "Add attribute", :entity_attributes, :class => 'btn'
+  = f.buttons do
+    = f.commit_button :button_html => {:class => 'btn btn-primary'}, :label => 'Save'

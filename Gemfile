@@ -50,6 +50,7 @@ group :test do
   # Pretty printed test output
   gem 'turn', :require => false
   gem 'rspec'
+  gem 'mongoid-rspec'
 end
 group :development, :test do
   gem 'watchr'

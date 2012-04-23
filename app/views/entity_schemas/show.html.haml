@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @entity_schema.name
+
+= link_to 'Edit', edit_entity_schema_path(@entity_schema)
+\|
+= link_to 'Back', entity_schemas_path

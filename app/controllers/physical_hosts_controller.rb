@@ -6,7 +6,15 @@ class PhysicalHostsController < ApplicationController
   layout "wide"
 
   autocomplete :physical_host, :name, :display_value => :fqdn, :limit => 100
-  
+
+  # def get_schema
+  #   @model_schema = ModelSchema.find_or_create_by(:model_name => 'physical_host')
+  #   respond_to do |format|
+  #     format.html {render 'schema/edit' }
+  #     format.json { render json: @schema }
+  #   end
+  # end
+
   # GET /physical_hosts
   # GET /physical_hosts.json
   def index
@@ -78,10 +86,6 @@ class PhysicalHostsController < ApplicationController
   def update
     id = params[:id]
     @physical_host = PhysicalHost.any_of({_id: id}, {name: id.gsub('-', '.')}).first
-#    @physical_host.update_attributes(params[:physical_host])
- #   respond_with @physical_host
-
-
     respond_to do |format|
       if @physical_host.update_attributes(params[:physical_host])
         format.html { redirect_to @physical_host, notice: 'Physical host was successfully updated.' }

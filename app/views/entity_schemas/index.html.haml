@@ -1,0 +1,19 @@
+%h1 Listing entity_schemas
+
+%table
+  %tr
+    %th Name
+    %th
+    %th
+    %th
+
+  - @entity_schemas.each do |entity_schema|
+    %tr
+      %td= entity_schema.name
+      %td= link_to 'Show', entity_schema
+      %td= link_to 'Edit', edit_entity_schema_path(entity_schema)
+      %td= link_to 'Destroy', entity_schema, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Entity schema', new_entity_schema_path
