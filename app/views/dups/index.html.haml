@@ -1,0 +1,14 @@
+%h1 Listing duplicates
+
+%table
+  %tr
+    %th Host
+    %th Duplicates
+
+  - @dups.each do |dup|
+    %tr
+      %td= dup[:name]
+      %td
+        - dup[:links].each do |link|
+          = link_to link, link
+
