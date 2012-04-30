@@ -17,11 +17,6 @@
   /= f.link_to_add "Add a Child host", :child_hosts, :class => 'btn'
   /%hr
   = f.input :notes, :as => :text, :input_html => { :rows => 3, :cols => 20}
-  - if @schema
-    - @schema.entity_attributes.each do |attribute|
-      %li.string.input.stringish
-        %label.label{for: attribute.name}= attribute.name
-        %input{name: "physical_host[#{attribute.name}]", type: "text", value: "#{@physical_host[attribute.name]}"}
-
+  = extra_attributes_fields @schema, @physical_host
   = f.buttons do
     = f.commit_button :button_html => {:class => 'btn btn-primary'}, :label => 'Save'

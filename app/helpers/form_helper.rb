@@ -43,4 +43,17 @@ module FormHelper
   });
   </script>".html_safe()
   end
+
+  def extra_attributes_fields(schema, model)
+    html = []
+    if schema
+      schema.entity_attributes.each do |attribute|
+        html.push "<li class='string input stringish'>"
+        html.push   "<label class='label' for='#{attribute.name}'>#{attribute.name}</label>"
+        html.push   "<input name='#{model.class.collection_name.singularize}[#{attribute.name}]' type='text' value='#{model[attribute.name]}'>"
+        html.push "</li>"
+      end
+    end
+    html.join.html_safe
+  end
 end
