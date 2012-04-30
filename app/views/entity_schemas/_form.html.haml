@@ -1,5 +1,8 @@
 = semantic_nested_form_for @entity_schema, :html => {:class => 'well'} do |f|
-  = f.inputs :name
+  - if @entity_schema.new?
+    = f.input :name, :as => :select, :collection => EntitySchema.list_models_without_schema
+  - else
+    = f.input :name, :input_html => { :disabled => true }
   = f.semantic_fields_for :entity_attributes do |attributes_form| 
     = attributes_form.input :name
     = attributes_form.input :type, :as => :select, :collection => EntityAttribute.list_types
