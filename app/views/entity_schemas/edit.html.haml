@@ -2,6 +2,13 @@
 
 = render 'form'
 
-= link_to 'Show', @entity_schema
-\|
-= link_to 'Back', entity_schemas_path
+
+= link_to entity_schemas_path, :class => 'btn' do
+  %i.icon-th-list.icon-black
+  All Schemas
+= link_to @entity_schema, :class => 'btn btn-warning' do
+  %i.icon-remove.icon-white
+  Cancel
+= link_to new_entity_schema_path, :class => 'btn btn-primary' do
+  %i.icon-plus.icon-white
+  New Schema

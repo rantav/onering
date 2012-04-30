@@ -3,7 +3,18 @@
 %p
   %b Name:
   = @entity_schema.name
+- @entity_schema.entity_attributes.each do |attribute|
+  %p
+    %b= attribute.name
+    = "(#{attribute.type})"
 
-= link_to 'Edit', edit_entity_schema_path(@entity_schema)
-\|
-= link_to 'Back', entity_schemas_path
+.clear
+= link_to entity_schemas_path, :class => 'btn' do
+  %i.icon-th-list.icon-black
+  All Schemas
+= link_to edit_entity_schema_path(@physical_host), :class => 'btn btn-info' do
+  %i.icon-edit.icon-white
+  Edit Schema
+= link_to new_entity_schema_path, :class => 'btn btn-primary' do
+  %i.icon-plus.icon-white
+  New Schema

@@ -1,19 +1,22 @@
-%h1 Listing entity_schemas
+%h1 Listing Entity Schemas
 
-%table
+%table.table.table-striped.table-bordered.table-condensed
   %tr
     %th Name
-    %th
-    %th
     %th
 
   - @entity_schemas.each do |entity_schema|
     %tr
       %td= entity_schema.name
-      %td= link_to 'Show', entity_schema
-      %td= link_to 'Edit', edit_entity_schema_path(entity_schema)
-      %td= link_to 'Destroy', entity_schema, :confirm => 'Are you sure?', :method => :delete
+      %td
+        = link_to 'Show', entity_schema, :class => 'btn'
+        = link_to 'Edit', edit_entity_schema_path(entity_schema), :class => 'btn'
+        = link_to entity_schema, :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-danger' do
+          %i.icon-trash.icon-white
+          Delete
 
-%br
 
-= link_to 'New Entity schema', new_entity_schema_path
+= link_to new_entity_schema_path, :class => 'btn btn-primary' do
+  %i.icon-plus.icon-white
+  New Entity Schema
+
