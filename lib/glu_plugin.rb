@@ -35,7 +35,7 @@ module GluPlugin
       version = entry['metadata']['version']
       physical_host = PhysicalHost.find_by_name(agent)
       if (physical_host and service)
-        puts "Updating #{physical_host.name}. Adding #{service}"
+        Rails.logger.info "Updating #{physical_host.name}. Adding #{service}"
         physical_host.glu_modules << GluModule.new(:name => service,
                                                    :state => entry_state,
                                                    :context_base_url => context_base_url,
@@ -45,7 +45,7 @@ module GluPlugin
     end
 
     def clear_all_glu_metadata
-      puts "Cleaning up all modules information..."
+      Rails.logger.info "Cleaning up all modules information..."
       PhysicalHost.all.each do |h| 
         h.glu_modules = [] 
         h.save
