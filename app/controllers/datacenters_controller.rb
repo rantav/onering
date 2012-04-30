@@ -18,6 +18,7 @@ class DatacentersController < ApplicationController
   def show
     id = params[:id]
     @datacenter = Datacenter.any_of({_id: id}, {name: id.gsub('-', '.')}).first
+    @schema = self.schema
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @datacenter }
@@ -38,6 +39,7 @@ class DatacentersController < ApplicationController
   def edit
     id = params[:id]
     @datacenter = Datacenter.any_of({_id: id}, {name: id.gsub('-', '.')}).first
+    @schema = self.schema
   end
 
   # POST /datacenters

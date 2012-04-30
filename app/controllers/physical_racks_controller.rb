@@ -18,6 +18,7 @@ class PhysicalRacksController < ApplicationController
   def show
     id = params[:id]
     @physical_rack = PhysicalRack.any_of({_id: id}, {name: id.gsub('-', '.')}).first
+    @schema = self.schema
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @physical_rack }
@@ -38,6 +39,7 @@ class PhysicalRacksController < ApplicationController
   def edit
     id = params[:id]
     @physical_rack = PhysicalRack.any_of({_id: id}, {name: id.gsub('-', '.')}).first
+    @schema = self.schema
   end
 
   # POST /physical_racks
