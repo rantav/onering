@@ -84,4 +84,9 @@ class PhysicalRacksController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  def schema
+    EntitySchema.first(conditions: {name: 'physical_rack'})
+  end
+
 end

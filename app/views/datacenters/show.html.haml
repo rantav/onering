@@ -22,6 +22,8 @@
   %b Support Phone:
   = best_in_place @datacenter, :support_phone
 
+= show_extra_attributes(@schema, @datacenter)
+
 %h2 Racks in #{@datacenter.name}:
 %table.table.table-striped.table-bordered.table-condensed
   %tr

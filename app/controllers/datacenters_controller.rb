@@ -85,4 +85,9 @@ class DatacentersController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  def schema
+    EntitySchema.first(conditions: {name: 'datacenter'})
+  end
+
 end
