@@ -4,6 +4,7 @@ describe "entity_schemas/edit.html.haml" do
   before(:each) do
     @entity_schema = assign(:entity_schema, stub_model(EntitySchema,
       :name => "MyString",
+      :new? => false
     ))
   end
 

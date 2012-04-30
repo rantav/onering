@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "entity_schemas/show.html.haml" do
   before(:each) do
     @entity_schema = assign(:entity_schema, stub_model(EntitySchema,
-      :name => "Name",
+      :name => "Name"
     ))
   end
 
