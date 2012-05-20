@@ -1,12 +1,4 @@
 GIT
-  remote: git://github.com/rantav/best_in_place.git
-  revision: e123afc5b6ce1e68f977dafdb884f0e043504e03
-  specs:
-    best_in_place (1.0.6)
-      jquery-rails
-      rails (~> 3.1)
-
-GIT
   remote: git://github.com/rantav/glu_client.git
   revision: 9a484db34d3f0e11d64953f055e6d2b544305697
   specs:
@@ -15,7 +7,7 @@ GIT
 
 GIT
   remote: git://github.com/ryanb/nested_form.git
-  revision: 486e0f0e93f3ca455d5d0fc7869053257b6afce2
+  revision: 38c7ef348f0e1b70cd4ca7d9e14548aef3dea607
   specs:
     nested_form (0.2.0)
 
@@ -54,6 +46,9 @@ GEM
     arel (2.2.3)
     bcrypt-ruby (3.0.1)
     bcrypt-ruby (3.0.1-java)
+    best_in_place (1.1.0)
+      jquery-rails
+      rails (~> 3.1)
     bson (1.5.1)
     bson (1.5.1-java)
     bson_ext (1.5.1)
@@ -102,12 +97,14 @@ GEM
       haml (~> 3.0)
       railties (~> 3.0)
     high_voltage (1.0.1)
-    highline (1.6.11)
+    highline (1.6.12)
     hike (1.2.1)
     i18n (0.6.0)
     jquery-rails (1.0.19)
       railties (~> 3.0)
       thor (~> 0.14)
+    jruby-pageant (1.0.2)
+    jruby-pageant (1.0.2-java)
     json (1.6.6)
     json (1.6.6-java)
     kaminari (0.12.4)
@@ -150,7 +147,8 @@ GEM
       net-ssh (>= 1.99.1)
     net-sftp (2.0.5)
       net-ssh (>= 2.0.9)
-    net-ssh (2.3.0)
+    net-ssh (2.4.0)
+      jruby-pageant (>= 1.0.2)
     net-ssh-gateway (1.1.0)
       net-ssh (>= 1.99.1)
     orm_adapter (0.0.5)
@@ -265,7 +263,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  best_in_place!
+  best_in_place (~> 1.1.0)
   bson_ext
   capistrano
   coffee-rails (~> 3.1.0)

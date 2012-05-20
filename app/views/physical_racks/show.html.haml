@@ -11,7 +11,7 @@
   = best_in_place @physical_rack, :number_of_us
 %p
   %b Datacenter:
-  = best_in_place @physical_rack, :datacenter, :type => :select, :collection => Datacenter::list_options, :nil => 'Select Datacenter', :display_as => :id unless @physical_rack.datacenter.nil?
+  = best_in_place @physical_rack, :datacenter_id, :type => :select, :collection => Datacenter::list_options, :nil => 'Select Datacenter', :display_as => :id unless @physical_rack.datacenter.nil?
   = link_to '[link]', @physical_rack.datacenter unless @physical_rack.datacenter.nil?
 
 = show_extra_attributes(@schema, @physical_rack)

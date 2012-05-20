@@ -19,7 +19,7 @@ gem 'mongoid'
 gem 'bson_ext'
 gem 'csv-mapper'
 gem 'mongoid_search'
-gem 'best_in_place', :git => 'git://github.com/rantav/best_in_place.git'
+gem 'best_in_place', '~> 1.1.0'
 gem 'kaminari'
 gem 'rails3-jquery-autocomplete'
 gem "nested_form", :git => "git://github.com/ryanb/nested_form.git"

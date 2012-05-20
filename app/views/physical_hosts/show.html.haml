@@ -46,7 +46,7 @@
 %p
   %b Rack:
   - unless @physical_host.physical_rack.nil?
-    = best_in_place @physical_host, :physical_rack, :type => :select, :collection => PhysicalRack::list_options, :nil => 'Select Rack', :display_as => :id
+    = best_in_place @physical_host, :physical_rack_id, :type => :select, :collection => PhysicalRack::list_options, :nil => 'Select Rack', :display_as => :id
     = link_to '[link]', @physical_host.physical_rack
 %p
   %b Glu Modules:
