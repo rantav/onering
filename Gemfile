@@ -3,14 +3,10 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.1.3'
 
-# Bundle edge Rails instead:
-# gem 'rails',     :git => 'git://github.com/rails/rails.git'
-
 gem 'twitter-bootstrap-rails'
 gem 'formtastic'
 gem 'formtastic-bootstrap'
 gem 'haml'
-#gem 'activeadmin'
 gem 'meta_search', '>= 1.1.0.pre'
 gem "devise_ldap_authenticatable"
 gem 'thin'
@@ -54,7 +50,7 @@ group :test do
 end
 group :development, :test do
   gem 'watchr'
-   gem "rspec-rails", "~> 2.6"
+  gem "rspec-rails", "~> 2.6"
   gem 'spork-rails'
 end
 group :development do
