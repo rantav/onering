@@ -15,6 +15,8 @@
     %th Power Consumtion
     %th Status
     %th Parent Host
+    %th Chef
+    %th Glu
     %th
     %th
 
@@ -33,6 +35,12 @@
       %td= best_in_place physical_host, :power_consumption
       %td= best_in_place physical_host, :status
       %td= link_to physical_host.parent_host.name, physical_host.parent_host unless physical_host.parent_host.nil?
+      %td
+        - if physical_host.chef_info
+          = link_to "&#x2713;".html_safe, ChefPlugin::url_for_node(physical_host.chef_info.name)
+      %td 
+        -physical_host.glu_modules.each do |glu_module|
+          = link_to glu_module.name, GluPlugin::url_for_module(glu_module), {:class => "label #{glu_module.state_label_color}"}
       %td= link_to 'Show', physical_host
       %td
         = link_to physical_host, :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-danger' do

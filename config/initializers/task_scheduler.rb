@@ -6,3 +6,11 @@ scheduler.every("1h") do
   reader.update
   Rails.logger.info '...Finished cron job to read from glu'
 end
+
+scheduler.every("2h") do
+  Rails.logger.info 'Starting cron job to read from chef...'
+  require 'chef_plugin'
+  reader = ChefPlugin::Reader.new
+  reader.update
+  Rails.logger.info '...Finished cron job to read from chef'
+end

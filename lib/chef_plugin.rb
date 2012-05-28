@@ -7,6 +7,10 @@ module ChefPlugin
 
   @config = load_config
 
+  def self.url_for_node(n)
+    "#{@config['chef_server']}/nodes/#{n}"
+  end
+
   class Reader
     def initialize
       @config = ChefPlugin::load_config
