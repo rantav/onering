@@ -1,5 +1,3 @@
-#include ActionView::Helpers::UrlHelper
-
 module GluPlugin
 
   def self.load_config

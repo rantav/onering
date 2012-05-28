@@ -20,6 +20,7 @@ class PhysicalHost
   belongs_to :physical_rack
   embeds_many :pdus
   embeds_many :glu_modules
+  embeds_one :chef_info
 
   index :name # TODO:, unique: true
   index :ob_name, unique: true
@@ -57,9 +58,10 @@ class PhysicalHost
   def self.find_by_name(name)
     splits = name.split('.')
     i = splits.length - 1
-    while i > 0
+    while i >= 0
       subname = splits[0..i].join('.')
-      return PhysicalHost.where(:name => subname).first if PhysicalHost.where(:name => subname).exists?
+      host = PhysicalHost.any_of({:name => subname}, {:ob_name => subname}).first
+      return host unless host.nil?
       i = i - 1
     end
   end

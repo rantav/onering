@@ -1,0 +1,3 @@
+chef_server: <%=ENV['CHEF_SERVER']%>
+username: <%=ENV['CHEF_USERNAME']%>
+pem_file: <%=ENV['CHEF_PEM_FILE']%>
