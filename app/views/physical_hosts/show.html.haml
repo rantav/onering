@@ -52,6 +52,11 @@
   %b Glu Modules:
   - @physical_host.glu_modules.each do |glu_module|
     = link_to glu_module.name, GluPlugin::url_for_module(glu_module), {:class => "label popoverable #{glu_module.state_label_color}", :title => glu_module.name, 'data-content' => glu_module.details_str}
+%p
+  %b Chef:
+  - if @physical_host.chef_info
+    %pre
+      = JSON.pretty_generate(@physical_host.chef_info.as_json)
 
 = show_extra_attributes(@schema, @physical_host)
 
