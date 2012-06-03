@@ -10,6 +10,7 @@ class PhysicalRack
 
   has_many :physical_hosts
   belongs_to :datacenter
+  has_many :audits, :as => :entity
 
   index :name, unique: true
 

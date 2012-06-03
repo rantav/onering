@@ -50,6 +50,7 @@
               %td= physical_host.n
               %td= physical_host.u
 
+= render :partial => "shared/modifications", :locals => {:entity => @datacenter}
 
 = link_to datacenters_path, :class => 'btn' do
   %i.icon-th-list.icon-black

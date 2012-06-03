@@ -16,6 +16,7 @@ class Datacenter
   index :name, unique: true
 
   has_many :physical_racks
+  has_many :audits, :as => :entity
 
   validates_presence_of :name
     

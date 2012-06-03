@@ -32,6 +32,8 @@
         %td= physical_host.u
     = render 'add_host'
 
+= render :partial => "shared/modifications", :locals => {:entity => @physical_rack}
+
 = link_to physical_racks_path, :class => 'btn' do
   %i.icon-th-list.icon-black
   All Racks
