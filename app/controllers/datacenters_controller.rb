@@ -63,9 +63,10 @@ class DatacentersController < ApplicationController
   def update
     id = params[:id]
     @datacenter = Datacenter.any_of({_id: id}, {name: id.gsub('-', '.')}).first
-
+    @datacenter.attributes = params[:datacenter]
+    @datacenter.audits << Audit.new(source: 'controller', action: 'update')
     respond_to do |format|
-      if @datacenter.update_attributes(params[:datacenter])
+      if @datacenter.save
         format.html { redirect_to @datacenter, notice: 'Datacenter was successfully updated.' }
         format.json { head :ok }
       else

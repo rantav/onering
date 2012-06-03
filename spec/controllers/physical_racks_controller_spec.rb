@@ -30,13 +30,13 @@ describe PhysicalRacksController do
     }
   end
 
-#  describe "GET index" do
-#    it "assigns all physical_racks as @physical_racks" do
-#      physical_rack = PhysicalRack.create! valid_attributes
-#      get :index
-#      assigns(:physical_racks).should eq([physical_rack])
-#    end
-#  end
+  describe "GET index" do
+    it "assigns all physical_racks as @physical_racks" do
+      physical_rack = PhysicalRack.create! valid_attributes
+      get :index
+      assigns(:physical_racks).should eq(PhysicalRack.all)
+    end
+  end
 
   describe "GET show" do
     it "assigns the requested physical_rack as @physical_rack" do
@@ -102,11 +102,8 @@ describe PhysicalRacksController do
     describe "with valid params" do
       it "updates the requested physical_rack" do
         physical_rack = PhysicalRack.create! valid_attributes
-        # Assuming there are no other physical_racks in the database, this
-        # specifies that the PhysicalRack created on the previous line
-        # receives the :update_attributes message with whatever params are
-        # submitted in the request.
-        PhysicalRack.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
+        PhysicalRack.any_instance.should_receive(:attributes=).with({'these' => 'params'})
+        PhysicalRack.any_instance.should_receive(:save)
         put :update, :id => physical_rack.id, :physical_rack => {'these' => 'params'}
       end
 

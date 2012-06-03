@@ -63,8 +63,10 @@ class PhysicalRacksController < ApplicationController
   def update
     id = params[:id]
     @physical_rack = PhysicalRack.any_of({_id: id}, {name: id.gsub('-', '.')}).first
+    @physical_rack.attributes = params[:physical_rack]
+    @physical_rack.audits << Audit.new(source: 'controller', action: 'update')
     respond_to do |format|
-      if @physical_rack.update_attributes(params[:physical_rack])
+      if @physical_rack.save
         format.html { redirect_to @physical_rack, notice: 'Physical rack was successfully updated.' }
         format.json { head :ok }
       else

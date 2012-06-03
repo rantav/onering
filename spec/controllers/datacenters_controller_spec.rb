@@ -29,13 +29,13 @@ describe DatacentersController do
     }
   end
 
-#  describe "GET index" do
-#    it "assigns all datacenters as @datacenters" do
-#      datacenter = Datacenter.create! valid_attributes
-#      get :index
-#      assigns(:datacenters).should eq([datacenter])
-#    end
-#  end
+  describe "GET index" do
+   it "assigns all datacenters as @datacenters" do
+     datacenter = Datacenter.create! valid_attributes
+     get :index
+     assigns(:datacenters).should eq(Datacenter.all)
+   end
+ end
 
   describe "GET show" do
     it "assigns the requested datacenter as @datacenter" do
@@ -101,11 +101,8 @@ describe DatacentersController do
     describe "with valid params" do
       it "updates the requested datacenter" do
         datacenter = Datacenter.create! valid_attributes
-        # Assuming there are no other datacenters in the database, this
-        # specifies that the Datacenter created on the previous line
-        # receives the :update_attributes message with whatever params are
-        # submitted in the request.
-        Datacenter.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
+        Datacenter.any_instance.should_receive(:attributes=).with({'these' => 'params'})
+        Datacenter.any_instance.should_receive(:save)
         put :update, :id => datacenter.id, :datacenter => {'these' => 'params'}
       end
 
