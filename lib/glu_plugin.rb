@@ -38,6 +38,7 @@ module GluPlugin
                                                    :state => entry_state,
                                                    :context_base_url => context_base_url,
                                                    :version => version) 
+        physical_host.audits << Audit.new(source: 'cron', action: 'update_glu')
         physical_host.save!
       end
     end
