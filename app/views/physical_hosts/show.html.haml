@@ -57,15 +57,6 @@
   - if @physical_host.chef_info
     %pre
       = JSON.pretty_generate(@physical_host.chef_info.as_json)
-%p
-  %b Modifications:
-  - @physical_host.audits.order_by({created_at: -1}).each do |audit|
-    %table.table.table-condensed
-      %tr
-        %td= audit.created_at.strftime("%H:%M %m/%d/%Y")
-        %td= audit.source
-        %td.label= audit.action
-
 = show_extra_attributes(@schema, @physical_host)
 
 - @physical_host.pdus.each do |pdu|
@@ -79,8 +70,18 @@
     %p 
       %b PDU Amps:
       = pdu.amps
-
 .clear
+
+%p
+  %b Modifications:
+  - @physical_host.audits.order_by({created_at: -1}).each do |audit|
+    %table.table.table-condensed
+      %tr
+        %td= audit.created_at.strftime("%H:%M %m/%d/%Y")
+        %td= audit.source
+        %td
+          .label= audit.action
+
 = link_to physical_hosts_path, :class => 'btn' do
   %i.icon-th-list.icon-black
   All Hosts

@@ -1,7 +1,9 @@
 class PhysicalRack
   include Mongoid::Document
   include Mongoid::Timestamps
-  
+  include Mongoid::Versioning
+  max_versions 5
+
   field :index, :type => Integer
   field :name, :type => String
   field :number_of_us, :type => Integer

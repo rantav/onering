@@ -1,7 +1,9 @@
 class Datacenter
   include Mongoid::Document
   include Mongoid::Timestamps
-  
+  include Mongoid::Versioning
+  max_versions 5
+
   field :name, :type => String
   field :provider_name, :type => String
   field :location, :type => String

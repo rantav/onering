@@ -31,13 +31,13 @@ describe PhysicalHostsController do
     }
   end
 
-#  describe "GET index" do
-#    it "assigns all physical_hosts as @physical_hosts" do
-#      physical_host = PhysicalHost.create! valid_attributes
-#      get :index
-#      assigns(:physical_hosts).should eq([physical_host])
-#    end
-#  end
+ describe "GET index" do
+   it "assigns all physical_hosts as @physical_hosts" do
+     physical_host = PhysicalHost.create! valid_attributes
+     get :index
+     assigns(:physical_hosts).should eq(PhysicalHost.page)
+   end
+ end
 
   describe "GET show" do
     it "assigns the requested physical_host as @physical_host" do
@@ -103,11 +103,8 @@ describe PhysicalHostsController do
     describe "with valid params" do
       it "updates the requested physical_host" do
         physical_host = PhysicalHost.create! valid_attributes
-        # Assuming there are no other physical_hosts in the database, this
-        # specifies that the PhysicalHost created on the previous line
-        # receives the :update_attributes message with whatever params are
-        # submitted in the request.
-        PhysicalHost.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
+        PhysicalHost.any_instance.should_receive(:attributes=).with({'these' => 'params'})
+        PhysicalHost.any_instance.should_receive(:save)
         put :update, :id => physical_host.id, :physical_host => {'these' => 'params'}
       end
 

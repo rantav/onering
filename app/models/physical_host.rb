@@ -2,6 +2,9 @@ class PhysicalHost
   include Mongoid::Document
   include Mongoid::Search
   include Mongoid::Timestamps
+  
+  include Mongoid::Versioning
+  max_versions 5
 
   field :name, :type => String
   field :ob_name, :type => String

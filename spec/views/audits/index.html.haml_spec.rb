@@ -2,16 +2,18 @@ require 'spec_helper'
 
 describe "audits/index.html.haml" do
   before(:each) do
-    assign(:audits, [
+    assign(:audits, Kaminari.paginate_array([
       stub_model(Audit,
         :source => "Source",
-        :action => "Action"
+        :action => "Action",
+        :created_at => Time.now
       ),
       stub_model(Audit,
         :source => "Source",
-        :action => "Action"
+        :action => "Action",
+        :created_at => Time.now
       )
-    ])
+    ]).page(1))
   end
 
   it "renders a list of audits" do
