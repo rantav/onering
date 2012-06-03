@@ -1,21 +1,17 @@
-%h1 Listing audits
+%h1 Audit Log
 
-%table
+%table.table.table-striped.table-bordered.table-condensed
   %tr
+    %th Time
     %th Source
     %th Action
-    %th
-    %th
-    %th
+    %th Entity
 
   - @audits.each do |audit|
     %tr
+      %td= audit.created_at.strftime("%H:%M %m/%d/%Y")
       %td= audit.source
       %td= audit.action
-      %td= link_to 'Show', audit
-      %td= link_to 'Edit', edit_audit_path(audit)
-      %td= link_to 'Destroy', audit, :confirm => 'Are you sure?', :method => :delete
+      %td= link_to audit.entity.name
 
-%br
-
-= link_to 'New Audit', new_audit_path
+= paginate @audits

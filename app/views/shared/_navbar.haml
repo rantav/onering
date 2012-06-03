@@ -1,0 +1,17 @@
+.navbar.navbar-fixed-top{"data-dropdown" => "dropdown"}
+  .navbar-inner
+    .container
+      %a.brand{:href => "/"} one ring
+      %ul.nav
+        %li
+          %a{:href => "/datacenters"} Datacenters
+        %li
+          %a{:href => "/physical_racks"} Racks
+        %li
+          %a{:href => "/physical_hosts"} Physical Hosts
+        %li
+          %a{:href => "/entity_schemas"} Schemas
+        %li
+          %a{:href => "/audits"} Audit
+      %form.navbar-search.pull-left{:action => "/search"}
+        %input.search-query{:name => :q, :placeholder => "Search", :type => "text", :value => "#{params[:q]}"}

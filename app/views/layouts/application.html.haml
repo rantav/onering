@@ -6,21 +6,7 @@
     = javascript_include_tag "application"
     = csrf_meta_tag
   %body
-    .navbar.navbar-fixed-top{"data-dropdown" => "dropdown"}
-      .navbar-inner
-        .container
-          %a.brand{:href => "/"} one ring
-          %ul.nav
-            %li
-              %a{:href => "/datacenters"} Datacenters
-            %li
-              %a{:href => "/physical_racks"} Racks
-            %li
-              %a{:href => "/physical_hosts"} Physical Hosts
-            %li
-              %a{:href => "/entity_schemas"} Schemas
-          %form.navbar-search.pull-left{:action => "/search"}
-            %input.search-query{:name => :q, :placeholder => "Search", :type => "text", :value => "#{params[:q]}"}
+    = render :partial => "shared/navbar"
     .container-fluid
       .span3
         .ring

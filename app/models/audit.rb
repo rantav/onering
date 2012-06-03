@@ -7,4 +7,5 @@ class Audit
   
   belongs_to :entity, :polymorphic => true
 
+  index :created_at
 end
