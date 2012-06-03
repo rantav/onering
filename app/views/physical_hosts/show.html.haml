@@ -59,7 +59,7 @@
       = JSON.pretty_generate(@physical_host.chef_info.as_json)
 %p
   %b Modifications:
-  - @physical_host.audits.each do |audit|
+  - @physical_host.audits.order_by({created_at: -1}).each do |audit|
     %table.table.table-condensed
       %tr
         %td= audit.created_at.strftime("%H:%M %m/%d/%Y")
