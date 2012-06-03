@@ -1,0 +1,21 @@
+%h1 Listing audits
+
+%table
+  %tr
+    %th Source
+    %th Action
+    %th
+    %th
+    %th
+
+  - @audits.each do |audit|
+    %tr
+      %td= audit.source
+      %td= audit.action
+      %td= link_to 'Show', audit
+      %td= link_to 'Edit', edit_audit_path(audit)
+      %td= link_to 'Destroy', audit, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Audit', new_audit_path

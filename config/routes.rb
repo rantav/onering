@@ -1,4 +1,6 @@
 Onering::Application.routes.draw do
+  resources :audits
+
   root :to => 'high_voltage/pages#show', :id => 'home'
 
   match 'search' => 'physical_hosts#search'

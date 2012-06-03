@@ -21,6 +21,7 @@ class PhysicalHost
   embeds_many :pdus
   embeds_many :glu_modules
   embeds_one :chef_info
+  has_many :audits, :as => :entity
 
   index :name # TODO:, unique: true
   index :ob_name, unique: true

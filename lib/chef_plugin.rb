@@ -31,6 +31,7 @@ module ChefPlugin
         Rails.logger.info("Fetching chef data for #{node_name}")
         node = @rest.get_rest("/nodes/#{node_name}")
         physical_host.chef_info = ChefInfo.new(as_json(node))
+        physical_host.audits << Audit.new(source: 'cron', action: 'update_chef')
         physical_host.save!
       else
         Rails.logger.info("No onering node found for #{node_name}. Will not update chef data")
