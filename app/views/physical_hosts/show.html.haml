@@ -72,15 +72,7 @@
       = pdu.amps
 .clear
 
-%p
-  %b Modifications:
-  - @physical_host.audits.order_by({created_at: -1}).each do |audit|
-    %table.table.table-condensed
-      %tr
-        %td= audit.created_at.strftime("%H:%M %m/%d/%Y")
-        %td= audit.source
-        %td
-          .label= audit.action
+= render :partial => "shared/modifications", :locals => {:entity => @physical_host}
 
 = link_to physical_hosts_path, :class => 'btn' do
   %i.icon-th-list.icon-black
