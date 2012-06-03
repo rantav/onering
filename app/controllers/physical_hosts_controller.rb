@@ -43,7 +43,6 @@ class PhysicalHostsController < ApplicationController
   # GET /physical_hosts/new.json
   def new
     @physical_host = PhysicalHost.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @physical_host }
@@ -64,6 +63,7 @@ class PhysicalHostsController < ApplicationController
   # POST /physical_hosts.json
   def create
     @physical_host = PhysicalHost.new(params[:physical_host])
+    @physical_host.audits << Audit.new(source: 'controller', action: 'create') # Why this no work???
     respond_to do |format|
       if @physical_host.save
         format.html { redirect_to @physical_host, notice: 'Physical host was successfully created.' }
@@ -80,8 +80,10 @@ class PhysicalHostsController < ApplicationController
   def update
     id = params[:id]
     @physical_host = PhysicalHost.any_of({_id: id}, {name: id.gsub('-', '.')}).first
+    @physical_host.attributes = params[:physical_host]
+    @physical_host.audits << Audit.new(source: 'controller', action: 'update')
     respond_to do |format|
-      if @physical_host.update_attributes(params[:physical_host])
+      if @physical_host.save
         format.html { redirect_to @physical_host, notice: 'Physical host was successfully updated.' }
         format.json { respond_with_bip(@physical_host) }
       else
