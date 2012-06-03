@@ -12,6 +12,6 @@
       %td= audit.created_at.strftime("%H:%M %m/%d/%Y")
       %td= audit.source
       %td= audit.action
-      %td= link_to audit.entity.name
+      %td= link_to audit.entity.name, audit.entity
 
 = paginate @audits
