@@ -11,7 +11,7 @@ gem 'meta_search', '>= 1.1.0.pre'
 gem "devise_ldap_authenticatable"
 gem 'thin'
 gem 'sass-rails', "  ~> 3.1.0" # why is this here and not in assets? see https://github.com/rails/sass-rails/issues/38
-gem 'mongoid'
+gem 'mongoid', '~> 2.4.10'
 gem 'bson_ext'
 gem 'csv-mapper'
 gem 'mongoid_search'
@@ -47,7 +47,6 @@ group :test do
   # Pretty printed test output
   gem 'turn', :require => false
   gem 'rspec'
-  gem 'mongoid-rspec'
 end
 group :development, :test do
   gem 'watchr'
