@@ -6,3 +6,4 @@ tmp/
 *.swp
 setup.sh
 public/assets/
+.DS_Store
