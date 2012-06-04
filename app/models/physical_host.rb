@@ -60,6 +60,7 @@ class PhysicalHost
   end
 
   def self.find_by_name(name)
+    return nil if name.nil?
     splits = name.split('.')
     i = splits.length - 1
     while i >= 0
