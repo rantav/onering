@@ -49,6 +49,13 @@
     = best_in_place @physical_host, :physical_rack_id, :type => :select, :collection => PhysicalRack::list_options, :nil => 'Select Rack', :display_as => :id
     = link_to '[link]', @physical_host.physical_rack
 %p
+  %b IP Address:
+  - if @physical_host.chef_info.nil?
+    No data from chef
+  - else
+    = @physical_host.chef_info.ipaddress
+
+%p
   %b Glu Modules:
   - @physical_host.glu_modules.each do |glu_module|
     = link_to glu_module.name, GluPlugin::url_for_module(glu_module), {:class => "label popoverable #{glu_module.state_label_color}", :title => glu_module.name, 'data-content' => glu_module.details_str}
