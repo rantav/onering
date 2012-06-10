@@ -1,0 +1,14 @@
+- unless depth == 0 and physical_host.parent_host
+  %tr
+    %td
+      - if depth > 0
+        %i.icon-arrow-right
+      - if physical_host.child_hosts.exists?
+        %i.icon-arrow-down
+      = link_to physical_host.ob_name, physical_host unless physical_host.ob_name.nil?
+      %td= link_to physical_host.name, physical_host
+      %td= physical_host.n
+      %td= physical_host.u
+  - if physical_host.child_hosts.exists?
+    - physical_host.child_hosts.asc(:n).each do |child_host|
+      = render partial: 'show_host', locals: {physical_host: child_host, depth: depth + 1}
