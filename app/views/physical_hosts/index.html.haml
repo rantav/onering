@@ -18,12 +18,11 @@
     %th Chef
     %th Glu
     %th
-    %th
 
   - @physical_hosts.each do |physical_host|
     %tr
-      %td= best_in_place physical_host, :name
-      %td= best_in_place physical_host, :ob_name
+      %td= link_to physical_host.name, physical_host
+      %td= link_to physical_host.ob_name, physical_host if physical_host.ob_name
       %td= link_to physical_host.physical_rack.datacenter.name, physical_host.physical_rack.datacenter if physical_host.physical_rack and physical_host.physical_rack.datacenter
       %td= link_to "#{physical_host.physical_rack.index} (#{physical_host.physical_rack.name})", physical_host.physical_rack if physical_host.physical_rack
       %td= best_in_place physical_host, :n
@@ -41,7 +40,6 @@
       %td 
         -physical_host.glu_modules.each do |glu_module|
           = link_to glu_module.name, GluPlugin::url_for_module(glu_module), {:class => "label #{glu_module.state_label_color}"}
-      %td= link_to 'Show', physical_host
       %td
         = link_to physical_host, :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-danger' do
           %i.icon-trash.icon-white
