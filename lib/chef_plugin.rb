@@ -37,7 +37,6 @@ module ChefPlugin
           physical_host.chef_info = ChefInfo.new(json_attributes)
         end
         if physical_host.chef_info.changed?
-          puts physical_host.chef_info.changes
           physical_host.audits << Audit.new(source: 'cron', action: 'update_chef')
           physical_host.save!
         else
@@ -50,26 +49,43 @@ module ChefPlugin
 
     # Removes some of the information from this node's info so that it can be safely stored
     def as_json(node)
-      {
-        name: node.name,
-        kernel_name: node.kernel.name,
-        kernel_machine: node.kernel.machine,
-        kernel_os: node.kernel.os,
-        kernel_version: node.kernel.version,
-        kernel_release: node.kernel.release,
-        ipaddress: node.ipaddress,
-        os: node.os,
-        domain: (node.domain if node.has_key?('domain')),
-        os_version: node.os_version,
-        recipes: (node.recipes.as_json if node.has_key?('recipes')),
-        hostname: node.hostname,
-        macaddress: node.macaddress,
-        roles: (node.roles.as_json if node.has_key?('roles')),
-        platform: node.platform,
-        tags: node.tags.as_json,
-        ipmi: (node.ipmi.as_json if node.has_key?('ipmi')),
-        run_list: node.run_list.as_json
-      }
+      json = {
+          name: node.name,
+          #kernel_name: node.kernel.name,
+          #kernel_machine: node.kernel.machine,
+          #kernel_os: node.kernel.os,
+          #kernel_version: node.kernel.version,
+          #kernel_release: node.kernel.release,
+          ipaddress: node.ipaddress,
+          #os: node.os,
+          domain: (node.domain if node.has_key?('domain')),
+          os_version: node.os_version,
+          recipes: (node.recipes.as_json if node.has_key?('recipes')),
+          hostname: node.hostname,
+          #macaddress: node.macaddress,
+          #roles: (node.roles.as_json if node.has_key?('roles')),
+          #platform: node.platform,
+          tags: node.tags.as_json,
+          #ipmi: (node.ipmi.as_json if node.has_key?('ipmi')),
+          #run_list: node.run_list.as_json
+        }
+      if node.has_key?('network')
+        network = {}
+        network['default_interface'] = node.network.default_interface
+        interfaces = {}
+        node.network.interfaces.select{|k, v| k.start_with?('eth')}.each do |ifname, v|
+          interface = {}
+          if v['addresses']
+            v['addresses'].each do |address, v|
+              interface[v['family']] = address
+            end
+          end
+          interfaces[ifname] = interface
+        end
+        network['interfaces'] = interfaces
+        json['network'] = network
+      end
+      json
     end
   end
 end
