@@ -31,7 +31,7 @@
     %th Name
     %th Hosts
 
-  - @datacenter.physical_racks.each do |physical_rack|
+  - @datacenter.physical_racks.asc(:index).each do |physical_rack|
     %tr
       %td= link_to physical_rack.index, physical_rack
       %td= link_to physical_rack.name, physical_rack

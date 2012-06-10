@@ -28,6 +28,7 @@ class PhysicalHost
 
   index :name # TODO:, unique: true
   index :ob_name, unique: true
+  index :u
 
   accepts_nested_attributes_for :pdus, :allow_destroy => true
   accepts_nested_attributes_for :child_hosts

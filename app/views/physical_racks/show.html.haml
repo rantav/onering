@@ -24,7 +24,7 @@
       %th N
       %th U
 
-    - @physical_rack.physical_hosts.each do |physical_host|
+    - @physical_rack.physical_hosts.asc(:u).each do |physical_host|
       %tr
         %td= link_to physical_host.ob_name, physical_host unless physical_host.ob_name.nil?
         %td= link_to physical_host.name, physical_host

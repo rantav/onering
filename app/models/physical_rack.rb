@@ -13,6 +13,7 @@ class PhysicalRack
   has_many :audits, :as => :entity
 
   index :name, unique: true
+  index :index
 
   validates_numericality_of :number_of_us, :only_integer => true, :allow_blank => true
   validates_numericality_of :index, :only_integer => true
