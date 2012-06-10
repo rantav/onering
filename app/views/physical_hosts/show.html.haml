@@ -55,8 +55,8 @@
 %p
   %b Chef:
   - if @physical_host.chef_info
-    %pre
-      = JSON.pretty_generate(@physical_host.chef_info.as_json)
+    %i{class: "popoverable", title: @physical_host.chef_info.name, 'data-content' => "<pre>" + JSON.pretty_generate(@physical_host.chef_info.as_json) + "</pre>"}= "Updated At " + @physical_host.chef_info.updated_at.strftime("%H:%M %m/%d/%Y")
+
 = show_extra_attributes(@schema, @physical_host)
 
 - @physical_host.pdus.each do |pdu|
