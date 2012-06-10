@@ -17,17 +17,8 @@
 = show_extra_attributes(@schema, @physical_rack)
 
 %p
-  %table.table.table-striped.table-bordered.table-condensed
-    %tr
-      %th Outbrain Name
-      %th Host Name
-      %th N
-      %th U
-    - @physical_rack.physical_hosts.asc(:u).each do |physical_host|
-      = render partial: 'show_host', locals: {physical_host: physical_host, depth: 0}
-    = render 'add_host'
-
-= render :partial => "shared/modifications", :locals => {:entity => @physical_rack}
+  = render partial: 'show_rack_with_hosts', locals: {physical_rack: @physical_rack, allow_modifications: true}
+= render partial: "shared/modifications", locals: {:entity => @physical_rack}
 
 = link_to physical_racks_path, :class => 'btn' do
   %i.icon-th-list.icon-black

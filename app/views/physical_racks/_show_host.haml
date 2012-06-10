@@ -11,4 +11,4 @@
       %td= physical_host.u
   - if physical_host.child_hosts.exists?
     - physical_host.child_hosts.asc(:n).each do |child_host|
-      = render partial: 'show_host', locals: {physical_host: child_host, depth: depth + 1}
+      = render partial: 'physical_racks/show_host', locals: {physical_host: child_host, depth: depth + 1}
