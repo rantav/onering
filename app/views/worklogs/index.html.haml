@@ -1,0 +1,17 @@
+%h1 Worklog
+
+%table.table.table-striped.table-bordered.table-condensed
+  %tr
+    %th Name
+    %th Start
+    %th End
+    %th # Items
+
+  - @worklogs.each do |worklog|
+    %tr
+      %td= link_to worklog.name, worklog
+      %td= worklog.start
+      %td= worklog.end
+      %td= worklog.audits.count
+
+= paginate @worklogs

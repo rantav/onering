@@ -1,17 +1,4 @@
 %h1 Audit Log
 
-%table.table.table-striped.table-bordered.table-condensed
-  %tr
-    %th Time
-    %th Source
-    %th Action
-    %th Entity
-
-  - @audits.each do |audit|
-    %tr
-      %td= audit.created_at.strftime("%H:%M %m/%d/%Y")
-      %td= audit.source
-      %td= audit.action
-      %td= link_to audit.entity.name, audit.entity if audit.entity
-
+= render partial: 'list', locals: {audits: @audits}
 = paginate @audits

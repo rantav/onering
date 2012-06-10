@@ -6,6 +6,7 @@ class Audit
   field :action, :type => String
   
   belongs_to :entity, :polymorphic => true
+  belongs_to :worklog
 
   index :created_at
 end

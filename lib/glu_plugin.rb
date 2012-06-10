@@ -11,7 +11,8 @@ module GluPlugin
   end
 
   class Reader
-    def initialize
+    def initialize(worklog)
+      @worklog = worklog
       @config = GluPlugin::load_config
       @glu_api = GluClient::Api.new :rest_uri => @config['rest_uri'], :fabric => @config['fabric']
     end
@@ -64,8 +65,11 @@ module GluPlugin
       if physical_host.changed?
         Rails.logger.info "Glu: Updating #{physical_host.name} for #{glu_module.name}. Changed: #{physical_host.glu_modules.each{|glu_module| glu_module.changes}}"
         puts "Glu: Updating #{physical_host.name} for #{glu_module.name}. Changed: #{physical_host.glu_modules.each{|glu_module| glu_module.changes}}"
-        physical_host.audits << Audit.new(source: 'cron', action: 'update_glu')
+        audit = Audit.new(source: 'cron', action: 'update_glu')
+        physical_host.audits << audit
         physical_host.save!
+        @worklog.audits << audit
+        @worklog.save!
       end
     end
 
@@ -78,9 +82,12 @@ module GluPlugin
           if not glu_module.find_in_list(live_glu_modules)
             Rails.logger.info "Glu: Deleting #{glu_module.name} from #{physical_host.name}"
             puts "Glu: Deleting #{glu_module.name} from #{physical_host.name}"
-            physical_host.audits << Audit.new(source: 'cron', action: "remove_glu_module #{glu_module.name}")
+            Audit.new(source: 'cron', action: "remove_glu_module #{glu_module.name}")
+            physical_host.audits << audit
             glu_module.delete
             physical_host.save!
+            @worklog.audits << audit
+            @worklog.save!
           end
         end
       end

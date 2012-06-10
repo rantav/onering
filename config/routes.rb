@@ -1,4 +1,6 @@
 Onering::Application.routes.draw do
+  resources :worklogs
+
   resources :audits
 
   root :to => 'high_voltage/pages#show', :id => 'home'

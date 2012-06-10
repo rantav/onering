@@ -1,0 +1,15 @@
+%table.table.table-striped.table-bordered.table-condensed
+  %tr
+    %th Time
+    %th Source
+    %th Action
+    %th Entity
+    %th Worklog item
+
+  - audits.each do |audit|
+    %tr
+      %td= audit.created_at
+      %td= audit.source
+      %td= audit.action
+      %td= link_to audit.entity.name, audit.entity if audit.entity
+      %td= link_to audit.worklog.name, audit.worklog if audit.worklog

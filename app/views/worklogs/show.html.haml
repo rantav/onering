@@ -1,0 +1,17 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @worklog.name
+%p
+  %b Start:
+  = @worklog.start
+%p
+  %b End:
+  = @worklog.end
+%p
+  %b Audit Items:
+  = render partial: 'audits/list', locals: {audits: @worklog.audits}
+= link_to worklogs_path, :class => 'btn' do
+  %i.icon-th-list.icon-black
+  All Work Items

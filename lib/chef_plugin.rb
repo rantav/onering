@@ -12,7 +12,8 @@ module ChefPlugin
   end
 
   class Reader
-    def initialize
+    def initialize(worklog)
+      @worklog = worklog
       @config = ChefPlugin::load_config
       @rest = Chef::REST.new(@config['chef_server'], @config['username'], @config['pem_file'])
     end
@@ -37,8 +38,11 @@ module ChefPlugin
           physical_host.chef_info = ChefInfo.new(json_attributes)
         end
         if physical_host.chef_info.changed?
-          physical_host.audits << Audit.new(source: 'cron', action: 'update_chef')
+          audit = Audit.new(source: 'cron', action: 'update_chef')
+          physical_host.audits << audit
           physical_host.save!
+          @worklog.audits << audit
+          @worklog.save!
         else
           Rails.logger.info "Nothing changed from chef for #{node_name}"
         end
@@ -51,23 +55,12 @@ module ChefPlugin
     def as_json(node)
       json = {
           name: node.name,
-          #kernel_name: node.kernel.name,
-          #kernel_machine: node.kernel.machine,
-          #kernel_os: node.kernel.os,
-          #kernel_version: node.kernel.version,
-          #kernel_release: node.kernel.release,
           ipaddress: node.ipaddress,
-          #os: node.os,
           domain: (node.domain if node.has_key?('domain')),
           os_version: node.os_version,
           recipes: (node.recipes.as_json if node.has_key?('recipes')),
           hostname: node.hostname,
-          #macaddress: node.macaddress,
-          #roles: (node.roles.as_json if node.has_key?('roles')),
-          #platform: node.platform,
           tags: node.tags.as_json,
-          #ipmi: (node.ipmi.as_json if node.has_key?('ipmi')),
-          #run_list: node.run_list.as_json
         }
       if node.has_key?('network')
         network = {}

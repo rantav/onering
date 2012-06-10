@@ -4,7 +4,7 @@
     - entity.audits.order_by({created_at: -1}).each do |audit|
       %table.table.table-condensed
         %tr
-          %td= audit.created_at.strftime("%H:%M %m/%d/%Y")
+          %td= audit.created_at
           %td= audit.source
           %td 
             .label= audit.action
