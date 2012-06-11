@@ -42,6 +42,10 @@ class PhysicalHost
     "#{self.name}.#{self.physical_rack.datacenter.name}"
   end
 
+  def ip_address
+    chef_info.ipaddress if chef_info
+  end
+
   # Takes the first letter of the host name and the number at the end of it.
   # for example, short name for CHASSIS15 is C15
   def short_name

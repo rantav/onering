@@ -26,4 +26,15 @@ describe PhysicalHost do
       PhysicalHost.new(:name => 'CHASSIS13').short_name.should == 'C13'
     end
   end
+
+  describe "ip_address" do
+    it "returns the ip address when there's data from chef" do
+      h = PhysicalHost.new
+      h.chef_info = ChefInfo.new(ipaddress: "127.0.0.1")
+      h.ip_address.should == "127.0.0.1"
+    end
+    it "returns nil when there's no data from chef" do
+      PhysicalHost.new.ip_address.should be(nil)
+    end
+  end
 end

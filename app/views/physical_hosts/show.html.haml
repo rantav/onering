@@ -50,10 +50,10 @@
     = link_to '[link]', @physical_host.physical_rack
 %p
   %b IP Address:
-  - if @physical_host.chef_info.nil?
+  - if @physical_host.ip_address.nil?
     No data from chef
   - else
-    = @physical_host.chef_info.ipaddress
+    = @physical_host.ip_address
 
 %p
   %b Glu Modules:
