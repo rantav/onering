@@ -5,6 +5,7 @@
     %th Name
     %th Start
     %th End
+    %th Error
     %th # Items
 
   - @worklogs.each do |worklog|
@@ -12,6 +13,7 @@
       %td= link_to worklog.name, worklog
       %td= worklog.start
       %td= worklog.end
+      %td= worklog.error
       %td= worklog.audits.count
 
 = paginate @worklogs

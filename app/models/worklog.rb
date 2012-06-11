@@ -5,6 +5,7 @@ class Worklog
   field :name, :type => String
   field :start, :type => Time
   field :end, :type => Time
+  field :error, :type => String
 
   has_many :audits
 end

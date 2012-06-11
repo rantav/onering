@@ -10,6 +10,9 @@
   %b End:
   = @worklog.end
 %p
+  %b Error
+  = @worklog.error
+%p
   %b Audit Items:
   = render partial: 'audits/list', locals: {audits: @worklog.audits}
 = link_to worklogs_path, :class => 'btn' do
