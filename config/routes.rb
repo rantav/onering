@@ -1,4 +1,6 @@
 Onering::Application.routes.draw do
+  resources :ip_blocks
+
   resources :worklogs
 
   resources :audits

@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Base:
+  = @ip_block.base
+%p
+  %b Mask:
+  = @ip_block.mask
+
+= link_to 'Edit', edit_ip_block_path(@ip_block)
+\|
+= link_to 'Back', ip_blocks_path

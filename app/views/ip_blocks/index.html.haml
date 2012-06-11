@@ -1,0 +1,20 @@
+%h1 IP Blocks - WIP...
+
+%table.table.table-striped.table-bordered.table-condensed
+  %tr
+    %th IP Block
+    %th
+
+  - @ip_blocks.each do |ip_block|
+    %tr
+      %td= ip_block.display
+      %td
+        = link_to 'Show', ip_block, :class => 'btn'
+        = link_to 'Edit', edit_ip_block_path(ip_block), :class => 'btn'
+        = link_to ip_block, :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-danger' do
+          %i.icon-trash.icon-white
+          Delete
+
+= link_to new_entity_schema_path, :class => 'btn btn-primary' do
+  %i.icon-plus.icon-white
+  New IP Block
