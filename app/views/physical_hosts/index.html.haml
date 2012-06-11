@@ -10,7 +10,7 @@
     %th U
     %th Model
     %th Serial
-    %th MAC
+    %th MAC Addresses
     %th Notes
     %th Power Consumtion
     %th Status
@@ -29,7 +29,7 @@
       %td= best_in_place physical_host, :u
       %td= best_in_place physical_host, :model
       %td= best_in_place physical_host, :serial
-      %td= best_in_place physical_host, :mac
+      %td= physical_host.mac_addresses
       %td= best_in_place physical_host, :notes, :type => :textarea
       %td= best_in_place physical_host, :power_consumption
       %td= best_in_place physical_host, :status

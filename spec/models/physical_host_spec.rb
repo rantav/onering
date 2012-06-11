@@ -37,4 +37,35 @@ describe PhysicalHost do
       PhysicalHost.new.ip_address.should be(nil)
     end
   end
+
+  describe "mac_addresses" do
+    describe "when there's data from chef" do
+      before(:each) do
+        @host = PhysicalHost.new
+        @host.chef_info = ChefInfo.new(
+           "network"=>
+            {"default_interface"=>"eth0",
+             "interfaces"=>
+              {"eth0"=>
+                {"lladdr"=>"00:A0:D1:EE:CA:D0",
+                 "inet"=>"192.168.254.183",
+                 "inet6"=>"fe80::2a0:d1ff:feee:cad0"},
+               "eth1"=>{"lladdr"=>"00:A0:D1:EE:CA:D1"}}})
+      end
+      it "should return the correct mac_addresses" do
+        @host.mac_addresses.should == ["00:A0:D1:EE:CA:D0", "00:A0:D1:EE:CA:D1"]
+      end
+      it "shoudl return the corrent mac_addresses_display" do
+        @host.mac_addresses_display.should == "[\"00:A0:D1:EE:CA:D0\", \"00:A0:D1:EE:CA:D1\"]"
+      end
+    end
+    describe "When there's no data from chef" do
+      it "should return nil" do
+        PhysicalHost.new.mac_addresses.should be(nil)
+      end
+      it "mac_addresses_display should return 'No data from chef'" do
+        PhysicalHost.new.mac_addresses_display.should == "No data from chef"
+      end
+    end
+  end
 end

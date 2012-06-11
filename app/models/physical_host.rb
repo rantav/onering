@@ -14,7 +14,6 @@ class PhysicalHost
   field :make, :type => String
   field :serial, :type => String
   field :notes, :type => String
-  field :mac, :type => String
   field :power_consumption, :type => Float
   field :status, :type => String
 
@@ -44,6 +43,19 @@ class PhysicalHost
 
   def ip_address
     chef_info.ipaddress if chef_info
+  end
+
+  def mac_addresses
+    chef_info.network['interfaces'].map{|k,v| v['lladdr']} if chef_info
+  end
+
+  def mac_addresses_display
+    addresses = mac_addresses
+    if addresses
+      mac_addresses.to_s
+    else
+      "No data from chef"
+    end
   end
 
   # Takes the first letter of the host name and the number at the end of it.

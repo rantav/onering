@@ -29,8 +29,8 @@
   %b Serial:
   = best_in_place @physical_host, :serial
 %p
-  %b MAC:
-  = best_in_place @physical_host, :mac
+  %b MAC Addresses:
+  = @physical_host.mac_addresses_display
 %p
   %b Geomerty:
   %span.copyable= @physical_host.geometry

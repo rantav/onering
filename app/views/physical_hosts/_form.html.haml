@@ -1,5 +1,5 @@
 = semantic_nested_form_for @physical_host, :html => {:class => 'well'} do |f|
-  = f.inputs :name, :ob_name, :u, :n, :model, :serial, :mac, :power_consumption, :make, :status
+  = f.inputs :name, :ob_name, :u, :n, :model, :serial, :power_consumption, :make, :status
   = bootstrap_autocomplete_field @physical_host, :parent_host, :name, :id, 'Parent Host', autocomplete_physical_host_name_physical_hosts_path
   = f.input :physical_rack, :as => :select, :collection => PhysicalRack.all, :label => 'Rack'
   %hr
