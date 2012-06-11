@@ -82,7 +82,7 @@ module GluPlugin
           if not glu_module.find_in_list(live_glu_modules)
             Rails.logger.info "Glu: Deleting #{glu_module.name} from #{physical_host.name}"
             puts "Glu: Deleting #{glu_module.name} from #{physical_host.name}"
-            Audit.new(source: 'cron', action: "remove_glu_module #{glu_module.name}")
+            audit = Audit.new(source: 'cron', action: "remove_glu_module #{glu_module.name}")
             physical_host.audits << audit
             glu_module.delete
             physical_host.save!
