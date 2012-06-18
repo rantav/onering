@@ -4,42 +4,43 @@
 %h2 and in the darkness bind them.
 
 %hr
-%p 
-  There are 
-  %span.label= @hosts_count
-  hosts, in
-  %span.label= @racks_count
-  racks, in
-  %span.label= @dcs_count
-  datacenters.
-%p
-  There are
-  %span.label= @glued_hosts_count
-  glued hosts, and
-  %span.label= @chefed_hosts_count
-  chefed
-%p
-  Last glu sync was at
-  = @last_glu_sync.start
-  and it was
-  - if @last_glu_sync.error
-    %span.label.label-important with errors
-  - else
-    %span.label.label-success success
-%p
-  Last chef sync was at
-  = @last_chef_sync.start
-  and it was
-  - if @last_chef_sync.error
-    %span.label.label-important with errors
-  - else
-    %span.label.label-success success
+.span5
+  %p 
+    There are 
+    %span.label= @hosts_count
+    hosts, in
+    %span.label= @racks_count
+    racks, in
+    %span.label= @dcs_count
+    datacenters.
+  %p
+    There are
+    %span.label= @glued_hosts_count
+    glued hosts, and
+    %span.label= @chefed_hosts_count
+    chefed
+  %p
+    Last glu sync was at
+    = @last_glu_sync.start
+    and it was
+    - if @last_glu_sync.error
+      %span.label.label-important with errors
+    - else
+      %span.label.label-success success
+  %p
+    Last chef sync was at
+    = @last_chef_sync.start
+    and it was
+    - if @last_chef_sync.error
+      %span.label.label-important with errors
+    - else
+      %span.label.label-success success
 
-
-%table.table.table-striped.table-bordered.table-condensed{style: "width:30%"}
-  %tr
-    %th Glu Modules
-  - @glu_modules.each do |k, v|
+.span2
+  %table.table.table-striped.table-bordered.table-condensed
     %tr
-      %td= k
-      %td= v
+      %th Glu Modules
+    - @glu_modules.each do |k, v|
+      %tr
+        %td= k
+        %td= v
