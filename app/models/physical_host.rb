@@ -37,11 +37,12 @@ class PhysicalHost
   validates_numericality_of :u, :only_integer => true
   validates_numericality_of :power_consumption, :greater_than_or_equal_to => 0, :allow_blank => true
 
-  # Collects all IP addresses from the hosts in the database
+  # Collects all IP addresses from the hosts in the database and returns a map 
+  # of address to host
   def self.all_ip_addresses
-    addresses = []
+    addresses = {}
     PhysicalHost.all.each do |host|
-      addresses << host.ip_address if host.ip_address
+      addresses[host.ip_address] = host if host.ip_address
     end
     addresses
   end

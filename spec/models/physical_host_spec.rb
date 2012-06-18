@@ -86,7 +86,7 @@ describe PhysicalHost do
     end
     describe "where there are no hosts in the db" do
       it "should collect none" do
-        PhysicalHost.all_ip_addresses.should == []
+        PhysicalHost.all_ip_addresses.should == {}
       end
     end
     describe "when there are hosts but no IP addresses" do
@@ -94,16 +94,16 @@ describe PhysicalHost do
         PhysicalHost.create!(valid_host_attributes)
       end
       it "should collect none" do
-        PhysicalHost.all_ip_addresses.should == []
+        PhysicalHost.all_ip_addresses.should == {}
       end
     end
     describe "when there are hosts and they have IP addresses" do
       before :each do
-        PhysicalHost.create!(valid_host_attributes.merge(chef_info: ChefInfo.new(ipaddress: "127.0.0.1")))
-        PhysicalHost.create!(valid_host_attributes.merge(chef_info: ChefInfo.new(ipaddress: "128.0.0.1")))
+        @host1 = PhysicalHost.create!(valid_host_attributes.merge(chef_info: ChefInfo.new(ipaddress: "127.0.0.1")))
+        @host2 = PhysicalHost.create!(valid_host_attributes.merge(chef_info: ChefInfo.new(ipaddress: "128.0.0.1")))
       end
       it "should collect all ip addresses" do
-        PhysicalHost.all_ip_addresses.should == ["127.0.0.1", "128.0.0.1"]
+        PhysicalHost.all_ip_addresses.should == {"127.0.0.1" => @host1, "128.0.0.1" => @host2}
       end
     end
   end

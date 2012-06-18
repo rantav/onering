@@ -19,7 +19,9 @@
 - if @available_ips
   %table#unused-ips.table.table-striped.table-bordered.table-condensed
     %tr
-      %th Unused IP addresses
-    - @available_ips.each do |ip|
+      %th IP address
+      %th Host
+    - @available_ips.each do |k, v|
       %tr
-        %td= ip
+        %td= k
+        %td= link_to v.name, v if v

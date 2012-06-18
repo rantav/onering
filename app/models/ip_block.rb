@@ -61,15 +61,17 @@ class IpBlock
     ip_addr.to_s
   end
 
-  def next_free_addresses(start, how_many, used_ips)
+  # Returns a map b/w ip and hosts with mappings to nil where the IP address isn's used (as indicated
+  # by ip2host)
+  def next_free_addresses(start, how_many, ip2host)
     ip = IPAddr.new(base_address, Socket::AF_INET)
     ip = ip.mask(mask)
     raise "Start IP (#{start}) out of range #{ip.inspect}" unless ip.include?(start)
     start_ip = IPAddr.new(start)
-    addresses = []
+    addresses = {}
     ip.to_range.each do |a|
       s = a.to_s
-      addresses << s unless a < start_ip or addresses.size >= how_many or used_ips.include?(s)
+      addresses[s] = ip2host[s] unless a < start_ip or addresses.size >= how_many
     end
     addresses
   end
