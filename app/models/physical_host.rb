@@ -52,6 +52,22 @@ class PhysicalHost
     modules
   end
 
+  def self.glued_hosts_count
+    count = 0
+    PhysicalHost.all.each do |host|
+      count = count + 1 if host.glu_modules.size > 1
+    end
+    count
+  end
+
+  def self.chefed_hosts_count
+    count = 0
+    PhysicalHost.all.each do |host|
+      count = count + 1 if host.chef_info
+    end
+    count
+  end
+
   # Collects all IP addresses from the hosts in the database and returns a map 
   # of address to host
   def self.all_ip_addresses
