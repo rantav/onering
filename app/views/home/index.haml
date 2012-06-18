@@ -18,6 +18,22 @@
   glued hosts, and
   %span.label= @chefed_hosts_count
   chefed
+%p
+  Last glu sync was at
+  = @last_glu_sync.start
+  and it was
+  - if @last_glu_sync.error
+    %span.label.label-important with errors
+  - else
+    %span.label.label-success success
+%p
+  Last chef sync was at
+  = @last_chef_sync.start
+  and it was
+  - if @last_chef_sync.error
+    %span.label.label-important with errors
+  - else
+    %span.label.label-success success
 
 
 %table.table.table-striped.table-bordered.table-condensed{style: "width:30%"}

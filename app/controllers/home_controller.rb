@@ -6,6 +6,8 @@ class HomeController < ApplicationController
     @glu_modules = PhysicalHost.collect_glu_modeuls
     @glued_hosts_count = PhysicalHost.glued_hosts_count
     @chefed_hosts_count = PhysicalHost.chefed_hosts_count
+    @last_glu_sync = Worklog.where(name: "Glu cron").last
+    @last_chef_sync = Worklog.where(name: "Chef cron").last
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json:  {
