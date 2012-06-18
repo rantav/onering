@@ -107,4 +107,30 @@ describe PhysicalHost do
       end
     end
   end
+
+  describe "collect_glu_modeuls" do
+    before :each do
+      PhysicalHost.all.delete
+    end
+    after :each do
+      PhysicalHost.all.delete
+    end
+    describe "When there are 3 glu modules" do
+      before :each do
+        PhysicalHost.create!(valid_host_attributes.merge(glu_modules: [GluModule.new(name: 'x'), GluModule.new(name: 'y')]))
+        PhysicalHost.create!(valid_host_attributes.merge(glu_modules: [GluModule.new(name: 'z'), GluModule.new(name: 'y')]))
+        PhysicalHost.create!(valid_host_attributes.merge(glu_modules: [GluModule.new(name: 'y')]))
+        @modules = PhysicalHost.collect_glu_modeuls
+      end
+      it "should collect 3 modules" do
+        @modules.size.should == 3
+      end
+      it "module x should have 1 instance" do
+        @modules['x'].should == 1
+      end
+      it "module y should have 3 instance" do
+        @modules['y'].should == 3
+      end
+    end
+  end
 end

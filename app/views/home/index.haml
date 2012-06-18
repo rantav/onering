@@ -12,3 +12,11 @@
   racks, in
   %span.label= @dcs_count
   datacenters.
+
+%table.table.table-striped.table-bordered.table-condensed{style: "width:30%"}
+  %tr
+    %th Glu Modules
+  - @glu_modules.each do |k, v|
+    %tr
+      %td= k
+      %td= v

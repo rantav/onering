@@ -37,6 +37,21 @@ class PhysicalHost
   validates_numericality_of :u, :only_integer => true
   validates_numericality_of :power_consumption, :greater_than_or_equal_to => 0, :allow_blank => true
 
+  # Collects a cound of all glu modules (module_name => count)
+  def self.collect_glu_modeuls
+    modules = {}
+    PhysicalHost.all.each do |host|
+      host.glu_modules.each do |m|
+        if modules[m.name]
+          modules[m.name] = modules[m.name] + 1
+        else
+          modules[m.name] = 1
+        end
+      end
+    end
+    modules
+  end
+
   # Collects all IP addresses from the hosts in the database and returns a map 
   # of address to host
   def self.all_ip_addresses
