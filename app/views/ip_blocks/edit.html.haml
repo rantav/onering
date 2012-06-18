@@ -1,7 +1,13 @@
-%h1 Editing ip_block
+%h1 Editing IP Block
 
 = render 'form'
 
-= link_to 'Show', @ip_block
-\|
-= link_to 'Back', ip_blocks_path
+= link_to ip_blocks_path, :class => 'btn' do
+  %i.icon-th-list.icon-black
+  All IP Blocks
+= link_to @ip_block, :class => 'btn btn-warning' do
+  %i.icon-remove.icon-white
+  Cancel
+= link_to new_ip_block_path, :class => 'btn btn-primary' do
+  %i.icon-plus.icon-white
+  New IP Block

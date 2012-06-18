@@ -13,7 +13,7 @@ describe "ip_blocks/new.html.haml" do
 
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     assert_select "form", :action => ip_blocks_path, :method => "post" do
-      assert_select "input#ip_block_base", :name => "ip_block[base]"
+      assert_select "input#ip_block_base_address_str", :name => "ip_block[base_address_str]"
       assert_select "input#ip_block_mask", :name => "ip_block[mask]"
     end
   end

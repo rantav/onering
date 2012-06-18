@@ -1,12 +1,15 @@
 %p#notice= notice
 
 %p
-  %b Base:
-  = @ip_block.base
-%p
-  %b Mask:
-  = @ip_block.mask
-
-= link_to 'Edit', edit_ip_block_path(@ip_block)
-\|
-= link_to 'Back', ip_blocks_path
+  %b IP Block:
+  = @ip_block.display
+.clear
+= link_to ip_blocks_path, :class => 'btn' do
+  %i.icon-th-list.icon-black
+  All IP Blocks
+= link_to edit_ip_block_path(@ip_block), :class => 'btn btn-info' do
+  %i.icon-edit.icon-white
+  Edit IP Block
+= link_to new_ip_block_path, :class => 'btn btn-primary' do
+  %i.icon-plus.icon-white
+  New IP Block

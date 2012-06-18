@@ -11,8 +11,10 @@ end
 class IpBlock
   include Mongoid::Document
   include Mongoid::Timestamps
-  field :base_address, :type => Integer, default: 0
-  field :mask, :type => Integer, default: 32
+  field :base_address, :type => Integer, default: 0, presence: true
+  field :mask, :type => Integer, default: 32, presence: true
+
+  attr :base_address_str, true
   attr :display
 
   validate :valid_ip
@@ -23,6 +25,16 @@ class IpBlock
     base_address = ip.to_i
     mask = ip.get_mask
     IpBlock.new(base_address: base_address, mask: mask)
+  end
+
+  def base_address_str
+    ip = IPAddr.new(base_address, Socket::AF_INET)
+    ip.to_s
+  end
+
+  def base_address_str=(str)
+    ip = IPAddr.new(str)
+    self.base_address = ip.to_i
   end
 
   def display

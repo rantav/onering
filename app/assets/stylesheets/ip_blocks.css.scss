@@ -1,3 +1,21 @@
 // Place all the styles related to the IpBlocks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+form {
+  div.input {
+    display: inline;
+  }
+  div.stringish {
+    display: inline;
+  }
+  label {
+    display: inline;
+  }
+  #ip_block_base_address_str {
+    width: 8em;
+  }
+  #ip_block_mask {
+    width: 2em;
+  }
+}
