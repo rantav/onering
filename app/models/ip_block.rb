@@ -51,4 +51,17 @@ class IpBlock
       errors.add(:base_address, "Invalid base address or mask #{e}")
     end
   end
+
+  def next_free_addresses(start, how_many, used_ips)
+    ip = IPAddr.new(base_address, Socket::AF_INET)
+    ip = ip.mask(mask)
+    raise "Start IP (#{start}) out of range #{ip.inspect}" unless ip.include?(start)
+    start_ip = IPAddr.new(start)
+    addresses = []
+    ip.to_range.each do |a|
+      s = a.to_s
+      addresses << s unless a < start_ip or addresses.size >= how_many or used_ips.include?(s)
+    end
+    addresses
+  end
 end
