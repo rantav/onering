@@ -1,5 +1,13 @@
 require 'spec_helper'
 
+def valid_host_attributes
+  {
+    name: "host name",
+    n: 0,
+    u: 0
+  }
+end
+
 describe PhysicalHost do
   describe "fqdn" do
     it "is correct" do
@@ -65,6 +73,34 @@ describe PhysicalHost do
       end
       it "mac_addresses_display should return 'No data from chef'" do
         PhysicalHost.new.mac_addresses_display.should == "No data from chef"
+      end
+    end
+  end
+
+  describe "all_ip_addresses" do
+    before :each do
+      PhysicalHost.all.delete
+    end
+    describe "where there are no hosts in the db" do
+      it "should collect none" do
+        PhysicalHost.all_ip_addresses.should == []
+      end
+    end
+    describe "when there are hosts but no IP addresses" do
+      before :each do
+        PhysicalHost.create!(valid_host_attributes)
+      end
+      it "should collect none" do
+        PhysicalHost.all_ip_addresses.should == []
+      end
+    end
+    describe "when there are hosts and they have IP addresses" do
+      before :each do
+        PhysicalHost.create!(valid_host_attributes.merge(chef_info: ChefInfo.new(ipaddress: "127.0.0.1")))
+        PhysicalHost.create!(valid_host_attributes.merge(chef_info: ChefInfo.new(ipaddress: "128.0.0.1")))
+      end
+      it "should collect all ip addresses" do
+        PhysicalHost.all_ip_addresses.should == ["127.0.0.1", "128.0.0.1"]
       end
     end
   end
