@@ -25,3 +25,7 @@
       %tr
         %td= k
         %td= link_to v.name, v if v
+
+  = link_to "#{ip_block_path(@ip_block)}?count=#{@available_ips.size + 50}", :class => 'btn' do
+    %i.icon-arrow-down.icon-black
+    Show more
