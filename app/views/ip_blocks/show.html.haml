@@ -13,3 +13,13 @@
 = link_to new_ip_block_path, :class => 'btn btn-primary' do
   %i.icon-plus.icon-white
   New IP Block
+
+.clear
+
+- if @available_ips
+  %table#unused-ips.table.table-striped.table-bordered.table-condensed
+    %tr
+      %th Unused IP addresses
+    - @available_ips.each do |ip|
+      %tr
+        %td= ip

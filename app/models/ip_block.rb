@@ -44,12 +44,21 @@ class IpBlock
 
   def valid_ip
     begin
-      ip = IPAddr.new(base_address, Socket::AF_INET)
-      ip = ip.mask(mask)
+      ip_addr
       return true
     rescue => e
       errors.add(:base_address, "Invalid base address or mask #{e}")
     end
+  end
+
+  def ip_addr
+    ip = IPAddr.new(base_address, Socket::AF_INET)
+    ip = ip.mask(mask)
+  end
+
+  # The first IP address in this block
+  def start
+    ip_addr.to_s
   end
 
   def next_free_addresses(start, how_many, used_ips)

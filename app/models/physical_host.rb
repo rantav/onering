@@ -55,7 +55,7 @@ class PhysicalHost
   end
 
   def mac_addresses
-    chef_info.network['interfaces'].map{|k,v| v['lladdr']} if chef_info
+    chef_info['network']['interfaces'].map{|k,v| v['lladdr']} if chef_info and chef_info['network']
   end
 
   def mac_addresses_display

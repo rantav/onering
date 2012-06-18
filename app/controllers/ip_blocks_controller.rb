@@ -16,7 +16,8 @@ class IpBlocksController < ApplicationController
   # GET /ip_blocks/1.json
   def show
     @ip_block = IpBlock.find(params[:id])
-
+    @available_ips = @ip_block.next_free_addresses(@ip_block.start, params[:count].to_i || 50, PhysicalHost.all_ip_addresses)
+    @ip_block[:available_ips] = @available_ips
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @ip_block }

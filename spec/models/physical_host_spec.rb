@@ -81,6 +81,9 @@ describe PhysicalHost do
     before :each do
       PhysicalHost.all.delete
     end
+    after :each do
+      PhysicalHost.all.delete
+    end
     describe "where there are no hosts in the db" do
       it "should collect none" do
         PhysicalHost.all_ip_addresses.should == []
