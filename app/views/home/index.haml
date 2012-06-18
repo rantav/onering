@@ -20,7 +20,8 @@
     %span.label= @chefed_hosts_count
     chefed
   %p
-    Last glu sync was at
+    = link_to "Last glu sync", worklog_path(@last_glu_sync)
+    was at
     = @last_glu_sync.start
     and it was
     - if @last_glu_sync.error
@@ -28,7 +29,8 @@
     - else
       %span.label.label-success success
   %p
-    Last chef sync was at
+    = link_to "Last chef sync", worklog_path(@last_chef_sync)
+    was at
     = @last_chef_sync.start
     and it was
     - if @last_chef_sync.error
