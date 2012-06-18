@@ -28,20 +28,20 @@ describe IpBlock do
     end
   end
 
-  describe "next_free_addresses" do
+  describe "next_addresses" do
     describe "When invoked with IP not in range" do
       it "should throw an error" do
-        expect{IpBlock.parse("192.168.254.183/24").next_free_addresses("191.0.0.1", 1, {})}.should raise_error
+        expect{IpBlock.parse("192.168.254.183/24").next_addresses("191.0.0.1", 1, {})}.should raise_error
       end
     end
     describe "invoking with an empty used and requesting just one" do
       it "should return one addresses: 192.168.254.180" do
-        IpBlock.parse("192.168.254.183/24").next_free_addresses("192.168.254.180", 1, {}).should == {"192.168.254.180" => nil}
+        IpBlock.parse("192.168.254.183/24").next_addresses("192.168.254.180", 1, {}).should == {"192.168.254.180" => nil}
       end
     end
     describe "invoking with empty used and requesting 50" do
       before :each do
-        @addresses = IpBlock.parse("192.168.254.183/24").next_free_addresses("192.168.254.180", 50, {})
+        @addresses = IpBlock.parse("192.168.254.183/24").next_addresses("192.168.254.180", 50, {})
       end
       it "should return fifty addresses: [192.168.254.180 ...]" do
         @addresses.size.should == 50
@@ -64,7 +64,7 @@ describe IpBlock do
             @host2.ip_address => @host2,
             @host3.ip_address => @host3
           }
-        @addresses = IpBlock.parse("192.168.254.183/24").next_free_addresses("192.168.254.180", 50, @used_addresses)
+        @addresses = IpBlock.parse("192.168.254.183/24").next_addresses("192.168.254.180", 50, @used_addresses)
       end
       it "should return fifty addresses" do
         @addresses.size.should == 50
@@ -74,6 +74,52 @@ describe IpBlock do
       end
       it "should return the second address [... 192.168.254.181 ...]" do
         @addresses["192.168.254.181"].should == nil
+      end
+    end
+  end
+  describe "next_free_addresses" do
+    describe "When invoked with IP not in range" do
+      it "should throw an error" do
+        expect{IpBlock.parse("192.168.254.183/24").next_addresses("191.0.0.1", 1, {})}.should raise_error
+      end
+    end
+    describe "invoking with an empty used and requesting just one" do
+      it "should return one addresses: 192.168.254.180" do
+        IpBlock.parse("192.168.254.183/24").next_free_addresses("192.168.254.180", 1, {}).should == ["192.168.254.180"]
+      end
+    end
+    describe "invoking with empty used and requesting 50" do
+      before :each do
+        @addresses = IpBlock.parse("192.168.254.183/24").next_free_addresses("192.168.254.180", 50, {})
+      end
+      it "should return fifty addresses: [192.168.254.180 ...]" do
+        @addresses.size.should == 50
+      end
+      it "should return the first address [192.168.254.180 ...]" do
+        @addresses.first.should == "192.168.254.180"
+      end
+      it "should return the last address [... 192.168.254.229]" do
+        @addresses.last.should == "192.168.254.229"
+      end
+    end
+    describe "invoking with some used IP addresses" do
+      before :each do
+        @host1 = PhysicalHost.new(chef_info: ChefInfo.new(ipaddress: "192.168.254.180"))
+        @host2 = PhysicalHost.new(chef_info: ChefInfo.new(ipaddress: "192.168.254.182"))
+        @host3 = PhysicalHost.new(chef_info: ChefInfo.new(ipaddress: "192.168.255.3"))
+        @used_addresses = 
+          {
+            @host1.ip_address => @host1,
+            @host2.ip_address => @host2,
+            @host3.ip_address => @host3
+          }
+        @addresses = IpBlock.parse("192.168.254.183/24").next_free_addresses("192.168.254.180", 50, @used_addresses)
+      end
+      it "should return fifty addresses" do
+        @addresses.size.should == 50
+      end
+      it "should return the first address [192.168.254.181 ...]" do
+        @addresses.first.should == "192.168.254.181"
       end
     end
   end

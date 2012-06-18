@@ -4,7 +4,11 @@ class IpBlocksController < ApplicationController
   # GET /ip_blocks
   # GET /ip_blocks.json
   def index
-    @ip_blocks = IpBlock.all
+    @ip_blocks = IpBlock.all.to_a
+    all_ip_addresses = PhysicalHost.all_ip_addresses
+    @ip_blocks.each do |ip_block|
+      ip_block[:free_addresses] = ip_block.next_free_addresses(ip_block.start, 5, all_ip_addresses)
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -16,7 +20,7 @@ class IpBlocksController < ApplicationController
   # GET /ip_blocks/1.json
   def show
     @ip_block = IpBlock.find(params[:id])
-    @available_ips = @ip_block.next_free_addresses(@ip_block.start, params[:count].to_i || 50, PhysicalHost.all_ip_addresses)
+    @available_ips = @ip_block.next_addresses(@ip_block.start, params[:count] || 50, PhysicalHost.all_ip_addresses)
     @ip_block[:available_ips] = @available_ips
     respond_to do |format|
       format.html # show.html.erb

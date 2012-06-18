@@ -2,11 +2,13 @@
 %table.table.table-striped.table-bordered.table-condensed
   %tr
     %th IP Block
+    %th (First) Free IP Addresses
     %th
 
   - @ip_blocks.each do |ip_block|
     %tr
       %td= ip_block.display
+      %td= ip_block[:free_addresses]
       %td
         = link_to 'Show', ip_block, :class => 'btn'
         = link_to 'Edit', edit_ip_block_path(ip_block), :class => 'btn'
