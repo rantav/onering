@@ -8,7 +8,9 @@
   - @ip_blocks.each do |ip_block|
     %tr
       %td= ip_block.display
-      %td= ip_block[:free_addresses]
+      %td
+        - ip_block[:free_addresses].each do |address|
+          %div= address
       %td
         = link_to 'Show', ip_block, :class => 'btn'
         = link_to 'Edit', edit_ip_block_path(ip_block), :class => 'btn'
