@@ -3,4 +3,7 @@ class ApplicationController < ActionController::Base
     render :text => exception, :status => 500
   end
   protect_from_forgery
+
+  before_filter :authenticate_admin_user! unless Rails.env == 'test'
+
 end

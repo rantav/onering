@@ -31,7 +31,7 @@ describe WorklogsController do
     it "assigns all worklogs as @worklogs" do
       worklog = Worklog.create! valid_attributes
       get :index
-      assigns(:worklogs).should eq( Worklog.order_by({created_at: -1}).page)
+      assigns(:worklogs).should eq(Worklog.order_by({created_at: -1}).page)
     end
   end
 

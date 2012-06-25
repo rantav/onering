@@ -1,0 +1,22 @@
+## Enviornments
+
+development:
+  host: ldap.nydc1.outbrain.com
+  port: 389
+  attribute: uid
+  base: ou=People,dc=outbrain,dc=com
+  ssl: false
+
+test:
+  host: ldap.nydc1.outbrain.com
+  port: 389
+  attribute: uid
+  base: ou=People,dc=outbrain,dc=com
+  ssl: false
+
+production:
+  host: ldap.nydc1.outbrain.com
+  port: 389
+  attribute: uid
+  base: ou=People,dc=outbrain,dc=com
+  ssl: false

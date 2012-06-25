@@ -8,6 +8,7 @@ gem 'formtastic'
 gem 'formtastic-bootstrap'
 gem 'haml'
 gem 'meta_search', '>= 1.1.0.pre'
+gem "devise", "~> 2.0"
 gem "devise_ldap_authenticatable"
 gem 'thin'
 gem 'sass-rails', "  ~> 3.1.0" # why is this here and not in assets? see https://github.com/rails/sass-rails/issues/38
