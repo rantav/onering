@@ -1,6 +1,6 @@
 class AdminUser
   include Mongoid::Document
-  devise :ldap_authenticatable, :rememberable, :trackable
+  devise :ldap_authenticatable, :rememberable, :trackable #, :database_authenticatable
 
   ## Database authenticatable
   field :email,              :type => String, :default => ""
