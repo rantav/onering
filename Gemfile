@@ -57,4 +57,5 @@ end
 group :development do
   gem 'pry'
   gem 'haml-rails'
+  gem 'quiet_assets'
 end
