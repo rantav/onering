@@ -24,9 +24,9 @@
           %a.dropdown-toggle{href: "#", "data-toggle" => 'dropdown'} 
             Hello
             = current_admin_user ? current_admin_user.username : 'Stranger'
-            - if current_admin_user
+            - if admin_user_signed_in?
               %b.caret &nbsp;
-          - if current_admin_user
+          - if admin_user_signed_in?
             %ul.dropdown-menu
               %li
                 = link_to("Logout", destroy_admin_user_session_path, :method => :delete)
