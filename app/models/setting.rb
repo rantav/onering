@@ -17,6 +17,8 @@ class Setting
   field :chef_server, :type => String
   field :chef_pem_file, :type => String
 
+  index :index
+  
   def self.get
     find_or_create(index: 0)
   end

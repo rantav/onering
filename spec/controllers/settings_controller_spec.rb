@@ -31,7 +31,7 @@ describe SettingsController do
     it "assigns all settings as @settings" do
       setting = Setting.create! valid_attributes
       get :index
-      assigns(:settings).should eq([setting])
+      response.should redirect_to(Setting.get)
     end
   end
 
