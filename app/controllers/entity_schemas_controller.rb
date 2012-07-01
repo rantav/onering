@@ -1,6 +1,7 @@
 class EntitySchemasController < ApplicationController
 
   layout 'wide'
+  load_and_authorize_resource
   
   # GET /entity_schemas
   # GET /entity_schemas.json

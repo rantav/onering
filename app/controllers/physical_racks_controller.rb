@@ -1,6 +1,7 @@
 class PhysicalRacksController < ApplicationController
 
   layout "wide"
+  load_and_authorize_resource
 
   # GET /physical_racks
   # GET /physical_racks.json

@@ -1,6 +1,7 @@
 class DupsController < ApplicationController
 
   layout "wide"
+  load_and_authorize_resource
 
   # GET /dups
   # GET /dups.json

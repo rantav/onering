@@ -1,5 +1,6 @@
 class AuditsController < ApplicationController
   layout "wide"
+  load_and_authorize_resource
   # GET /audits
   # GET /audits.json
   def index

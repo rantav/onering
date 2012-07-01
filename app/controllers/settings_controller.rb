@@ -1,5 +1,7 @@
 class SettingsController < ApplicationController
   layout "wide"
+  load_and_authorize_resource
+
   # GET /settings
   # GET /settings.json
   def index

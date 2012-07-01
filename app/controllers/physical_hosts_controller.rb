@@ -3,6 +3,7 @@ class PhysicalHostsController < ApplicationController
   respond_to :html, :json
 
   layout "wide"
+  load_and_authorize_resource
 
   autocomplete :physical_host, :name, :display_value => :fqdn, :limit => 100
 

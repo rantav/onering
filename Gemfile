@@ -25,6 +25,7 @@ gem "rest-client", "~> 1.6.7"
 gem "glu_client", :git => "git://github.com/rantav/glu_client.git"
 gem 'rufus-scheduler'
 gem 'chef', '~> 0.10.10'
+gem "cancan"
 
 # Gems used only for assets and not required
 # in production environments by default.

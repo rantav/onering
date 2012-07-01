@@ -1,5 +1,6 @@
 class IpBlocksController < ApplicationController
   layout 'wide'
+  load_and_authorize_resource
   
   # GET /ip_blocks
   # GET /ip_blocks.json

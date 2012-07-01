@@ -31,7 +31,15 @@ class AdminUser
   end
 
   def api_user?
-    self.username == Setting.get.api_rw_username or self.username == Setting.get.api_ro_username
+    api_ro_user? or api_rw_user?
+  end
+
+  def api_ro_user?
+    self.username == Setting.get.api_ro_username
+  end
+
+  def api_rw_user?
+    self.username == Setting.get.api_rw_username
   end
 
   def self.authenticate_api_user(user, password)

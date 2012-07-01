@@ -1,6 +1,7 @@
 class DatacentersController < ApplicationController
 
   layout "wide"
+  load_and_authorize_resource
   
   # GET /datacenters
   # GET /datacenters.json

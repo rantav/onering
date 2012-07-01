@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+  
   def index
     @hosts_count = PhysicalHost.count
     @racks_count = PhysicalRack.count

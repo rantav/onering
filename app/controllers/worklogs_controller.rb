@@ -1,5 +1,6 @@
 class WorklogsController < ApplicationController
   layout "wide"
+  load_and_authorize_resource
 
   # GET /worklogs
   # GET /worklogs.json

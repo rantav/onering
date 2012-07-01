@@ -55,6 +55,7 @@ GEM
       bson (~> 1.6.2)
     builder (3.0.0)
     bunny (0.7.9)
+    cancan (1.6.8)
     capistrano (2.12.0)
       highline
       net-scp (>= 1.0.0)
@@ -303,6 +304,7 @@ PLATFORMS
 DEPENDENCIES
   best_in_place (~> 1.1.0)
   bson_ext
+  cancan
   capistrano
   chef (~> 0.10.10)
   coffee-rails (~> 3.1.0)

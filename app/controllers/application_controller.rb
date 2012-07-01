@@ -15,11 +15,16 @@ class ApplicationController < ActionController::Base
       format.json do
         # For API calls we check the database for http basic authentication.
         if user = authenticate_with_http_basic { |u, p| AdminUser.authenticate_api_user(u,p) }
-          @current_user = user
+          @current_admin_user = user
         else
           request_http_basic_authentication
         end
       end
     end
   end
+
+  def current_ability
+    @current_ability ||= Ability.new(current_admin_user)
+  end
+
 end
