@@ -12,7 +12,14 @@ class ApplicationController < ActionController::Base
       format.html do
         authenticate_admin_user! unless Rails.env == 'test'
       end
-      format.json {}
+      format.json do
+        # For API calls we check the database for http basic authentication.
+        if user = authenticate_with_http_basic { |u, p| AdminUser.authenticate_api_user(u,p) }
+          @current_user = user
+        else
+          request_http_basic_authentication
+        end
+      end
     end
   end
 end

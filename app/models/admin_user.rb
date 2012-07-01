@@ -20,10 +20,28 @@ class AdminUser
   field :last_sign_in_at,    :type => Time
   field :current_sign_in_ip, :type => String
   field :last_sign_in_ip,    :type => String
+  
+  index :email
 
   before_save :get_ldap_email
   
   def get_ldap_email
-    self.email = Devise::LdapAdapter.get_ldap_param(self.username, "mail")
+    self.email = Devise::LdapAdapter.get_ldap_param(self.username, "mail") unless self.username == 'user'
+  end
+
+  def self.authenticate_api_user(user, password)
+    self.api_user(user) if user == 'user' and password == 'pass'
+  end
+
+  def self.api_user(user)
+    self.find_or_create(email: user, username: user, encrypted_password: 'xxx')
+  end
+
+  # Return the first object which matches the attributes hash
+  # - or -
+  # Create new object with the given attributes
+  #
+  def self.find_or_create(attributes)
+    self.where(attributes).first || self.create(attributes)
   end
 end
