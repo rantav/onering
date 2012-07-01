@@ -1,0 +1,15 @@
+= semantic_form_for @setting, :html => {:class => 'well'} do |f|
+  = f.input :api_ro_username
+  = f.input :api_ro_password, as: :string
+  = f.input :api_rw_username
+  = f.input :api_rw_password, as: :string
+  = f.input :glu_enabled, as: :boolean
+  = f.input :glu_user
+  = f.input :glu_pass
+  = f.input :glu_host_and_port
+  = f.input :glu_fabric
+  = f.input :chef_enabled, as: :boolean
+  = f.input :chef_server
+  = f.input :chef_pem_file
+  = f.buttons do
+    = f.commit_button :button_html => {:class => 'btn btn-primary'}, :label => 'Done'

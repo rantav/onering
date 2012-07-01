@@ -1,0 +1,45 @@
+%h1 Listing settings
+
+%table.table.table-striped.table-bordered.table-condensed
+  %tr
+    %th Api ro username
+    %th Api ro password
+    %th Api rw username
+    %th Api rw password
+    %th Glu enabled
+    %th Glu user
+    %th Glu pass
+    %th Glu host and port
+    %th Glu fabric
+    %th Chef enabled
+    %th Chef server
+    %th Chef pem file
+    %th
+    %th
+    %th
+
+  - @settings.each do |setting|
+    %tr
+      %td= setting.api_ro_username
+      %td= setting.api_ro_password
+      %td= setting.api_rw_username
+      %td= setting.api_rw_password
+      %td= setting.glu_enabled
+      %td= setting.glu_user
+      %td= setting.glu_pass
+      %td= setting.glu_host_and_port
+      %td= setting.glu_fabric
+      %td= setting.chef_enabled
+      %td= setting.chef_server
+      %td= setting.chef_pem_file
+      %td= link_to 'Show', setting
+      %td= link_to 'Edit', edit_setting_path(setting)
+      %td
+        = link_to setting, :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-danger' do
+          %i.icon-trash.icon-white
+          Delete
+
+= link_to new_setting_path, :class => 'btn btn-primary' do
+  %i.icon-plus.icon-white
+  New Setting
+

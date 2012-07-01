@@ -1,0 +1,13 @@
+%h1 Editing setting
+
+= render 'form'
+
+= link_to settings_path, :class => 'btn' do
+  %i.icon-th-list.icon-black
+  All settings
+= link_to @setting, :class => 'btn btn-warning' do
+  %i.icon-remove.icon-white
+  Cancel
+= link_to new_setting_path, :class => 'btn btn-primary' do
+  %i.icon-plus.icon-white
+  New Setting

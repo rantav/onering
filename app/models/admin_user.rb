@@ -1,5 +1,6 @@
 class AdminUser
   include Mongoid::Document
+
   devise :ldap_authenticatable, :rememberable, :trackable #, :database_authenticatable
 
   ## Database authenticatable
@@ -30,11 +31,12 @@ class AdminUser
   end
 
   def api_user?
-    self.username == Setting.api_rw_username or self.username == Setting.api_ro_username
+    self.username == Setting.get.api_rw_username or self.username == Setting.get.api_ro_username
   end
 
   def self.authenticate_api_user(user, password)
-    self.api_user(user) if (user == Setting.api_ro_username and password == Setting.api_ro_password) or user == Setting.api_rw_username and password == Setting.api_rw_password
+    self.api_user(user) if (user == Setting.get.api_ro_username and password == Setting.get.api_ro_password) or 
+                           (user == Setting.get.api_rw_username and password == Setting.get.api_rw_password)
   end
 
   def self.api_user(user)
@@ -48,4 +50,5 @@ class AdminUser
   def self.find_or_create(attributes)
     self.where(attributes).first || self.create(attributes)
   end
+
 end

@@ -1,4 +1,6 @@
 Onering::Application.routes.draw do
+  resources :settings
+
   resources :xxxes
 
   devise_for :admin_users
