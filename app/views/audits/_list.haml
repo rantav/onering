@@ -2,6 +2,7 @@
   %tr
     %th Time
     %th Source
+    %th User
     %th Action
     %th Entity
     %th Worklog item
@@ -10,6 +11,8 @@
     %tr
       %td= audit.created_at
       %td= audit.source
+      / TODO: %td= link_to audit.admin_user.username, audit.admin_user if audit.admin_user
+      %td= audit.admin_user.username if audit.admin_user
       %td= audit.action
       %td= link_to audit.entity.name, audit.entity if audit.entity
       %td= link_to audit.worklog.name, audit.worklog if audit.worklog

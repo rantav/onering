@@ -28,4 +28,8 @@ class ApplicationController < ActionController::Base
     @current_ability ||= Ability.new(current_admin_user)
   end
 
+  def current_admin_user
+    nil if Rails.env == 'test'
+    @current_admin_user 
+  end
 end
