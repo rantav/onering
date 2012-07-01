@@ -1,41 +1,61 @@
 %p#notice= notice
 
-%p
-  %b Api ro username:
-  = @setting.api_ro_username
-%p
-  %b Api ro password:
-  = @setting.api_ro_password
-%p
-  %b Api rw username:
-  = @setting.api_rw_username
-%p
-  %b Api rw password:
-  = @setting.api_rw_password
-%p
-  %b Glu enabled:
-  = @setting.glu_enabled
-%p
-  %b Glu user:
-  = @setting.glu_user
-%p
-  %b Glu pass:
-  = @setting.glu_pass
-%p
-  %b Glu host and port:
-  = @setting.glu_host_and_port
-%p
-  %b Glu fabric:
-  = @setting.glu_fabric
-%p
-  %b Chef enabled:
-  = @setting.chef_enabled
-%p
-  %b Chef server:
-  = @setting.chef_server
-%p
-  %b Chef pem file:
-  = @setting.chef_pem_file
+
+#accordion.accordion
+  .accordion-group
+    .accordion-heading
+      %a.accordion-toggle{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#api"}
+        API Configuration
+    #api.accordion-body.collapse{:style => "height: 0px;"}
+      .accordion-inner
+        %p
+          %b Api ro username:
+          = @setting.api_ro_username
+        %p
+          %b Api ro password:
+          = @setting.api_ro_password
+        %p
+          %b Api rw username:
+          = @setting.api_rw_username
+        %p
+          %b Api rw password:
+          = @setting.api_rw_password
+  .accordion-group
+    .accordion-heading
+      %a.accordion-toggle{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#glu"}
+        Glu Configuration
+    #glu.accordion-body.collapse{:style => "height: 0px;"}
+      .accordion-inner
+        %p
+          %b Glu enabled:
+          = @setting.glu_enabled
+        %p
+          %b Glu user:
+          = @setting.glu_user
+        %p
+          %b Glu pass:
+          = @setting.glu_pass
+        %p
+          %b Glu host and port:
+          = @setting.glu_host_and_port
+        %p
+          %b Glu fabric:
+          = @setting.glu_fabric
+  .accordion-group
+    .accordion-heading
+      %a.accordion-toggle{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#chef"}
+        Chef Configuration
+    #chef.accordion-body.collapse{:style => "height: 0px;"}
+      .accordion-inner
+        %p
+          %b Chef enabled:
+          = @setting.chef_enabled
+        %p
+          %b Chef server:
+          = @setting.chef_server
+        %p
+          %b Chef pem file:
+          = @setting.chef_pem_file
 
 = link_to edit_setting_path(@setting), :class => 'btn btn-info' do
   %i.icon-edit.icon-white
