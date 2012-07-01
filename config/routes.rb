@@ -1,4 +1,6 @@
 Onering::Application.routes.draw do
+  resources :xxxes
+
   devise_for :admin_users
 
   resources :ip_blocks

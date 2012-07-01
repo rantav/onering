@@ -26,11 +26,15 @@ class AdminUser
   before_save :get_ldap_email
   
   def get_ldap_email
-    self.email = Devise::LdapAdapter.get_ldap_param(self.username, "mail") unless self.username == 'user'
+    self.email = Devise::LdapAdapter.get_ldap_param(self.username, "mail") unless api_user?
+  end
+
+  def api_user?
+    self.username == Setting.api_rw_username or self.username == Setting.api_ro_username
   end
 
   def self.authenticate_api_user(user, password)
-    self.api_user(user) if user == 'user' and password == 'pass'
+    self.api_user(user) if (user == Setting.api_ro_username and password == Setting.api_ro_password) or user == Setting.api_rw_username and password == Setting.api_rw_password
   end
 
   def self.api_user(user)

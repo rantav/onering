@@ -1,0 +1,13 @@
+%h1 Editing <%= singular_table_name %>
+
+= render 'form'
+
+= link_to <%= index_helper %>_path, :class => 'btn' do
+  %i.icon-th-list.icon-black
+  All <%= plural_table_name %>
+= link_to @<%= singular_table_name %>, :class => 'btn btn-warning' do
+  %i.icon-remove.icon-white
+  Cancel
+= link_to new_<%= singular_table_name %>_path, :class => 'btn btn-primary' do
+  %i.icon-plus.icon-white
+  New <%= human_name %>
