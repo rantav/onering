@@ -1,6 +1,6 @@
 class IpBlocksController < ApplicationController
   layout 'wide'
-  load_and_authorize_resource
+  load_and_authorize_resource unless Rails.env == 'test'
   
   # GET /ip_blocks
   # GET /ip_blocks.json

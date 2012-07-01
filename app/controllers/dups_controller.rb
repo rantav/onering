@@ -1,7 +1,7 @@
 class DupsController < ApplicationController
 
   layout "wide"
-  load_and_authorize_resource
+  load_and_authorize_resource unless Rails.env == 'test'
 
   # GET /dups
   # GET /dups.json

@@ -1,7 +1,7 @@
 class EntitySchemasController < ApplicationController
 
   layout 'wide'
-  load_and_authorize_resource
+  load_and_authorize_resource unless Rails.env == 'test'
   
   # GET /entity_schemas
   # GET /entity_schemas.json

@@ -1,6 +1,6 @@
 class WorklogsController < ApplicationController
   layout "wide"
-  load_and_authorize_resource
+  load_and_authorize_resource unless Rails.env == 'test'
 
   # GET /worklogs
   # GET /worklogs.json
