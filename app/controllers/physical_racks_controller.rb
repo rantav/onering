@@ -65,7 +65,7 @@ class PhysicalRacksController < ApplicationController
     id = params[:id]
     @physical_rack = PhysicalRack.any_of({_id: id}, {name: id.gsub('-', '.')}).first
     @physical_rack.attributes = params[:physical_rack]
-    @physical_rack.audits << Audit.new(source: 'controller', action: 'update', admin_user: current_admin_user)
+    @physical_rack.audits << Audit.new(source: 'controller', action: 'update', admin_user: current_user)
     respond_to do |format|
       if @physical_rack.save
         format.html { redirect_to @physical_rack, notice: 'Physical rack was successfully updated.' }

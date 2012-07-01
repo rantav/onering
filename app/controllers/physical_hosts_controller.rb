@@ -63,7 +63,7 @@ class PhysicalHostsController < ApplicationController
   # POST /physical_hosts.json
   def create
     @physical_host = PhysicalHost.new(params[:physical_host])
-    @physical_host.audits << Audit.new(source: 'controller', action: 'create', admin_user: current_admin_user) # Why this no work???
+    @physical_host.audits << Audit.new(source: 'controller', action: 'create', admin_user: current_user) # Why this no work???
     respond_to do |format|
       if @physical_host.save
         format.html { redirect_to @physical_host, notice: 'Physical host was successfully created.' }
@@ -81,7 +81,7 @@ class PhysicalHostsController < ApplicationController
     id = params[:id]
     @physical_host = PhysicalHost.any_of({_id: id}, {name: id.gsub('-', '.')}).first
     @physical_host.attributes = params[:physical_host]
-    @physical_host.audits << Audit.new(source: 'controller', action: 'update', admin_user: current_admin_user)
+    @physical_host.audits << Audit.new(source: 'controller', action: 'update', admin_user: current_user)
     respond_to do |format|
       if @physical_host.save
         format.html { redirect_to @physical_host, notice: 'Physical host was successfully updated.' }
