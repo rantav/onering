@@ -6,10 +6,6 @@
   = @<%= singular_table_name %>.<%= attribute.name %>
 <% end -%>
 
-= link_to 'Edit', edit_<%= singular_table_name %>_path(@<%= singular_table_name %>)
-\|
-= link_to 'Back', <%= index_helper %>_path
-
 = link_to <%= index_helper %>_path, :class => 'btn' do
   %i.icon-th-list.icon-black
   All <%= plural_table_name %>
