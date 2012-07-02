@@ -3,25 +3,18 @@
     .container
       %a.brand{:href => "/"} one ring
       %ul.nav
-        %li
-          %a{:href => "/datacenters"} Datacenters
-        %li
-          %a{:href => "/physical_racks"} Racks
-        %li
-          %a{:href => "/physical_hosts"} Physical Hosts
-        %li
-          %a{:href => "/ip_blocks"} IP Blocks
-        %li
-          %a{:href => "/entity_schemas"} Schemas
-        %li
-          %a{:href => "/worklogs"} Worklog
-        %li
-          %a{:href => "/audits"} Audit
-        %li
-          %a{:href => "/settings"} Settings
+        %li= link_to 'Datacenters', datacenters_path
+        %li= link_to 'Racks', physical_racks_path
+        %li= link_to 'Physical Hosts', physical_hosts_path
+        %li= link_to "IP Blocks", ip_blocks_path
+        %li= link_to "Schemas", entity_schemas_path
+        %li= link_to 'Worklog', worklogs_path
+        %li= link_to 'Audit', audits_path
       %form.navbar-search.pull-left{:action => "/search"}
         %input.search-query{:name => :q, :placeholder => "Search", :type => "text", :value => "#{params[:q]}"}
       %ul.nav.pull-right
+        %li= link_to "Settings", settings_path
+        %li= link_to "Users", admin_users_path
         %li.dropdown
           %a.dropdown-toggle{href: "#", "data-toggle" => 'dropdown'} 
             Hello
