@@ -8,4 +8,8 @@ class Worklog
   field :error, :type => String
 
   has_many :audits
+
+  def to_s
+    "Worklog(_id=#{_id})"
+  end
 end

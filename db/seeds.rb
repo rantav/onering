@@ -30,7 +30,7 @@ unless settings.chef_configured
   settings.chef_enabled = false
   settings.chef_server = 'http://chef.example.com:4040'
   settings.chef_pem_file = '/path/to/pem/file.pem'
-  settings.chef_username = 'chef_username'
+  settings.chef_user = 'chef_username'
   settings.chef_configured = true
 end
 

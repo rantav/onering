@@ -8,6 +8,10 @@ class SettingsController < ApplicationController
     GluPlugin::run_update('on demand')
     render text: "OK"
   end
+  def run_chef
+    ChefPlugin::run_update('on demand')
+    render text: "OK"
+  end
 
   # GET /settings
   # GET /settings.json

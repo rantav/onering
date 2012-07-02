@@ -16,7 +16,7 @@ class Setting
   field :chef_enabled, :type => Boolean
   field :chef_server, :type => String
   field :chef_pem_file, :type => String
-  field :chef_username, type: String
+  field :chef_user, type: String
   field :glu_configured, type: Boolean, default: false
   field :chef_configured, type: Boolean, default: false
 

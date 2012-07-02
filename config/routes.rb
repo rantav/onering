@@ -4,6 +4,7 @@ Onering::Application.routes.draw do
   resources :admin_users
   resources :settings do
     post :run_glu, :on => :collection
+    post :run_chef, :on => :collection
   end
   resources :ip_blocks
   resources :worklogs

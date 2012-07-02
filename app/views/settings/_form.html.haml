@@ -28,8 +28,9 @@
       #chef.accordion-body.collapse{:style => "height: 0px;"}
         .accordion-inner
           = f.input :chef_enabled, as: :boolean
-          = f.input :chef_server, :input_html => {disabled: true}
-          = f.input :chef_pem_file, :input_html => {disabled: true}
+          = f.input :chef_server
+          = f.input :chef_user
+          = f.input :chef_pem_file
   = f.buttons do
     = f.commit_button :button_html => {:class => 'btn btn-primary'}, :label => 'Done'
 

@@ -1,11 +1,20 @@
 require 'chef/rest'
 
 module ChefPlugin
-  def self.load_config
-    YAML::load(ERB.new(IO.read(File.join(Rails.root, 'config', 'chef.yaml'))).result)
-  end
 
-  @config = load_config
+  def self.run_update(run_description)
+    worklog = Worklog.create!(name: "Chef run #{run_description}", start: Time.now)
+    Rails.logger.info "Starting chef run #{run_description} #{worklog}..."
+    begin
+      reader = ChefPlugin::Reader.new(worklog)
+      reader.update
+    rescue => e
+      worklog.error = e.to_s
+    end
+    worklog.end = Time.now
+    worklog.save!
+    Rails.logger.info "...Finished #{run_description} run for chef job to read from chef #{worklog}"
+  end
 
   def self.url_for_node(n)
     "#{@config['chef_server']}/nodes/#{n}"
@@ -14,12 +23,19 @@ module ChefPlugin
   class Reader
     def initialize(worklog)
       @worklog = worklog
-      @config = ChefPlugin::load_config
-      @rest = Chef::REST.new(@config['chef_server'], @config['username'], @config['pem_file'])
+      @settings = Setting.get
+      @chef_server = @settings.chef_server
+      @chef_username = @settings.chef_username
+      @chef_pem_file = @settings.chef_pem_file
+      @rest = Chef::REST.new(@chef_server, @chef_username, @chef_pem_file)
     end
 
-    # Updates the roles of the hosts as seen by glu
     def update
+      unless @settings.chef_enabled
+        Rails.logger.info "Chef is disabled, will not sync now"
+        @worklog.error = "Chef is disabled"
+        return
+      end
       nodes =  @rest.get_rest("/nodes")
       nodes.each do |k, v|
         update_node k

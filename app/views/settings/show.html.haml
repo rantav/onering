@@ -56,18 +56,30 @@
           %b Chef server:
           = @setting.chef_server
         %p
+          %b Chef user:
+          = @setting.chef_user
+        %p
           %b Chef pem file:
           = @setting.chef_pem_file
+        %button#run_chef_now.btn Run Chef Now
 
 = link_to edit_setting_path(@setting), :class => 'btn btn-info' do
   %i.icon-edit.icon-white
   Edit Settings
 
 :javascript
-  $('#run_glu_now').click(function(){
-    $.post('#{url_for(controller: "settings", action: "run_glu", method: 'post')}').
-    success(function(){$("<b>Finished</b>").purr()}).
-    error(function(){$("<b>Oops, there was an error...</b>").purr()});
+  $(function(){
+    $('#run_glu_now').click(function(){
+      $.post('#{url_for(controller: "settings", action: "run_glu", method: 'post')}').
+      success(function(){$("<b>Finished</b>").purr()}).
+      error(function(){$("<b>Oops, there was an error...</b>").purr()});
+      $("<i>OK, glu is running, hang on...</i>").purr();
+    });
 
-    $("<i>OK, glu is running, hang on...</i>").purr();
-  })
+    $('#run_chef_now').click(function(){
+      $.post('#{url_for(controller: "settings", action: "run_chef", method: 'post')}').
+      success(function(){$("<b>Finished</b>").purr()}).
+      error(function(){$("<b>Oops, there was an error...</b>").purr()});
+      $("<i>OK, chef is running, hang on...</i>").purr();
+    })  
+  });
