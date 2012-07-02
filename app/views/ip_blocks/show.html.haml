@@ -3,6 +3,8 @@
 %p
   %b IP Block:
   = @ip_block.display
+= show_extra_attributes(@schema, @ip_block)
+
 .clear
 = link_to ip_blocks_path, :class => 'btn' do
   %i.icon-th-list.icon-black

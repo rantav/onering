@@ -2,5 +2,6 @@
   = f.input :base_address_str, label: '&nbsp;'
   \/
   = f.input :mask, label: '&nbsp;'
+  = extra_attributes_fields @schema, @ip_block
   = f.buttons do
     = f.commit_button :button_html => {:class => 'btn btn-primary'}, :label => 'Done'

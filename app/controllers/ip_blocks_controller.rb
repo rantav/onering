@@ -21,6 +21,7 @@ class IpBlocksController < ApplicationController
   # GET /ip_blocks/1.json
   def show
     @ip_block = IpBlock.find(params[:id])
+    @schema = self.schema
     @available_ips = @ip_block.next_addresses(@ip_block.start, params[:count] || 50, PhysicalHost.all_ip_addresses)
     @ip_block[:available_ips] = @available_ips
     respond_to do |format|
@@ -43,6 +44,7 @@ class IpBlocksController < ApplicationController
   # GET /ip_blocks/1/edit
   def edit
     @ip_block = IpBlock.find(params[:id])
+    @schema = self.schema
   end
 
   # POST /ip_blocks
@@ -87,5 +89,9 @@ class IpBlocksController < ApplicationController
       format.html { redirect_to ip_blocks_url }
       format.json { head :ok }
     end
+  end
+
+  def schema
+    EntitySchema.first(conditions: {name: 'ip_block'})
   end
 end
