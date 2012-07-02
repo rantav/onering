@@ -16,7 +16,8 @@ $ bundle exec rspec spec
 
 Configure:
 =========
-- nothing at the moment...
+- bundle exec rake db:seed
+
 
 Run the server:
 ===================
