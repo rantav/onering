@@ -3,10 +3,10 @@ class Ability
 
   def initialize(user)
     if user
-      if user.api_ro_user?
-        can :read, :all
-      else
+      if user.can_write
         can :manage, :all
+      else
+        can :read, :all
       end
     end
   end

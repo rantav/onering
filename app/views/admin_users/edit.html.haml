@@ -1,0 +1,10 @@
+%h1 Editing User
+
+= render 'form'
+
+= link_to admin_users_path, :class => 'btn' do
+  %i.icon-th-list.icon-black
+  All Users
+= link_to @admin_user, :class => 'btn btn-warning' do
+  %i.icon-remove.icon-white
+  Cancel

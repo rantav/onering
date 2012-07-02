@@ -1,24 +1,16 @@
 Onering::Application.routes.draw do
-  resources :settings
-
-  resources :xxxes
-
   devise_for :admin_users
-
-  resources :ip_blocks
-
-  resources :worklogs
-
-  resources :audits
-
   root :to => 'home#index'
-
-  match 'search' => 'physical_hosts#search'
-  
+  resources :admin_users
+  resources :settings
+  resources :ip_blocks
+  resources :worklogs
+  resources :audits
   resources :entity_schemas
   resources :dups, :only => :index
   resources :physical_racks
   resources :datacenters
+  match 'search' => 'physical_hosts#search'
   resources :physical_hosts do
     get :autocomplete_physical_host_name, :on => :collection
   end

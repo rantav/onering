@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Username:
+  = @admin_user.username
+%p
+  %b Can write:
+  = @admin_user.can_write
+%p
+  %b Last sign in at:
+  = @admin_user.last_sign_in_at
+
+= link_to admin_users_path, :class => 'btn' do
+  %i.icon-th-list.icon-black
+  All Users
+= link_to edit_admin_user_path(@admin_user), :class => 'btn btn-info' do
+  %i.icon-edit.icon-white
+  Edit User
+= link_to new_admin_user_path, :class => 'btn btn-primary' do
+  %i.icon-plus.icon-white
+  New User

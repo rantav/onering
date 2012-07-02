@@ -1,7 +1,7 @@
 class AdminUser
   include Mongoid::Document
 
-  devise :ldap_authenticatable, :rememberable, :trackable #, :database_authenticatable
+  devise :ldap_authenticatable, :rememberable, :trackable
 
   ## Database authenticatable
   field :email,              :type => String, :default => ""
@@ -10,7 +10,6 @@ class AdminUser
   field :remember_token,     :type => String, :default => ""
 
   validates_presence_of :email
-  validates_presence_of :encrypted_password
 
   ## Rememberable
   field :remember_created_at, :type => Time
@@ -22,12 +21,19 @@ class AdminUser
   field :current_sign_in_ip, :type => String
   field :last_sign_in_ip,    :type => String
 
+  # field :confirmed_at,       :type => Time
+  # field :confirmation_token, :type => String
+  # field :unconfirmed_email,  :type => String  
+  # field :confirmation_sent_at, type:  Time
+
+  field :can_write,          type: Boolean, default: true
+
   has_many :audits
-    
+
   index :email
 
   before_save :get_ldap_email
-  
+
   def get_ldap_email
     self.email = Devise::LdapAdapter.get_ldap_param(self.username, "mail") unless api_user?
   end

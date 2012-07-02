@@ -5,3 +5,13 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+# bootstrap_user = AdminUser.create!(username: 'onering_admin', email: 'onering_admin', password: 'xxx', can_write: true)
+
+ro_api = AdminUser.create!(username: 'ro_api', email: 'ro_api', encrypted_password: 'xxx', can_write: false)
+rw_api = AdminUser.create!(username: 'ro_api', email: 'ro_api', encrypted_password: 'xxx', can_write: true)
+settings = Setting.get
+settings.api_ro_username = ro_api.username
+settings.api_ro_password = 'pass'
+settings.api_rw_username = rw_api.username
+settings.api_rw_password = 'pass'
