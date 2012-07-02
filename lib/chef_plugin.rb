@@ -17,7 +17,7 @@ module ChefPlugin
   end
 
   def self.url_for_node(n)
-    "#{@config['chef_server']}/nodes/#{n}"
+    "#{@chef_server}/nodes/#{n}"
   end
 
   class Reader
@@ -25,9 +25,9 @@ module ChefPlugin
       @worklog = worklog
       @settings = Setting.get
       @chef_server = @settings.chef_server
-      @chef_username = @settings.chef_username
+      @chef_user = @settings.chef_user
       @chef_pem_file = @settings.chef_pem_file
-      @rest = Chef::REST.new(@chef_server, @chef_username, @chef_pem_file)
+      @rest = Chef::REST.new(@chef_server, @chef_user, @chef_pem_file)
     end
 
     def update
