@@ -32,7 +32,7 @@ class AdminUser
 
   index :email
 
-  before_save :get_ldap_email
+  before_save :get_ldap_email unless Rails.env == 'test'
 
   def get_ldap_email
     self.email = Devise::LdapAdapter.get_ldap_param(self.username, "mail") unless api_user?
