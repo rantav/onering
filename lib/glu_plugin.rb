@@ -1,24 +1,42 @@
 module GluPlugin
 
-  def self.load_config
-    YAML::load(ERB.new(IO.read(File.join(Rails.root, 'config', 'glu.yaml'))).result)
+  def self.run_update(run_description)
+    worklog = Worklog.create!(name: "Glu run #{run_description}", start: Time.now)
+    Rails.logger.info "Starting glu run #{run_description} #{worklog}..."
+    begin
+      reader = GluPlugin::Reader.new(worklog)
+      reader.update
+    rescue => e
+      worklog.error = e.to_s
+    end
+    worklog.end = Time.now
+    worklog.save!
+    Rails.logger.info "...Finished #{run_description} run for glu job to read from glu #{worklog}"
   end
 
-  @config = load_config
-
   def self.url_for_module(m)
-    "#{@config['console_uri']}system/filter?systemFilter=metadata.product%3D%27#{m.name}%27&title=product+%5B#{m.name}%5D&groupBy=metadata.product"
+    "#{@glu_console_uri}system/filter?systemFilter=metadata.product%3D%27#{m.name}%27&title=product+%5B#{m.name}%5D&groupBy=metadata.product"
   end
 
   class Reader
     def initialize(worklog)
       @worklog = worklog
-      @config = GluPlugin::load_config
-      @glu_api = GluClient::Api.new :rest_uri => @config['rest_uri'], :fabric => @config['fabric']
+      @settings = Setting.get
+      @glu_user = @settings.glu_user
+      @glu_pass = @settings.glu_pass
+      @glu_host_and_port = @settings.glu_host_and_port
+      @glu_rest_uri = "http://#{@glu_user}:#{@glu_pass}@#{@glu_host_and_port}/console/rest/v1/"
+      @glu_console_uri = "http://#{@glu_host_and_port}/console/"
+      @glu_fabric = @settings.glu_fabric
+      @glu_api = GluClient::Api.new :rest_uri => @glu_rest_uri, :fabric => @glu_fabric
     end
 
     # Updates the roles of the hosts as seen by glu
     def update
+      unless @settings.glu_enabled
+        Rails.logger.info "Glu is disabled, will not sync now"
+        return
+      end
       live_model = @glu_api.get_model_live
       live_glu_modules = create_modules(live_model)
       clear_old_glu_modules(live_glu_modules)

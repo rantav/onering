@@ -16,18 +16,18 @@
           Glu Configuration
       #glu.accordion-body.collapse{:style => "height: 0px;"}
         .accordion-inner
-          = f.input :glu_enabled, as: :boolean, :input_html => {disabled: true}
-          = f.input :glu_user, :input_html => {disabled: true}
-          = f.input :glu_pass, :input_html => {disabled: true}
-          = f.input :glu_host_and_port, :input_html => {disabled: true}
-          = f.input :glu_fabric, :input_html => {disabled: true}
+          = f.input :glu_enabled, as: :boolean
+          = f.input :glu_user
+          = f.input :glu_pass
+          = f.input :glu_host_and_port
+          = f.input :glu_fabric
     .accordion-group
       .accordion-heading
         %a.accordion-toggle{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#chef"}
           Chef Configuration
       #chef.accordion-body.collapse{:style => "height: 0px;"}
         .accordion-inner
-          = f.input :chef_enabled, as: :boolean, :input_html => {disabled: true}
+          = f.input :chef_enabled, as: :boolean
           = f.input :chef_server, :input_html => {disabled: true}
           = f.input :chef_pem_file, :input_html => {disabled: true}
   = f.buttons do

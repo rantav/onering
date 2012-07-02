@@ -2,7 +2,9 @@ Onering::Application.routes.draw do
   devise_for :admin_users
   root :to => 'home#index'
   resources :admin_users
-  resources :settings
+  resources :settings do
+    post :run_glu, :on => :collection
+  end
   resources :ip_blocks
   resources :worklogs
   resources :audits

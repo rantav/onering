@@ -1,5 +1,6 @@
 %p#notice= notice
 
+#purr
 
 #accordion.accordion
   .accordion-group
@@ -41,6 +42,7 @@
         %p
           %b Glu fabric:
           = @setting.glu_fabric
+        %button#run_glu_now.btn Run Glu Now
   .accordion-group
     .accordion-heading
       %a.accordion-toggle{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#chef"}
@@ -60,3 +62,12 @@
 = link_to edit_setting_path(@setting), :class => 'btn btn-info' do
   %i.icon-edit.icon-white
   Edit Settings
+
+:javascript
+  $('#run_glu_now').click(function(){
+    $.post('#{url_for(controller: "settings", action: "run_glu", method: 'post')}').
+    success(function(){$("<b>Finished</b>").purr()}).
+    error(function(){$("<b>Oops, there was an error...</b>").purr()});
+
+    $("<i>OK, glu is running, hang on...</i>").purr();
+  })

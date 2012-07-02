@@ -1,6 +1,13 @@
+require 'glu_plugin'
+
 class SettingsController < ApplicationController
   layout "wide"
   load_and_authorize_resource unless Rails.env == 'test'
+
+  def run_glu
+    GluPlugin::run_update('on demand')
+    render text: "OK"
+  end
 
   # GET /settings
   # GET /settings.json
