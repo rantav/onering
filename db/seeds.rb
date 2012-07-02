@@ -11,3 +11,5 @@ settings.api_ro_username = ro_api.username
 settings.api_ro_password = 'pass'
 settings.api_rw_username = rw_api.username
 settings.api_rw_password = 'pass'
+
+settings.save
