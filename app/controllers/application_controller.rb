@@ -8,19 +8,11 @@ class ApplicationController < ActionController::Base
   before_filter :onering_authenticate!
 
   def onering_authenticate!
-    # Require authentication only for HTML pages (API is wide open... for now...)
-    respond_to do |format|
-      format.html do
-        authenticate_admin_user! unless Rails.env == 'test'
-      end
-      format.json do
-        # For API calls we check the database for http basic authentication.
-        if user = authenticate_with_http_basic { |u, p| AdminUser.authenticate_api_user(u,p) }
-          @current_admin_user = user
-        else
-          request_http_basic_authentication
-        end
-      end
+    return nil if Rails.env == 'test'
+    if user = authenticate_with_http_basic { |u, p| AdminUser.authenticate_api_user(u,p) }
+      @current_admin_user = user
+    else
+      authenticate_admin_user!
     end
   end
 
