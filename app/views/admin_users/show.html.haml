@@ -19,3 +19,7 @@
 = link_to new_admin_user_path, :class => 'btn btn-primary' do
   %i.icon-plus.icon-white
   New User
+
+%div 
+  %h3 Audits
+  = render partial: 'audits/list', locals: {audits: @admin_user.audits}
