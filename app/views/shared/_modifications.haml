@@ -1,10 +1,16 @@
 - if entity.audits.size > 0
-  %p
-    %b Modifications:
-    - entity.audits.order_by({created_at: -1}).each do |audit|
-      %table.table.table-condensed
-        %tr
-          %td= audit.created_at
-          %td= audit.source
-          %td 
-            .label= audit.action
+  #accordion.accordion
+    .accordion-group
+      .accordion-heading
+        %a.accordion-toggle{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#modifications"}
+          Modifications
+      #modifications.accordion-body.collapse{:style => "height: 0px;"}
+        .accordion-inner
+          - entity.audits.order_by({created_at: -1}).each do |audit|
+            %table.table.table-condensed
+              %tr
+                %td= audit.created_at
+                %td= audit.source
+                %td= audit.admin_user.username if audit.admin_user
+                %td 
+                  .label= audit.action
