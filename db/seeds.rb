@@ -34,4 +34,10 @@ unless settings.chef_configured
   settings.chef_configured = true
 end
 
+unless settings.amq_configured
+  settings.amq_connection_string = "failover://(stomp://:@localhost:61613,stomp://:@anotherhost:61613)?initialReconnectDelay=5000&randomize=false&useExponentialBackOff=false"
+  settings.amq_topic = 'onering'
+  settings.amq_configured = true
+end
+
 settings.save

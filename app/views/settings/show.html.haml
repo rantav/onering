@@ -62,6 +62,19 @@
           %b Chef pem file:
           = @setting.chef_pem_file
         %button#run_chef_now.btn Run Chef Now
+  .accordion-group
+    .accordion-heading
+      %a.accordion-toggle{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#amq"}
+        AMQ Configuration
+    #amq.accordion-body.collapse{:style => "height: 0px;"}
+      .accordion-inner
+        %p
+          %b AMQ connection string: (requires stomp support)
+          %pre
+            = @setting.amq_connection_string
+        %p
+          %b AMQ topic:
+          = @setting.amq_topic
 
 = link_to edit_setting_path(@setting), :class => 'btn btn-info' do
   %i.icon-edit.icon-white

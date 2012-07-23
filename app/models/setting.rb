@@ -19,6 +19,9 @@ class Setting
   field :chef_user, type: String
   field :glu_configured, type: Boolean, default: false
   field :chef_configured, type: Boolean, default: false
+  field :amq_connection_string, type: String
+  field :amq_topic, type: String
+  field :amq_configured, type: Boolean
 
   index :index
   

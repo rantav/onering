@@ -28,9 +28,18 @@
       #chef.accordion-body.collapse{:style => "height: 0px;"}
         .accordion-inner
           = f.input :chef_enabled, as: :boolean
-          = f.input :chef_server
+          = f.input :chef_server, input_html: {style: "width:100%"}
           = f.input :chef_user
           = f.input :chef_pem_file
+    .accordion-group
+      .accordion-heading
+        %a.accordion-toggle{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#amq"}
+          AMQ Configuration
+      #amq.accordion-body.collapse{:style => "height: 0px;"}
+        .accordion-inner
+          = f.input :amq_connection_string, input_html: {style: "width:100%"}
+          = f.input :amq_topic
+
   = f.buttons do
     = f.commit_button :button_html => {:class => 'btn btn-primary'}, :label => 'Done'
 
