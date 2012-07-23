@@ -1,2 +1,2 @@
-amq-poller: bundle exec script/poller run
+#amq: bundle exec rake onering_amq:listen
 web: bundle exec rails server thin -p $PORT
