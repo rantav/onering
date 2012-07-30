@@ -16,6 +16,19 @@ module ChefPlugin
       worklog.save!
       Rails.logger.info "...Finished #{run_description} run for chef job to read from chef #{worklog}"
     end
+    def run_update_for_host(run_description, hostname)
+      worklog = Worklog.create!(name: "Chef run #{run_description} for host #{hostname}", start: Time.now)
+      Rails.logger.info "Starting chef run #{run_description} for host #{hostname} #{worklog}..."
+      begin
+        reader = ChefPlugin::Reader.new(worklog)
+        reader.update_node(hostname)
+      rescue => e
+        worklog.error = e.to_s
+      end
+      worklog.end = Time.now
+      worklog.save!
+      Rails.logger.info "...Finished #{run_description} run for chef for host #{hostname} job to read from chef #{worklog}"
+    end
   end
 
   def self.url_for_node(n)
@@ -45,6 +58,11 @@ module ChefPlugin
     end
 
     def update_node(node_name)
+      unless @settings.chef_enabled
+        Rails.logger.info "Chef is disabled, will not sync now"
+        @worklog.error = "Chef is disabled"
+        return
+      end
       physical_host = PhysicalHost.find_by_name(node_name)
       if physical_host
         Rails.logger.info("Fetching chef data for #{node_name}")

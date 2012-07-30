@@ -45,7 +45,7 @@ module Realtime
 
     def handle_chef(host)
       runner = ChefPlugin::Runner.new
-      runner.run_update('amq')
+      runner.run_update_for_host('amq', host)
       return runner
     end
 

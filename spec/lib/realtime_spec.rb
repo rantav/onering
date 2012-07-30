@@ -26,8 +26,8 @@ describe Realtime do
           ChefPlugin::Runner.stub(:new) {@mock_runner}
         end
         it 'should handle chef messages' do
-          @mock_runner.should_receive(:run_update).with('amq')
-          runner = @handler.handle('{"source": "chef", "host": "nada"}')
+          @mock_runner.should_receive(:run_update_for_host).with('amq', 'nadahost')
+          runner = @handler.handle('{"source": "chef", "host": "nadahost"}')
           runner.should == @mock_runner
         end
       end
