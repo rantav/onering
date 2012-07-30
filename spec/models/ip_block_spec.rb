@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe IpBlock do
+  after :all do
+    IpBlock.all.delete
+  end
+
   describe "validations" do
     it "Should be valid with proper base and mask" do
       IpBlock.new(base_address: 203569230, mask: 10).should be_valid

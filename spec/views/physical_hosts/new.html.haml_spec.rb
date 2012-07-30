@@ -2,10 +2,11 @@ require 'spec_helper'
 
 describe "physical_hosts/new.html.haml" do
   before(:each) do
-    assign(:physical_host, stub_model(PhysicalHost,
+    physical_host = PhysicalHost.new({
       :name => "MyString",
-      :serial => "MyString",
-    ).as_new_record)
+      :serial => "MyString"
+    })
+    assign(:physical_host, physical_host)
   end
 
   it "renders new physical_host form" do
