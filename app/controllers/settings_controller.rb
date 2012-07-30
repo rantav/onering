@@ -5,11 +5,11 @@ class SettingsController < ApplicationController
   load_and_authorize_resource unless Rails.env == 'test'
 
   def run_glu
-    GluPlugin::run_update('on demand')
+    GluPlugin::Runner.new.run_update('on demand')
     render text: "OK"
   end
   def run_chef
-    ChefPlugin::run_update('on demand')
+    ChefPlugin::Runner.new.run_update('on demand')
     render text: "OK"
   end
 

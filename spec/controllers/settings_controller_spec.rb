@@ -154,4 +154,25 @@ describe SettingsController do
     end
   end
 
+  describe "POST run_glu" do
+    before :each do
+      @mock_runner = mock(GluPlugin::Runner)
+      GluPlugin::Runner.stub(:new) {@mock_runner}
+    end
+    it "should call glu runner" do
+      @mock_runner.should_receive(:run_update).with('on demand')
+      post :run_glu
+    end
+  end
+  
+  describe "POST run_chef" do
+    before :each do
+      @mock_runner = mock(ChefPlugin::Runner)
+      ChefPlugin::Runner.stub(:new) {@mock_runner}
+    end
+    it "should call glu runner" do
+      @mock_runner.should_receive(:run_update).with('on demand')
+      post :run_chef
+    end
+  end
 end

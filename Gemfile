@@ -26,7 +26,6 @@ gem "glu_client", :git => "git://github.com/rantav/glu_client.git"
 gem 'rufus-scheduler'
 gem 'chef', '~> 0.10.10'
 gem "cancan"
-#gem 'daemons'
 gem 'stomp'
 
 # Gems used only for assets and not required

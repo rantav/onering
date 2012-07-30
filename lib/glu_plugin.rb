@@ -1,21 +1,23 @@
 module GluPlugin
 
-  def self.run_update(run_description)
-    worklog = Worklog.create!(name: "Glu run #{run_description}", start: Time.now)
-    Rails.logger.info "Starting glu run #{run_description} #{worklog}..."
-    begin
-      reader = GluPlugin::Reader.new(worklog)
-      reader.update
-    rescue => e
-      worklog.error = e.to_s
-    end
-    worklog.end = Time.now
-    worklog.save!
-    Rails.logger.info "...Finished #{run_description} run for glu job to read from glu #{worklog}"
-  end
-
   def self.url_for_module(m)
     "#{@glu_console_uri}system/filter?systemFilter=metadata.product%3D%27#{m.name}%27&title=product+%5B#{m.name}%5D&groupBy=metadata.product"
+  end
+
+  class Runner
+    def run_update(run_description)
+      worklog = Worklog.create!(name: "Glu run #{run_description}", start: Time.now)
+      Rails.logger.info "Starting glu run #{run_description} #{worklog}..."
+      begin
+        reader = GluPlugin::Reader.new(worklog)
+        reader.update
+      rescue => e
+        worklog.error = e.to_s
+      end
+      worklog.end = Time.now
+      worklog.save!
+      Rails.logger.info "...Finished #{run_description} run for glu job to read from glu #{worklog}"
+    end
   end
 
   class Reader

@@ -2,18 +2,20 @@ require 'chef/rest'
 
 module ChefPlugin
 
-  def self.run_update(run_description)
-    worklog = Worklog.create!(name: "Chef run #{run_description}", start: Time.now)
-    Rails.logger.info "Starting chef run #{run_description} #{worklog}..."
-    begin
-      reader = ChefPlugin::Reader.new(worklog)
-      reader.update
-    rescue => e
-      worklog.error = e.to_s
+  class Runner
+    def run_update(run_description)
+      worklog = Worklog.create!(name: "Chef run #{run_description}", start: Time.now)
+      Rails.logger.info "Starting chef run #{run_description} #{worklog}..."
+      begin
+        reader = ChefPlugin::Reader.new(worklog)
+        reader.update
+      rescue => e
+        worklog.error = e.to_s
+      end
+      worklog.end = Time.now
+      worklog.save!
+      Rails.logger.info "...Finished #{run_description} run for chef job to read from chef #{worklog}"
     end
-    worklog.end = Time.now
-    worklog.save!
-    Rails.logger.info "...Finished #{run_description} run for chef job to read from chef #{worklog}"
   end
 
   def self.url_for_node(n)
