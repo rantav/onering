@@ -4,7 +4,13 @@ require 'realtime'
 namespace :onering_amq do
   desc 'Listens for messages from activemq'
   task :listen => :environment do
-    Realtime::listen
+    begin
+      Realtime::listen  
+    rescue Exception => e
+      puts "Something went wrong with ActiveMQ. Listner is down. #{e}"
+      Log.log "Something went wrong with ActiveMQ. Listner is down. #{e}"
+      sleep
+    end
     Log.log "\n\nDone ???.\n"
   end
 end
