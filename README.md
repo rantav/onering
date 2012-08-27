@@ -9,6 +9,7 @@ Setup Highlights
 =
 - install rvm: https://rvm.io/rvm/install/
 - bundle install
+- gem install foreman # make sure you're installing into a decent rvm environment
 ...
 
 
