@@ -1,4 +1,4 @@
-[![Build Status](https://secure.travis-ci.org/rantav/onering.png?branch=master)](http://travis-ci.org/rantav/onering)
+[![Build Status](https://secure.travis-ci.org/outbrain/onering.png?branch=master)](http://travis-ci.org/outbrain/onering)
 Setup:
 =
 - git: http://git-scm.com/download
@@ -33,3 +33,8 @@ Production:
 
     $ RAILS_ENV=production foreman start
 
+
+Task management and bugs
+=
+- For tasks we use Trello [https://trello.com/board/onering/50163a3c2112c4dc4ca29d40](https://trello.com/board/onering/50163a3c2112c4dc4ca29d40)
+- For bugs we (will) use github issues [https://github.com/outbrain/onering/issues](https://github.com/outbrain/onering/issues)
