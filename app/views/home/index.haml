@@ -20,24 +20,30 @@
     %span.label= @chefed_hosts_count
     chefed
   %p
-    = link_to "Last glu sync", worklog_path(@last_glu_sync)
-    was at
-    = @last_glu_sync.start
-    and it was
-    - if @last_glu_sync.error
-      %span.label.label-important with errors
+    - if @last_glu_sync
+      = link_to "Last glu sync", worklog_path(@last_glu_sync)
+      was at
+      = @last_glu_sync.start
+      and it was
+      - if @last_glu_sync.error
+        %span.label.label-important with errors
+      - else
+        %span.label.label-success success
     - else
-      %span.label.label-success success
+      %span.label.label-important Glu was never synched
   %p
-    = link_to "Last chef sync", worklog_path(@last_chef_sync)
-    was at
-    = @last_chef_sync.start
-    and it was
-    - if @last_chef_sync.error
-      %span.label.label-important with errors
+    - if @last_chef_sync
+      = link_to "Last chef sync", worklog_path(@last_chef_sync)
+      was at
+      = @last_chef_sync.start
+      and it was
+      - if @last_chef_sync.error
+        %span.label.label-important with errors
+      - else
+        %span.label.label-success success
     - else
-      %span.label.label-success success
-
+      %span.label.label-important Chef was never synched
+  
 .span2
   %table.table.table-striped.table-bordered.table-condensed
     %tr
