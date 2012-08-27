@@ -1,7 +1,12 @@
 [![Build Status](https://secure.travis-ci.org/outbrain/onering.png?branch=master)](http://travis-ci.org/outbrain/onering)
 
 What is onering?
-= Onering is an automation tool for... blah blah blah...
+= 
+Onering is an automation tool for ops. It takes care of the process of provisioning new hosts, monitoring their state as they transition from one phase to the next etc.
+
+Onering also integrates into existing infrastracture components such as Chef.
+
+blah blah blah... need more work...
 
 Developers
 =
@@ -16,6 +21,7 @@ Setup Highlights
 - install rvm: https://rvm.io/rvm/install/
 - bundle install
 - gem install foreman # make sure you're installing into a decent rvm environment
+
 ... this needs more work...
 
 
