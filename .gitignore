@@ -8,3 +8,5 @@ setup.sh
 public/assets/
 .DS_Store
 *.pem
+*.sublime-project
+*.sublime-workspace
