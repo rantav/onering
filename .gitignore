@@ -7,3 +7,4 @@ tmp/
 setup.sh
 public/assets/
 .DS_Store
+*.pem
