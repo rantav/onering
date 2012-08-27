@@ -32,6 +32,8 @@ module ChefPlugin
   end
 
   def self.url_for_node(n)
+    settings = Setting.get
+    chef_server = settings.chef_server
     "#{@chef_server}/nodes/#{n}"
   end
 
