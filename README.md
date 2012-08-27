@@ -10,16 +10,18 @@ Setup Highlights
 - install rvm: https://rvm.io/rvm/install/
 - bundle install
 - gem install foreman # make sure you're installing into a decent rvm environment
-...
+... this needs more work...
 
 
 Clone:
 =
-$ git clone git@github.com:rantav/onering.git
+
+    $ git clone git@github.com:rantav/onering.git
 
 Test:
 =
-$ bundle exec rspec spec
+
+    $ bundle exec rspec spec
 
 Configure:
 =
